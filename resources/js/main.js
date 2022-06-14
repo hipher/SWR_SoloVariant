@@ -671,6 +671,14 @@ var dice = {
     },
 };
 
+var diceD8 = {
+    sides: 8,
+    roll: function () {
+        var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+        return randomNumber;
+    },
+};
+
 //Prints dice roll to the page
 function rollD6(number) {
     var placeholder = document.getElementById("d6");
@@ -679,12 +687,26 @@ function rollD6(number) {
     var d6Modal = new bootstrap.Modal(document.getElementById("d6modal"));
     d6Modal.toggle();
 }
+function rollD8(number) {
+    var placeholder = document.getElementById("d8");
+    // placeholder.innerHTML = number;
+    placeholder.src = "./resources/images/D8_" + number + ".png";
+    var d8Modal = new bootstrap.Modal(document.getElementById("d8modal"));
+    d8Modal.toggle();
+}
 
 // Captures all D6 button on website
 document.querySelectorAll(".d6button").forEach((d6Button) => {
     d6Button.onclick = function () {
         var result = dice.roll();
         rollD6(result);
+    };
+});
+// Captures all D8 button on website
+document.querySelectorAll(".d8button").forEach((d8Button) => {
+    d8Button.onclick = function () {
+        var result = diceD8.roll();
+        rollD8(result);
     };
 });
 
