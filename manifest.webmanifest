@@ -1,12 +1,12 @@
 {
     "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-    "name": "Star Wars Rebellion - Solo Variant",
+    "name": "Star Wars: Rebellion - Variante en solitrario (IA Imperial)",
     "short_name": "SWR-SoloVar",
     "start_url": ".",
     "id": "/SWR_SoloVariant/",
     "display": "fullscreen",
     "background_color": "#e9ecef",
-    "description": "Dale Buonocores Star Wars Rebellion Solo Variant",
+    "description": "Variante en solitario prar Star Wars: Rebellion, de Dale Buonocores",
     "icons": [
     {
       "src": "resources/images/manifest/icon-72x72.png",
