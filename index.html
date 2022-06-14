@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Star Wars Rebellion: Solo Variant</title>
+        <title>Star Wars: Rebellion - Variante en solitaria (IA Imperial)</title>
         <link rel="apple-touch-icon" href="./resources/images/manifest/icon-192x192.png">
         <link rel="manifest" href="manifest.webmanifest">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,73 +18,73 @@
         <div class="offcanvas offcanvas-start" tabindex="-1" id="options">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title maincolour" id="offcanvasLabel">
-                    Settings
+                    Configuración
                 </h3>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar">
                 </button>
             </div>
             <div class="offcanvas-body">
                 <p>
-                    The settings available here allow you to modify which
-                    components / rules you want this variant to use. Changes
-                    will be made to the wording of some rules to reflect these
-                    settings.
+                    Los ajustes disponibles permiten modificar que
+                    components / reglas quieres que usa esta variante.
+                    Se harán cambios en el texto de algunas reglas para
+                    reflejar estos ajustes.
                 </p>
                 <h6 class="paraseparator">General</h6>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkdynamicInstructions" onclick="chkClick(this);" disabled>
                     <label for="chkdynamicInstructions" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="By default all rules will be displayed. When toggled ON rules will display based on certain criteria, i.e: when the RB is discovered, movement & deployment rules will ONLY be displayed in relation to the RB">Dynamic
-                        Rules</label>
+                        title="Por defecto se muestran todas las reglas. Cuando se selecciona esta opción (ON), las reglas se muestran según ciertos criterios, p.e: cuando la Base Rebelde es descubierta, las reglas de movimiento  y despliegue SOLO se muestran en relación a la Base Rebelde">Reglas
+                        Dinamicas</label>
                 </div>
 
                 <h6 class="sidebarsubheader">
-                    Rise of the Empire Expansion
+                    Expansión El Auge del Imperio
                     <span class="material-icons" style="font-size: large">dark_mode</span>
                 </h6>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);">
-                    <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Setup deployment rules will change">
-                        Use Expansion Units
+                    <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Cambia el despliegue incial">
+                        Usar unidades de la expansión
                     </label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkROTE-TacticCards" onclick="chkClick(this);">
-                    <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Battle rules will change">
-                        Use Advanced Tactic Cards
+                    <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Cambian las reglas de combate">
+                        Usar cartas de Táctica Avanzada
                     </label>
                 </div>
                 <h6 class="sidebarsubheader">
-                    Variants
+                    Variantes
                     <span class="material-icons" style="font-size: large">science</span>
                 </h6>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-Movement" onclick="chkClick(this);">
                     <label for="chkvar-Movement" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="The Empire will roll a D6 to determine whether to move to RB/PRB or nearest rebel units. Movement rules will be updated to reflect this">
-                        Movement Variant
+                        title="El Imperio tirará 1D6 para determinar si se mueve hacia la PBR/BR o hacia las unidades Rebeldes más cercanas. Las reglas de movimiento se actualizan para reflejar esta variante">
+                        Variante de Movimiento
                     </label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-Deployment" onclick="chkClick(this);">
                     <label for="chkvar-Deployment" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="The Empire will deploy prioritizing proximity to PRB > proximity to Rebel system (tie going to production strength) > Imperial production strength">
-                        Deployment Variant: Priority
+                        title="El Imperio desplegará unidades priozizando la proximidad a la PBR > proximidad a un sistema Rebelde (mayor VP en caso de empate) > Valor de Producción Imperial">
+                        Variante de Despliegue: Prioridad
                     </label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-UnPlayableMissions" onclick="chkClick(this);">
                     <label for="chkvar-UnPlayableMissions" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="Unplayable Missions will be put at the bottom of the Initial Missions Desk and resolved at the end of the command phase. Wording in 'Play Initial Missions' section will change">
-                        Unplayable Missions Variant
+                        title ="Las misiones que no se puedan jugar se colocarán al final de Mazo de Turno y se resuelven al final de la Fase de Mando. El texto de la sección "Jugar misiones" se modifica">
+                        Variante Misiones no jugables
                     </label>
                 </div>
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);">
                     <label for="chkvar-ActionCardExecution" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="If this variant is activated the player throws a D6 in the Assignment phase after choosing missions. The empire is only going to activate the Assigmnent Action Card for 4-6.">
-                        Assignment Action Card Variant
+                        title="Si se activa esta variante, el jugador lanza 1D6 en la Fase de Asignación después de elegir las misiones. El Imperio solo activa las Cartas de Acción de Asignación con resultados 4-6">
+                        Variante Cartas de Acción de Asignación
                     </label>
                 </div>
             </div>
