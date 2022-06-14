@@ -1,5 +1,5 @@
 # SWR_SoloVariant
-Solo variant instructions for Star War Rebellion
+Instrucciones para la variante en solitario de Star Wars: Rebellion (variante IA Imperial)
 
 Public link - https://vortilion.github.io/SWR_SoloVariant/
 
