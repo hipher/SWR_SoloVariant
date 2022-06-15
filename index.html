@@ -45,7 +45,7 @@
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);">
                     <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Cambia el despliegue incial">
-                        Usar unidades de la expansión
+                        Usar despliege de la expansión
                     </label>
                 </div>
                 <div class="form-check form-switch">
@@ -592,7 +592,7 @@
                                                         <div class="col">
                                                           3 Misiones (1
                                                           Misión Inicial + 2
-                                                          Misiones Principale)
+                                                          Misiones Principales)
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -652,140 +652,115 @@
                             <!-- Command Steps-->
                             <section class="tab-pane" id="list-command-steps" role="tabpanel" aria-labelledby="list-command-list">
                                 <div class="callout">
-                                    <h5>Play Missions</h5>
+                                    <h5>Jugar Misiones</h5>
                                     <p>
-                                        Starting with the Rebel player, alternate taking turns
+                                        Empezanod por el jugaro Rebelde, ambos bandos alternan sus turnos
                                     </p>
 
                                     <div class="callout-rebel">
                                         <h5>
-                                            Play Missions / Activate Systems
+                                            Jugar Misiones / Activar Sistemas
                                         </h5>
                                         <p>
-                                            Rebel player can reveal missions or active systems
+                                            El jugador Rebelde puede revelar misiones o activar sistemas
                                         </p>
 
                                         <div class="callout-rebel">
                                             <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#establishnewbase">
-                                                <h5>Establishing a New Base</h5>
+                                                <h5>Establecer una nuava Base</h5>
                                             </a>
                                             <p class="collapse" id="establishnewbase">
-                                                The Rebels may establish a new
-                                                Base similar to the normal
-                                                procedure. First, return all
-                                                Probe cards of uncontrolled (no
-                                                Imperial Ground Units there)
-                                                Remote Systems from the Empire’s
-                                                stack to the Probe deck, and
-                                                shuffle it. Second, the Rebels
-                                                draw the usual number of cards
-                                                up to a maximum of the
-                                                difference between the Turn and
-                                                Reputation Markers, and
-                                                establish a new Base in any
-                                                Remote System drawn. Third, the
-                                                Empire returns to searching for
-                                                the Rebel Base as it did prior
-                                                to revealing the base. Finally,
-                                                place the
-                                                <em>Gather Intel</em> card back
-                                                into the Starting Missions Deck
+                                                El jugador Rebelde puede establecer
+                                                una nuava Base Rebelde de forma similar
+                                                al juego normal. Primero, devuelve todas
+                                                las cartas de Sonda de sistems lejanos
+                                                no controlados por el Imperio (sin unidades
+                                                terrestres presentes) de la mano Imperial
+                                                al mazo de Sondas, y baraja el mazo.
+                                                El jugador Rebelde roba el número habitual
+                                                de cartas de Sonda, hasta un máximo igual a
+                                                la diferencia entre el marcador de tiempo el
+                                                de reputación. Puede establecer la nueva Base
+                                                Rebelde en cualqueir sistema lejano obtenido.
+                                                El Imperio remota la búsqueda de la Base Rebelde
+                                                como antes de que se descubriera. La carta de misión
+                                                inicial <em>Recabar Información</em> se devuelve al
+                                                mazo de Misiones Iniciales.
                                             </p>
                                         </div>
 
                                         <div class="callout-empire">
                                             <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse"
                                                 data-bs-target="#opposingrebelmissions">
-                                                <h5>Opposing Rebel Missions</h5>
+                                                <h5>Oponerse a Misiones Rebeldes</h5>
                                             </a>
                                             <p class="collapse" id="opposingrebelmissions">
-                                                Only if there are more Imperial
-                                                Leaders than unrevealed<em class="text-medium">
-                                                    Initial Mission
-                                                </em>
-                                                cards, the Empire may issue an
-                                                order (on a
-                                                <a class="link-danger d6button" href="#" type="button">D6</a>
-                                                result of 4+) to send their
-                                                “best” qualified Leader to
-                                                oppose a Rebel Mission. If no
-                                                Leader has matching Skill icons,
-                                                the Leader with the fewest total
-                                                number of Skill icons becomes
-                                                eligible
+                                                Solo si hay más Líderes en la reserva que
+                                                misiones no reveladas en el <em>Mazo de Ronda</em>,
+                                                el Imperio puede ordernar (según una tirada
+                                                <a class="link-danger d6button" href="#" type="button">1D6</a> con
+                                                resultado 4+) que su Líder más capacitado
+                                                se oponga a una Misión Rebelde. Si ningún
+                                                Líder tiene los iconos de habilidad requeridos,
+                                                el Líder con el menor número total de iconos
+                                                de habilidad se opone a la Misión.
                                             </p>
 
                                             <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#joinabattle">
-                                                <h5>Join a Battle</h5>
+                                                <h5>Unirse a una batalla</h5>
                                             </a>
                                             <p class="collapse" id="joinabattle">
-                                                Only if there are more Imperial
-                                                Leaders than unrevealed<em class="text-medium">
-                                                    Initial Mission
-                                                </em>
-                                                cards, the Empire will send an
-                                                eligible Leader to join the
-                                                battle with either no Leader or
-                                                one possessing no Tactics
-                                                Value(s). Prioritize eligible
-                                                Leaders with a “Start of Combat”
-                                                Action card and either the
-                                                highest combined Tactics Values
-                                                (if both Theaters) or the
-                                                highest Tactic Value (in the
-                                                appropriate Theater)
-                                            </p>
+                                                Solo si hay más Líderes en la reserva que
+                                                misiones no reveladas en el <em>Mazo de Ronda</em>,
+                                                el Imperio enviará a un Líder a una batalla
+                                                en la que no haya Líder con puntuaciones
+                                                de Táctica. Se priorizarán los Líderes con
+                                                una carta de Acción 'Inicio del combate' y el mayor
+                                                valor total de tácica, o el valor de táctica más alto
+                                                en el escenario más relevante del combate.
+                                              </p>
                                         </div>
                                     </div>
 
                                     <div class="callout-empire">
-                                        <h5>Play Initial Missions</h5>
+                                        <h5>Jugar Misiones Iniciales</h5>
                                         <p>
-                                            The Empire
-                                            <strong>always</strong> complete
-                                            <em class="text-medium">
-                                                Initial Missions
-                                            </em>
-                                            first before Activating Systems for
-                                            movement
+                                            El Imperio <strong>siempre</strong>
+                                            completa las <em class="text-medium">Misiones de Ronda</em>
+                                            antes de activar sistemas para moverse.
                                         </p>
                                         <p>
-                                            <strong>Undertaking
-                                                <em class="text-medium">Initial Missions</em>:</strong>
-                                            Flip over the top Mission from the
-                                            deck and assign the “best” qualified
-                                            Leader (pictured Leader or the
-                                            Leader possessing the most matching
-                                            Skill icons)
+                                            <strong>Llevar a cabo
+                                                <em class="text-medium">Misiones de Ronda</em>:</strong>
+                                            Revela la carta superior del Mazo de Ronda
+                                            y asigna el Líder más capcitado (Líder indicado
+                                            en la carta de Misión o el que tenga la mayor
+                                            cantidad de iconos correspondientes con la carta)
                                         </p>
                                         <p id="Base-Unplayablemissions">
-                                            If a Mission proves unplayable (no
-                                            appropriate Leader or for any
-                                            reason), select a new Mission from
-                                            the appropriate Deck and place all
-                                            unfulfilled Mission cards at the
-                                            bottom of their respective Decks
+                                            Si una misión no se puede jugar (ni
+                                            hay ningún Líder adecuado por el motivo
+                                            que sea), reoba una misión del mazo
+                                            correspondiente (Misiones Iniciales o Principales)
+                                            y coloca la carta no jugada en la parte inferior
+                                            de su mazo
                                         </p>
                                         <div class="d-none variant" id="var-Unplayablemissions">
                                             <p>
-                                                If a mission cannot be performed
-                                                due to circumstances that may
-                                                change (e.g. no leaders captured
-                                                yet, Death Star hasn't moved),
-                                                put the card at the bottom of
-                                                the
-                                                <em class="text-medium">Initial Missions</em>
-                                                Deck. Reserve the leader who
-                                                would have undertaken the
-                                                mission. Once all other
-                                                <em class="text-medium">Initial Missions</em>
-                                                and movement have taken place,
-                                                attempt to resolve any
-                                                unplayable mission(s) with
-                                                reserved leader(s). If the
-                                                mission(s) still cannot be
-                                                performed, draws a new
-                                                mission(s)
+                                                Si una misión no se puede llevar a cabo
+                                                por circunstancias que varían durante
+                                                la partida (por ejemplo, no hay ningún
+                                                Líder Rebelde capturado, la Estrella de la Muerte
+                                                no se ha movido, etc), pon la carta en la parte
+                                                inferior del <em class="text-medium">Mazo de Ronda</em>.
+                                                Reserva el Líder que la habría llevado a cabo.
+                                                Una vez que el resto de <em class="text-medium">Misiones de Ronda</em>
+                                                se hallan jugado, intenta resolver las misiones que no
+                                                se pudieron jugar con los Líderes reservados.
+                                                Su la misión aún no se puede jugar, roba otra misión del
+                                                mazo correspondiente (Misiones Iniciales o Principales)
+                                                y coloca la carta no jugada en la parte inferior
+                                                de su mazo
                                             </p>
                                             <span class="material-icons">science</span>
                                         </div>
