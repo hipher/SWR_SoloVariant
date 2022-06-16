@@ -381,7 +381,7 @@ function getPlanetsBuildResources(planetname, subjugated = false) {
                 ["ground", "cir", 2],
                 ["space", "cir", 2],
             ];
-        case "Rebel Base":
+        case "Base Rebelde":
             return [
                 ["space", "tri", 1],
                 ["ground", "tri", 1],
