@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const planetnames = [
-    ["Coruscant", "Rebel Base"],
+    ["Coruscant", "Base Rebelde"],
     ["Felucia", "Mon Calamari", "Saleucami"],
     ["Mygeeto", "Ord Mantell"],
     ["Kashyyyk", "Malastare", "Mandalore"],
@@ -47,7 +47,7 @@ function setupBuildQueue() {
     moveBuildButton();
 
     setDefaultBuildOptions("Coruscant", "radioempire");
-    setDefaultBuildOptions("Rebel Base", "radiorebel");
+    setDefaultBuildOptions("Base Rebelde", "radiorebel");
 
     hideBuildTemplate();
 
