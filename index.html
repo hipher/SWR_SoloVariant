@@ -200,6 +200,11 @@
                                 casino
                             </span>
                         </button>
+                        <button type="button" class="btnNoBackground d8button">
+                            <span class="material-icons align-middle icon-medium" data-bs-toggle="tooltip" title="D8" data-bs-placement="bottom">
+                                casino
+                            </span>
+                        </button>
                         <button id="reset" type="button" class="btnNoBackground" data-bs-toggle="modal" data-bs-target="#yesNo">
                             <span class="material-icons align-middle icon-medium" data-bs-toggle="tooltip" title="Resetear" data-bs-placement="bottom">
                                 refresh
@@ -1751,12 +1756,30 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="remotesystems">
-                                a D6 has appeared!
+                                Tirada D6!
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex">
                             <img src="./resources/images/D6_1.png" alt="" id="d6" />
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D8 -->
+            <div class="modal fade" id="d8modal" tabindex="-1" aria-labelledby="D8" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                Tirada D8!
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <img src="./resources/images/D8_1.png" alt="" id="d8" />
                         </div>
                         <div class="modal-footer"></div>
                     </div>
