@@ -1104,7 +1104,7 @@
                                     </div>
 
                                     <div class="callout-empire">
-                                        <h5>Empire Recruit</h5>
+                                        <h5>Reclutamiento Imperial</h5>
                                         <p>
                                             El Imperio roba 1 carta de su
                                             mazo de Acciones, y elige al azar
@@ -1149,7 +1149,10 @@
                                             <div class="d-none variant" id="var-Empiredeploy">
                                                   <li>
                                                     Localiza el sistema Imperial más próximo a (según prioridad):
-                                                    BR/PBR > Sistema Rebelde (mayor valor de producción) > Sistema imperial con mayor valor de producción
+                                                    BR/PBR > Sistema Rebelde con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                    > Sistema imperial con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
                                                   </li>
                                                   <span class="material-icons">science</span>
                                             </div>
@@ -1177,7 +1180,10 @@
                                                 <li class="d-none" id="var-Empiredeploy">
                                                     Pasa al siguiente Sistema
                                                     Imperial más próximo a (según prioridad):
-                                                    BR/PBR > Sistema Rebelde (mayor valor de producción) > Sistema imperial con mayor valor de producción;
+                                                    BR/PBR > Sistema Rebelde con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                    > Sistema imperial con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>;
                                                     repite los pasos anteriores en el nuevo Sistema,
                                                     volviendo al primer Sistema donde
                                                     se desplegaron unidades si es necesario.
@@ -1204,17 +1210,17 @@
                                         <div class="row sticky-top align-items-center" id="buildheader">
                                             <div class="col-3"></div>
                                             <div class="col-1 swg swg-lightsabers swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="Blockaded/Sabotaged"></div>
+                                                data-bs-placement="bottom" title="Bloqueado/Saboteado"></div>
                                             <div class="col-1 swg swg-stormtrooper swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="Subjugated"></div>
+                                                data-bs-placement="bottom" title="Subyugado"></div>
                                             <div class="col-1 swg swg-galemp swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="Empire-Loyal"></div>
+                                                data-bs-placement="bottom" title="Lealtad Imperial"></div>
                                             <!-- <div class="col-1 swg swg-stormtrooper swg-lg d-flex justify-content-center" data-bs-toggle="tooltip" data-bs-placement="bottom"
                             title="Subjugated"></div> -->
                                             <div class="col-1 swg swg-galsenate swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
                                                 data-bs-placement="bottom" title="Neutral"></div>
                                             <div class="col-1 swg swg-reball swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
-                                                data-bs-placement="bottom" title="Rebel-Loyal"></div>
+                                                data-bs-placement="bottom" title="Lealtad Rebelde"></div>
                                             <!-- <div class="col-1 swg swg-stormtrooper-3 swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
                             data-bs-placement="bottom" title="Rebel-Loyal-Subjugated"></div> -->
                                         </div>
@@ -1254,7 +1260,7 @@
                                         <div class="row" id="buildbutton">
                                             <button class="btn btn-secondary" style="width: 50%" data-bs-toggle="modal" data-bs-target="#buildqueuelist"
                                                 onclick="createBuildQueue()">
-                                                Build!
+                                                Construir!
                                             </button>
                                         </div>
                                     </div>
