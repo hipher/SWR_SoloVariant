@@ -439,7 +439,7 @@ function resetBuildQueue() {
         } else {
             if (
                 check.name == "CoruscantRadioOptions" ||
-                check.name == "Rebel BaseRadioOptions"
+                check.name == "Base RebeldeRadioOptions"
             ) {
                 continue;
             }
