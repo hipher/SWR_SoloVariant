@@ -26,17 +26,18 @@
             <div class="offcanvas-body">
                 <p>
                     Los ajustes disponibles permiten modificar que
-                    componentes / reglas quieres que use esta variante.
-                    Se harán cambios en el texto de algunas reglas para
+                    componentes y/o reglas quieres que use esta variante
+                    en solitario. Se harán cambios en el texto de algunas secciones para
                     reflejar estos ajustes.
                 </p>
-                <h6 class="paraseparator">General</h6>
+                <!-- Selector de dynamic rules oculto porque estaba deshabilitado -->
+                <!--h6 class="paraseparator">General</h6>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkdynamicInstructions" onclick="chkClick(this);" disabled>
                     <label for="chkdynamicInstructions" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Por defecto se muestran todas las reglas. Cuando se selecciona esta opción (ON), las reglas se muestran según ciertos criterios, p.e: cuando la Base Rebelde es descubierta, las reglas de movimiento  y despliegue SOLO se muestran en relación a la Base Rebelde">Reglas
                         Dinámicas</label>
-                </div>
+                </div-->
 
                 <h6 class="sidebarsubheader">
                     Expansión El Auge del Imperio (ROTE)
@@ -1172,23 +1173,25 @@
                                                 volviendo al primer Sistema donde
                                                 se desplegaron unidades si es necesario.
                                             </li>
-                                            <!--div class="d-none variant" id="var-Empiredeploy">
+                                            <div class="d-none variant" id="var-Empiredeploy">
                                                 <li class="d-none" id="var-Empiredeploy">
-                                                    Return to the beginning of
-                                                    the flowchart, wrapping back
-                                                    around to the first located
-                                                    system if necessary
+                                                    Pasa al siguiente Sistema
+                                                    Imperial más próximo a (según prioridad):
+                                                    BR/PBR > Sistema Rebelde (mayor valor de producción) > Sistema imperial con mayor valor de producción;
+                                                    repite los pasos anteriores en el nuevo Sistema,
+                                                    volviendo al primer Sistema donde
+                                                    se desplegaron unidades si es necesario.
                                                 </li>
                                                 <span class="material-icons">science</span>
-                                            </div-->
+                                            </div>
                                         </ul>
                                     </div>
 
                                     <div class="callout-rebel">
-                                        <h5>Rebels Deploy</h5>
+                                        <h5>Despliegue Rebelde</h5>
                                         <p>
-                                            Rebel player follows normal
-                                            deployment rules
+                                            Los Rebeldes despliegan unidades
+                                            siguiendo las reglas normales
                                         </p>
                                     </div>
                                 </div>
