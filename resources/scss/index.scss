@@ -219,6 +219,11 @@ a:hover {
     padding: 5px;
 }
 
+//Header lines in Imperial decision list
+#DecisionHeader {
+  background-color: $gray-400;
+}
+
 .builditemstart {
     border-top: solid 1px;
     border-color: $calloutbackground3;
