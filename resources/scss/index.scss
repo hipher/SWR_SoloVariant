@@ -15,7 +15,15 @@
     src: url('../font/Goldman-Bold.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'RebellionIcons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/SWRebellionIcons.ttf')  format('truetype');
+}
+
 $sw-font: "Goldman", serif;
+$symbol-font: "RebellionIcons";
 
 /* Bootstrap modifiers */
 .sticky-top {
@@ -32,6 +40,9 @@ $sw-font: "Goldman", serif;
     font-weight: 400;
 }
 
+.symbol {
+    font-family: $symbol-font;
+}
 
 html,
 body {
