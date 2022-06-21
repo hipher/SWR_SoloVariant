@@ -490,6 +490,18 @@ function setVariants(variantName) {
         case "chkROTE-Units":
             showHideElement("ROTE-Setup");
             showHideElement("Base-Setup");
+            if (document.getElementById("chkROTE-TacticCards").disabled) {
+                document.getElementById("chkROTE-TacticCards").disabled = false;
+            } else {
+              document.getElementById("chkROTE-TacticCards").disabled = true;
+            }
+            //document.querySelectorAll("#chkROTE-TacticCards").forEach((element) => {
+            //    if (element..contains("d-none")) {
+            //        element.classList.remove("d-none");
+            //    } else {
+            //        element.classList.add("d-none");
+            //    }
+            //});
             break;
         case "chkROTE-TacticCards":
             showHideElement("ROTE-Battles");
