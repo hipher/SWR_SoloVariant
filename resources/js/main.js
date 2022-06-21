@@ -463,7 +463,7 @@ function searchCardList() {
     );
 
     collapseElementList.forEach((row) => {
-      if boolROTE {
+      if boolROTE === true {
           if (row.title.toUpperCase().includes(searchText.value.toUpperCase())) {
               row.classList.remove("d-none");
           } else {
@@ -471,11 +471,11 @@ function searchCardList() {
           }
       } else {
           if (row.title.toUpperCase().includes(searchText.value.toUpperCase())) {
-              row.classList.remove("d-none");
-          } else {
               if !row.classList.contains("rote") {
-                row.classList.add("d-none");
+                row.classList.remove("d-none");
               }
+          } else {
+              row.classList.add("d-none");
           }
       }
     }
