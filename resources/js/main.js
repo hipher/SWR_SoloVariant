@@ -495,13 +495,13 @@ function setVariants(variantName) {
             } else {
               document.getElementById("chkROTE-TacticCards").disabled = true;
             }
-            //document.querySelectorAll("#chkROTE-TacticCards").forEach((element) => {
-            //    if (element..contains("d-none")) {
-            //        element.classList.remove("d-none");
-            //    } else {
-            //        element.classList.add("d-none");
-            //    }
-            //});
+
+            if (document.getElementById("chkROTE-TacticCards").checked) {
+              showHideElement("ROTE-Battles");
+              showHideElement("ROTE-Battles-Table")
+              showHideElement("Base-Battles")
+              showHideElement("Base-Battles-Table");
+            }
             break;
         case "chkROTE-TacticCards":
             showHideElement("ROTE-Battles");
