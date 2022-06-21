@@ -45,13 +45,13 @@
                 </h6>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);">
-                    <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Despliegue inicial según ROTE">
+                    <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Usar componentes y despliegue inicial según ROTE">
                         Usar componentes y despliegue de la expansión
                     </label>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkROTE-TacticCards" onclick="chkClick(this);" disabled>
-                    <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Cambian las reglas de combate.
+                    <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Reglas de combate de la expansión.
                     Solo se puede activar si se selecciona la opción de componentes y despliege de la expansión">
                         Usar combate de la expansión (cartas de Táctica Avanzada)
                     </label>
@@ -1831,92 +1831,114 @@
                                       Líder Imperial con mayor puntuación de táctica
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Ascenso inmediato">
                                     <div class="col-2">
-
+                                      Ascenso inmediato
                                     </div>
                                     <div class="col-2">
-
+                                      Acción inicial Imperial
                                     </div>
                                     <div class="col">
-
+                                      Si el Almirante Motti no ha sido reclutado, se recluta y se coloca junto con el
+                                      Gran Moff Tarkin en el sistema Imperial con mayor VP > Sistema Imperial con producción más rápida<br>
+                                      Si el Almirante Motti ya estaba reclutado, roba una carta de Acción Inicial Imperial.
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="¿Boba Fett?¿Dónde?">
                                     <div class="col-2">
-
+                                      ¿Boba Fett?¿Dónde?
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      Sistema Imperial con mayor VP >
+                                      Sistema Imperial con producción más rápida
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Apoyo público">
                                     <div class="col-2">
-
+                                      Apoyo público
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      BR revelada: sistema Imperial más próximo a la BR >
+                                      Sistema Imperial con mayor flota<br>
+                                      BR no revelada: sistema imperial con mayor VP > Sistema Imperial con producción más rápida
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Apuntar al generador">
                                     <div class="col-2">
-
+                                      Apuntar al generador
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      Solo se usa si en el combate hay estructuras. Prioridad:  cañón de iones > estructura al azar
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Cogerlos por sorpresa">
                                     <div class="col-2">
-
+                                      Cogerlos por sorpresa
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      BR >
+                                      PBR >
+                                      Sistema con flotas de mayor VF combinada adyacentes
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="En perfecto y completo funcionamiento">
                                     <div class="col-2">
-
+                                      En perfecto y completo funcionamiento
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      Nave Rebelde con mayor VF >
+                                      Nave Rebelde al azar
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Impedir que escapen">
                                     <div class="col-2">
-
+                                      Impedir que escapen
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
                                     <div class="col">
-
+                                      Se usa en la primera ocasión que surja (combate)
                                     </div>
                                 </div>
-                                <div class="row cardlist" title="">
+                                <div class="row cardlist" title="Información fiable">
                                     <div class="col-2">
-
+                                      Información fiable
                                     </div>
                                     <div class="col-2">
-
+                                      Acción Imperial
                                     </div>
-                                    <div class="col">
-
+                                    <!--div class="col">
+                                      Si se juga con las Cartas de Táctica del juego base, durante este combate el jugador
+                                      Rebelde solo 1 carta por escenario de batalla, ignorando las puntuaciones de táctica de Líder Rebelde.
+                                      Si se juega con Cartas de Táctica Avanzada, durante este combate, al inicio de cada ronda,
+                                      el Imperio retira de los mazos de Táctica las cartas de unidades que no participen en el combate y
+                                      roba de entre las restantes.
+                                    </div-->
+                                    <div class="col" id="Base-Battles-Table">
+                                      Durante este combate el jugador Rebelde solo 1 carta por escenario de batalla,
+                                      ignorando las puntuaciones de táctica de Líder Rebelde.
+                                    </div>
+                                    <div class="col d-none variant" id="ROTE-Battles-Table">
+                                      Durante este combate, al inicio de cada ronda,
+                                      el Imperio retira de los mazos de Táctica las cartas de unidades que no participen en el combate y
+                                      roba de entre las restantes.
+                                      <span class="material-icons">dark_mode</span>
                                     </div>
                                 </div>
                                 <div class="row cardlist" title="">
