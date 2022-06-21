@@ -490,6 +490,7 @@ function setVariants(variantName) {
         case "chkROTE-Units":
             showHideElement("ROTE-Setup");
             showHideElement("Base-Setup");
+            showHideElement("ROTE-Setup-Table")
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
             } else {
