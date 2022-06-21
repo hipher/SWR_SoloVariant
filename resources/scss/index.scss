@@ -218,6 +218,15 @@ a:hover {
     border-radius: 3px;
 }
 
+.variant.col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $gray-600;
+    color: $gray-700;
+    border-radius: 3px;
+}
+
 .variant span {
     padding: 10px;
 }
