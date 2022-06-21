@@ -493,7 +493,9 @@ function setVariants(variantName) {
             break;
         case "chkROTE-TacticCards":
             showHideElement("ROTE-Battles");
-            showHideElement("Base-Battles");
+            showHideElement("ROTE-Battles-Table")
+            showHideElement("Base-Battles")
+            showHideElement("Base-Battles-Table");
             break;
         case "chkvar-Movement":
             showHideElement("var-movement");
