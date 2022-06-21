@@ -650,7 +650,9 @@
                                         <span class="material-icons">science</span>
                                     </div>
                                     <p id="Base-ActionCardExecution">
-                                        El Imperio juega todas las cartas de Acción <strong class="text-medium">jugables</strong> durante las Fase de Asignación
+                                        El Imperio juega todas las cartas de Acción
+                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a> 
+                                        durante las Fase de Asignación
                                     </p>
                                 </div>
                             </section>
@@ -771,8 +773,7 @@
                                             <span class="material-icons">science</span>
                                         </div>
                                         <p>
-                                            Elige la localización para jugar las Misiones según
-                                            either the
+                                            Elige la localización para jugar las Misiones según la
                                             <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#carddecisionlist">Lista de
                                                 Decisiones Imperiales</a>
                                             o el Sistema con el
@@ -1953,7 +1954,7 @@
                                     </div>
                                     <div class="col">
                                       Sistema imperial con puntuación de "logística" más favorable<br>
-                                      <em>Nota: Aisgna 2 líderes a esta misión si el número de líderes en la reserva es superior al de misiones sin revelar en el mazo de ronda<em>
+                                      <em>Nota: Aisgna 2 líderes a esta misión si el número de líderes en la reserva es superior al de misiones sin revelar en el mazo de ronda</em>
                                     </div>
                                 </div>
 
@@ -1967,7 +1968,7 @@
                                     <div class="col">
                                       Base Rebelde descubierta: Base Rebelde<br>
                                       Base Rebelde no descubierta: PBR aleatoria > Sistema Rebelde<br>
-                                      <em>Nota: si la estrella de la muerte no está en ningúno de estos sistemas, la carta no se juega (roba otra)</em>
+                                      <em>Nota: si la estrella de la muerte no está en ningúno de estos sistemas, la carta no se juega (roba otra del mazo de misiones principales)</em>
                                     </div>
                                 </div>
                                 <div class="row cardlist" title="">
@@ -2193,6 +2194,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                          <p class="text-small">
+                              <strong class="maincolour">Cartas jugables:</strong>
+                              Cartas de misión o acción que el Imperio puede poner en juego. Cuando las condiciones de la partida,
+                              los Líederes disponibles o cualquier otro factor impide que se juege una carta (por ejemplo, se requiere
+                              un Líder Rebelde capturado y no hay ninguno), esa carta se considera <strong>no jugable</strong>.
+                          </p>
                           <p class="text-small">
                               <strong class="maincolour">Líder más capacitado:</strong>
                               Cuando el imperio emprende o se opone a una misión, asignará el líder más adecuado
