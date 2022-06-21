@@ -11695,7 +11695,7 @@ a:hover {
 }
 
 #row1 div[class*=variant] {
-  border-color: #ced4da !important;
+  background-color: #6c757d !important;
 
 }
 
