@@ -232,7 +232,7 @@ a:hover {
     padding: 5px;
 }
 
-#ROTE-Battles div[class^=col] {
+#ROTE-Battles .col.variant {
     display: flex;
     justify-content: space-between;
     align-items: center;
