@@ -11472,6 +11472,12 @@ fieldset:disabled .btn {
   src: url("../font/Goldman-Bold.ttf") format("truetype");
 }
 
+@font-face {
+    font-family: 'RebellionIcons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/SWRebellionIcons.ttf')  format('truetype');
+}
 /* Bootstrap modifiers */
 .sticky-top {
   top: 0.5em;
@@ -11485,6 +11491,11 @@ fieldset:disabled .btn {
 .font-regular {
   font-family: "Goldman", serif;
   font-weight: 400;
+}
+
+.symbol {
+    font-family: $symbol-font;
+    font-weight: 400;
 }
 
 html,
@@ -11681,6 +11692,21 @@ a:hover {
   border-width: 1px;
   background-color: #e9ecef;
   padding: 5px;
+}
+
+.col.variant {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #6c757d;
+  color: white;
+  border-radius: 3px;
 }
 
 .builditemstart {
