@@ -11694,23 +11694,9 @@ a:hover {
   padding: 5px;
 }
 
-#ROTE-Battles div[class=^=variant] {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: #6c757d;
-  color: white;
-  border-radius: 3px;
-  border-style: solid;
-  border-color: #ced4da;
-  border-width: 1px;
-  padding: 5px;
+#row1 div[class*=variant] {
+  border-color: #ced4da !important;
+
 }
 
 .builditemstart {
