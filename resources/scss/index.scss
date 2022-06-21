@@ -218,14 +218,6 @@ a:hover {
     border-radius: 3px;
 }
 
-#ROTE-Battles div[class^=col] {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: $gray-600;
-    color: $gray-700;
-    border-radius: 3px;
-}
 
 .variant span {
     padding: 10px;
@@ -238,6 +230,15 @@ a:hover {
     border-width: 1px;
     background-color: $gray-200;
     padding: 5px;
+}
+
+#ROTE-Battles div[class^=col] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $gray-600;
+    color: $gray-700;
+    border-radius: 3px;
 }
 
 //Header lines in Imperial decision list
