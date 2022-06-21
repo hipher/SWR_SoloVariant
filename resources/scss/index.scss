@@ -232,13 +232,17 @@ a:hover {
     padding: 5px;
 }
 
-#ROTE-Battles .col.variant {
+#ROTE-Battles div[class^=variant] {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: $gray-600;
     color: $gray-700;
     border-radius: 3px;
+    border-style: solid;
+    border-color: $gray-400;
+    border-width: 1px;
+    padding: 5px;
 }
 
 //Header lines in Imperial decision list
