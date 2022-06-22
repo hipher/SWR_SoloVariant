@@ -456,7 +456,7 @@ function resetBuildQueue() {
 
 function searchCardList() {
     const searchText = document.getElementById("searchbar");
-    const chkboxROTE = document.getElementbyId("ROTE-check");
+    const chkboxROTE = document.getElementById("ROTE-check");
 
     const collapseElementList = [].slice.call(
         document.querySelectorAll(".cardlist")
