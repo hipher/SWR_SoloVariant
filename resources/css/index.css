@@ -11494,7 +11494,7 @@ fieldset:disabled .btn {
 }
 
 .symbol {
-    font-family: $symbol-font;
+    font-family: "RebellionIcons";
     font-weight: 400;
 }
 
