@@ -454,36 +454,34 @@ function resetBuildQueue() {
 
 //Funcion de busqueda en la lista de cartas. Falta implementar que no vuelva aponer las de ROTE visibles cuando no deberían estarlo
 
-/*function searchCardList() {
+function searchCardList() {
     const searchText = document.getElementById("searchbar");
-    const boolROTE = document.getElementbyId("chkROTE-Units").checked
+    const boolROTE = document.getElementbyId("chkROTE-Units").title
 
     const collapseElementList = [].slice.call(
         document.querySelectorAll(".cardlist")
     );
 
     collapseElementList.forEach((row) => {
-      if boolROTE === true {
-          if (row.title.toUpperCase().includes(searchText.value.toUpperCase())) {
+      if (boolROTE == "ROTE-disabled") {
+          if (row.title.toUpperCase().includes(searchText.value.toUpperCase()) && !row.classList.contains("rote")) {
               row.classList.remove("d-none");
           } else {
               row.classList.add("d-none");
           }
       } else {
           if (row.title.toUpperCase().includes(searchText.value.toUpperCase())) {
-              if !row.classList.contains("rote") {
-                row.classList.remove("d-none");
-              }
+              row.classList.remove("d-none");
           } else {
               row.classList.add("d-none");
           }
       }
     }
   });
-}*/
+}
 
 //backup
-function searchCardList() {
+/*function searchCardList() {
     const searchText = document.getElementById("searchbar");
 
     const collapseElementList = [].slice.call(
@@ -497,7 +495,7 @@ function searchCardList() {
             row.classList.add("d-none");
         }
     });
-}
+}*/
 
 function loadVariantSettings() {
     let settings = GetSettingsByKey("chk", true);
@@ -525,8 +523,10 @@ function setVariants(variantName) {
 
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
+                document.getElementById("ROTE-check").title = "ROTE-enabled";
             } else {
               document.getElementById("chkROTE-TacticCards").disabled = true;
+              document.getElementById("ROTE-check").title = "ROTE-disabled";
             }
 
             if (document.getElementById("chkROTE-TacticCards").checked) {
