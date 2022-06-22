@@ -454,7 +454,7 @@ function resetBuildQueue() {
 
 //Funcion de busqueda en la lista de cartas. Falta implementar que no vuelva aponer las de ROTE visibles cuando no deberían estarlo
 
-/*function searchCardList() {
+function searchCardList() {
     const searchText = document.getElementById("searchbar");
     const boolROTE = document.getElementbyId("ROTE-check").title
 
@@ -476,12 +476,11 @@ function resetBuildQueue() {
               row.classList.add("d-none");
           }
       }
-    }
   });
-}*/
+}
 
 //backup
-function searchCardList() {
+/*function searchCardList() {
     const searchText = document.getElementById("searchbar");
 
     const collapseElementList = [].slice.call(
@@ -495,7 +494,7 @@ function searchCardList() {
             row.classList.add("d-none");
         }
     });
-}
+}*/
 
 function loadVariantSettings() {
     let settings = GetSettingsByKey("chk", true);
@@ -523,10 +522,10 @@ function setVariants(variantName) {
 
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
-                //document.getElementById("ROTE-check").title = "ROTE-enabled";
+                document.getElementById("ROTE-check").title = "ROTE-enabled";
             } else {
               document.getElementById("chkROTE-TacticCards").disabled = true;
-              //document.getElementById("ROTE-check").title = "ROTE-disabled";
+              document.getElementById("ROTE-check").title = "ROTE-disabled";
             }
 
             if (document.getElementById("chkROTE-TacticCards").checked) {
