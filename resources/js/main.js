@@ -454,9 +454,9 @@ function resetBuildQueue() {
 
 //Funcion de busqueda en la lista de cartas. Falta implementar que no vuelva aponer las de ROTE visibles cuando no deberían estarlo
 
-function searchCardList() {
+/*function searchCardList() {
     const searchText = document.getElementById("searchbar");
-    const boolROTE = document.getElementbyId("chkROTE-Units").title
+    const boolROTE = document.getElementbyId("ROTE-check").title
 
     const collapseElementList = [].slice.call(
         document.querySelectorAll(".cardlist")
@@ -478,10 +478,10 @@ function searchCardList() {
       }
     }
   });
-}
+}*/
 
 //backup
-/*function searchCardList() {
+function searchCardList() {
     const searchText = document.getElementById("searchbar");
 
     const collapseElementList = [].slice.call(
@@ -495,7 +495,7 @@ function searchCardList() {
             row.classList.add("d-none");
         }
     });
-}*/
+}
 
 function loadVariantSettings() {
     let settings = GetSettingsByKey("chk", true);
