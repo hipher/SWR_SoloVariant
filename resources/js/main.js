@@ -456,14 +456,14 @@ function resetBuildQueue() {
 
 function searchCardList() {
     const searchText = document.getElementById("searchbar");
-    const boolROTE = document.getElementbyId("ROTE-check").title
+    const chkboxROTE = document.getElementbyId("ROTE-check");
 
     const collapseElementList = [].slice.call(
         document.querySelectorAll(".cardlist")
     );
 
     collapseElementList.forEach((row) => {
-      if (boolROTE == "ROTE-disabled") {
+      if (chkboxROTE.title.includes("ROTE-disabled")) {
           if (row.title.toUpperCase().includes(searchText.value.toUpperCase()) && !row.classList.contains("rote")) {
               row.classList.remove("d-none");
           } else {
