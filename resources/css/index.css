@@ -11496,6 +11496,7 @@ fieldset:disabled .btn {
 .symbol {
     font-family: "RebellionIcons";
     font-weight: 400;
+    font-size: medium;
 }
 
 html,
