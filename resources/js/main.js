@@ -523,10 +523,10 @@ function setVariants(variantName) {
 
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
-                document.getElementById("ROTE-check").title = "ROTE-enabled";
+                //document.getElementById("ROTE-check").title = "ROTE-enabled";
             } else {
               document.getElementById("chkROTE-TacticCards").disabled = true;
-              document.getElementById("ROTE-check").title = "ROTE-disabled";
+              //document.getElementById("ROTE-check").title = "ROTE-disabled";
             }
 
             if (document.getElementById("chkROTE-TacticCards").checked) {
