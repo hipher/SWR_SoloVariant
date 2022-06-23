@@ -11484,6 +11484,14 @@ fieldset:disabled .btn {
     font-style: normal;
     font-weight: 400;
     src: url('../font/Aurek-Besh.ttf')  format('truetype');
+}
+
+@font-face {
+    font-family: 'SWDestiny';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/SWDestiny.ttf')  format('truetype');
+}
 
 /* Bootstrap modifiers */
 .sticky-top {
@@ -11508,6 +11516,12 @@ fieldset:disabled .btn {
 
 .aurekbesh {
   font-family: "Aurekbesh";
+  font-weight: 400;
+  font-size: medium;
+}
+
+.swdestiny {
+  font-family: "SWdestiny";
   font-weight: 400;
   font-size: medium;
 }
