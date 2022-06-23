@@ -41,16 +41,17 @@
 
                 <h6 class="sidebarsubheader">
                     Expansión El Auge del Imperio (ROTE)
-                    <span class="material-icons" style="font-size: large">dark_mode</span>
+                    <!--span class="material-icons" style="font-size: large">dark_mode</span-->
+                    <span class="swdestiny" style="font-size: large">L</span>
                 </h6>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);">
+                    <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);" checked>
                     <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Usar componentes y despliegue inicial según ROTE">
                         Usar componentes y despliegue de la expansión
                     </label>
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkROTE-TacticCards" onclick="chkClick(this);" disabled>
+                    <input class="form-check-input" type="checkbox" id="chkROTE-TacticCards" onclick="chkClick(this);" checked>
                     <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Reglas de combate de la expansión.
                     Solo se puede activar si se selecciona la opción de componentes y despliege de la expansión">
                         Usar combate de la expansión (cartas de Táctica Avanzada)
@@ -61,11 +62,26 @@
                     <span class="material-icons" style="font-size: large">science</span>
                 </h6>
                 <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-RandomPlayMissions" onclick="chkClick(this);">
+                    <label for="chkvar-RandomPlayMissions" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title ="El imperio elige al azar si juega una misión o se mueve durante la fase de mando" checked>
+                        Variante Jugar misiones aleatoriamente
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);">
+                    <label for="chkvar-ActionCardExecution" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Si se activa esta variante, el jugador lanza 1D6 en la Fase de Asignación después de elegir las
+                        misiones. El Imperio solo activa las Cartas de Acción de Asignación con resultados 4-6" checked>
+                        Variante Cartas de Acción de Asignación
+                    </label>
+                </div>
+                <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-Movement" onclick="chkClick(this);">
                     <label for="chkvar-Movement" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="El Imperio tirará 1D6 para determinar si se mueve hacia la PBR/BR o hacia las unidades Rebeldes más cercanas.
                         Las reglas de movimiento se actualizan para reflejar esta variante">
-                        Variante de Movimiento
+                        Variante de Movimiento hacia PBR
                     </label>
                 </div>
                 <div class="form-check form-switch">
@@ -82,22 +98,6 @@
                         title ="Las misiones que no se puedan jugar se colocarán al final de Mazo de Ronda y se resuelven al final de la Fase de Mando.
                         El texto de la sección 'Jugar misiones' se modifica">
                         Variante Misiones no jugables
-                    </label>
-                </div>
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkvar-RandomPlayMissions" onclick="chkClick(this);">
-                    <label for="chkvar-RandomPlayMissions" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title ="El imperio elige al azar si juega una misión o se mueve durante la fase de mando">
-                        Variante Jugar misiones aleatoriamente
-                    </label>
-                </div>
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);">
-                    <label for="chkvar-ActionCardExecution" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title="Si se activa esta variante, el jugador lanza 1D6 en la Fase de Asignación después de elegir las misiones. El Imperio solo activa las Cartas de Acción de Asignación con resultados 4-6">
-                        Variante Cartas de Acción de Asignación
                     </label>
                 </div>
             </div>
@@ -410,7 +410,7 @@
                                                 de la siguente manera (usa
                                                 <a class="link-danger d6button" href="#" type="button">1D6</a>, según se necesite):
                                             </p>
-                                            <ul id="Base-Setup">
+                                            <ul class="d-none" id="Base-Setup">
                                                 <li>
                                                     2 Cazas TIE y 2
                                                     Soldados de asalto en cada uno de
@@ -435,7 +435,7 @@
                                                     Muerte en 1 sistema inicial al azar
                                                 </li>
                                             </ul>
-                                            <div class="d-none variant" id="ROTE-Setup">
+                                            <div class="variant" id="ROTE-Setup">
                                                 <div>
                                                     <!--p -->
                                                     <ul>
@@ -641,19 +641,21 @@
 
                                 <div class="callout-empire">
                                     <h5>Jugar Cartas de Acción</h5>
-                                    <div class="d-none variant" id="var-ActionCardExecution">
+                                    <div class="variant" id="var-ActionCardExecution" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" title="Esta variante evita que el jugador asigne misiones sabiendo con certeza que el Imperio jugará
+                                    las cartas de Acción de asignación">
                                         <div>
                                             <p>
-                                                Tira  <a class="link-danger d6button" href="#" type="button">1D6</a>:
+                                                Tira  <a class="link-danger d8button" href="#" type="button">1D8</a>:
                                             </p>
                                             <div class="d-flex">
-                                                <p>1-3:</p>
+                                                <p>1-4:</p>
                                                 <p>
                                                     El Imperio no usa sus cartas de Acción de Asignación en esta ronda
                                                 </p>
                                             </div>
                                             <div class="d-flex">
-                                                <p>4-6:</p>
+                                                <p>5+:</p>
                                                 <p>
                                                     El Imperio usa sus cartas de Acción de Asignación
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a>
@@ -663,7 +665,7 @@
                                         </div>
                                         <span class="material-icons">science</span>
                                     </div>
-                                    <p id="Base-ActionCardExecution">
+                                    <p class"d-none" id="Base-ActionCardExecution">
                                         El Imperio juega todas las cartas de Acción
                                         <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a>
                                         durante las Fase de Asignación
@@ -746,19 +748,19 @@
 
                                     <div class="callout-empire">
                                         <h5>Jugar Misiones de Ronda</h5>
-                                        <p id=Base-RandomPlayMissions>
+                                        <p class="d-none" id=Base-RandomPlayMissions>
                                             El Imperio <strong>siempre</strong>
                                             completa las <em class="text-medium">Misiones de Ronda</em>
                                             antes de activar sistemas para moverse.
                                         </p>
-                                        <div class="d-none variant" id=var-RandomPlayMissions data-bs-toggle="tooltip"
+                                        <div class="variant" id=var-RandomPlayMissions data-bs-toggle="tooltip"
                                         data-bs-placement="right" title="Esta opción evita que el Imperio se centre en las misiones y
                                         amplia las posibilidades de que se mueba en busca de la Base Rebelde">
-                                            <p>
+                                          <p>
                                             En cada turno, el Imperio decide al azar (1D8) si juega una <em class="text-medium">Misión de Ronda</em>
                                             o si activar un sistemas para moverse en busca de la Base Rebelde.
-                                            </p>
-                                            <span class="material-icons">science</span>
+                                          </p>
+                                          <span class="material-icons">science</span>
                                         </div>
                                         <p>
                                             <strong>Llevar a cabo
@@ -848,11 +850,11 @@
                                             <div class="d-none variant" id="var-movement">
                                                 <div>
                                                     <p>
-                                                        Antes de activar un Sistema, tira
-                                                        <a class="link-danger d6button" href="#0" type="button">1D6</a>
+                                                        A la hora de activar un Sistema, el Imperio elige aleatoriamente ()
+                                                        <a class="link-danger d8button" href="#0" type="button">1D8</a>) el destino de su movimiento:
                                                     </p>
                                                     <div class="d-flex">
-                                                        <p>1-3:</p>
+                                                        <p>1-4:</p>
                                                         <p>
                                                             Mueve unidades Imperiales
                                                             al sistema más próxiomo con
@@ -861,7 +863,7 @@
                                                         </p>
                                                     </div>
                                                     <div class="d-flex">
-                                                        <p>4+:</p>
+                                                        <p>5+:</p>
                                                         <p>
                                                             Mueve unidades Imperiales por la
                                                             ruta mas corta hacia el sistema lejano
@@ -977,7 +979,7 @@
                                             <h5>Combates</h5>
                                         </a>
                                         <div class="collapse" id="battles">
-                                            <div id="Base-Battles">
+                                            <div class="d-none" id="Base-Battles">
                                                 <p>
                                                   Aunque los combates se dearrollan
                                                   de la forma habitual, el Imperio no
@@ -1012,7 +1014,7 @@
                                                   </li>
                                                 </ul>
                                               </div>
-                                            <div class="d-none variant" id="ROTE-Battles">
+                                            <div class="variant" id="ROTE-Battles">
                                                 <p>
                                                   Aunque los combates se dearrollan
                                                   de la forma habitual, el Imperio roba
@@ -1902,18 +1904,11 @@
                                   <div class="col-2">
                                     Acción Imperial
                                   </div>
-                                  <!--div class="col">
-                                    Si se juga con las Cartas de Táctica del juego base, durante este combate el jugador
-                                    Rebelde solo 1 carta por escenario de batalla, ignorando las puntuaciones de táctica de Líder Rebelde.
-                                    Si se juega con Cartas de Táctica Avanzada, durante este combate, al inicio de cada ronda,
-                                    el Imperio retira de los mazos de Táctica las cartas de unidades que no participen en el combate y
-                                    roba de entre las restantes.
-                                  </div-->
-                                  <div class="col" id="Base-Battles-Table">
+                                  <div class="col d-none" id="Base-Battles-Table">
                                     Durante este combate el jugador Rebelde solo 1 carta por escenario de batalla,
                                     ignorando las puntuaciones de táctica de Líder Rebelde.
                                   </div>
-                                  <div class="col d-none variant" id="ROTE-Battles-Table">
+                                  <div class="col variant" id="ROTE-Battles-Table">
                                     Durante este combate, al inicio de cada ronda,
                                     el Imperio retira de los mazos de Táctica las cartas de unidades que no participen en el combate y
                                     roba de entre las restantes.
@@ -2007,12 +2002,12 @@
                               </div>
                               <!-- ROTE -->
                               <!--div class="row cardlist d-none" title="ROTE" id="ROTE-Setup-Table"-->
-                              <div class="row cardlist d-none rote" title="ROTE" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="ROTE" id="ROTE-Setup-Table">
                                   <div class="col" style="background-color:#B0C4DE">
                                       El Auge del Imperio
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Asegurar los planos" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Asegurar los planos" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Asegurar los planos
                                   </div>
@@ -2024,7 +2019,7 @@
                                     Base Rebelde no descubierta: PBR aleatoria
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Castigo ejemplar" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Castigo ejemplar" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Castigo ejemplar
                                   </div>
@@ -2036,7 +2031,7 @@
                                     Lider Rebelde en el sistema con puntuación de habilidad más favorable contando todos los iconos de habilidad.
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Desacreditar a la rebelión" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Desacreditar a la rebelión" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Desacreditar a la rebelión
                                   </div>
@@ -2048,7 +2043,7 @@
                                     Sistema saboteado con menor VF
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Hacerlos salir" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Hacerlos salir" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Hacerlos salir
                                   </div>
@@ -2060,7 +2055,7 @@
                                     Sistema con mayor VF imperial
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Subversion" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Subversion" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Subversion
                                   </div>
@@ -2071,7 +2066,7 @@
                                     Esta carta se retira del juego durante la preparación de la partida
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Aprovechar una debilidad" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Aprovechar una debilidad" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Aprovechar una debilidad
                                   </div>
@@ -2084,7 +2079,7 @@
                                     <em>Nota: si se completa con éxito, roba una de objetivos al azar de la mano del jugador Rebelde y colócala en la parte superior del mazo de objetivos</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Ascenso" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Ascenso" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Ascenso
                                   </div>
@@ -2095,7 +2090,7 @@
                                     Sistema Imperial con mayor VP
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Contratar mercenarios" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Contratar mercenarios" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Contratar mercenarios
                                   </div>
@@ -2106,7 +2101,7 @@
                                     PBR aleatoria
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Datos robados" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Datos robados" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Datos robados
                                   </div>
@@ -2121,7 +2116,7 @@
                                     hasta obtener una que se pueda descartar</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Despliegue" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Despliegue" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Despliegue
                                   </div>
@@ -2134,7 +2129,7 @@
                                     Sistema con mayor VP
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Doblegar su voluntad" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Doblegar su voluntad" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Doblegar su voluntad
                                   </div>
@@ -2148,7 +2143,7 @@
                                     tras barajarlo en la fase de recuperación, después de colocar las cartas de proyecto obtenidas en la ronda.
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="El poder el imperio" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="El poder el imperio" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     El poder el imperio
                                   </div>
@@ -2162,7 +2157,7 @@
                                     <em>Nota: solo se asigna un Líder a esta misión</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Mensaje del alto mando" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Mensaje del alto mando" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Mensaje del alto mando
                                   </div>
@@ -2175,7 +2170,7 @@
                                     Sistema con mayor VP
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Nosotros somos el cebo" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Nosotros somos el cebo" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Nosotros somos el cebo
                                   </div>
@@ -2188,7 +2183,7 @@
                                     <em>Nota: elige las unidades de la base rebelde con mayor VF del escenario con más unidades</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Desarrollo de interdictor" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Desarrollo de interdictor" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Desarrollo de interdictor
                                   </div>
@@ -2200,7 +2195,7 @@
                                     <em>Nota: Aisgna 2 líderes a esta misión si el número de líderes en la reserva es superior al de misiones sin revelar en el mazo de ronda</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Un unico encendido del reactor" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Un unico encendido del reactor" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Un unico encendido del reactor
                                   </div>
@@ -2213,7 +2208,7 @@
                                     <em>Nota: si la estrella de la muerte no está en ningúno de estos sistemas, la carta no se juega (roba otra del mazo de misiones principales)</em>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Ascenso inmediato" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Ascenso inmediato" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Ascenso inmediato
                                   </div>
@@ -2226,7 +2221,7 @@
                                     Si el Almirante Motti ya estaba reclutado, roba una carta de Acción Inicial Imperial.
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Más peligroso de lo que creemos" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Más peligroso de lo que creemos" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Más peligroso de lo que creemos
                                   </div>
@@ -2240,17 +2235,17 @@
                                     Si se juega con Cartas de Táctica Avanzada, se elige al azar un escenario de la batalla
                                     y se roban 3 cartas de Táctica Avanzada Imperiales en lugar de 1. Las 3 se puede usar en la misma ronda de combate.
                                   </div-->
-                                  <div class="col" id="Base-Battles-Table">
+                                  <div class="col d-none" id="Base-Battles-Table">
                                     Se añaden 3 puntos a una de las puntuaciones de táctica del Líder Imperial en el combate
                                     (se elige al azar entre Táctica Espacial o Terrestre)
                                   </div>
-                                  <div class="col d-none variant" id="ROTE-Battles-Table">
+                                  <div class="col variant" id="ROTE-Battles-Table">
                                     Se elige al azar un escenario de la batalla y se roban 3 cartas de Táctica Avanzada Imperiales en lugar de 1.
                                     Las 3 se puede usar en la misma ronda de combate.
                                     <span class="material-icons">dark_mode</span>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Ambiciones de poder" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Ambiciones de poder" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Ambiciones de poder
                                   </div>
@@ -2261,7 +2256,7 @@
                                     -
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Instalaciones secretas" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Instalaciones secretas" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Instalaciones secretas
                                   </div>
@@ -2275,7 +2270,7 @@
                                     Obtienes un búnquer de control de escudo y una unidad triángulo al azar en el sistema escogido
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Peinar la zona" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Peinar la zona" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Peinar la zona
                                   </div>
@@ -2289,7 +2284,7 @@
                                     Si no se captura ningún Líder, la carta se mantiene para la siguiente ronda.
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Por orden de Lord Vader" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Por orden de Lord Vader" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Por orden de Lord Vader
                                   </div>
@@ -2300,7 +2295,7 @@
                                     Las 3 primeras cartas del mazo de Objetivos se ordenan con las de mayor reputación debajo.
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Órdenes falsas" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Órdenes falsas" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Órdenes falsas
                                   </div>
@@ -2311,23 +2306,23 @@
                                     La primera carta de Mazo de Ronda se devuelve a su mazo correspondiente (misiones Iniciales, Principales o Proyectos)
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="¡Es una trampa!" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="¡Es una trampa!" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     ¡Es una trampa!
                                   </div>
                                   <div class="col-2">
                                     Acción Rebelde
                                   </div>
-                                  <div class="col" id="Base-Battles-Table">
+                                  <div class="col d-none" id="Base-Battles-Table">
                                     Se ignoran las puntuaciones de táctica del Líder Imperial durante la primera ronda de combate
                                     (el Imperio no fuerza al jugador Rebelde a volver a tirar los éxitos)
                                   </div>
-                                  <div class="col d-none variant" id="ROTE-Battles-Table">
+                                  <div class="col variant" id="ROTE-Battles-Table">
                                     El Imperio no roba cartas de Táctica Avanzada durante la primera ronda de combate.
                                     <span class="material-icons">dark_mode</span>
                                   </div>
                               </div>
-                              <div class="row cardlist d-none rote" title="Operación independiente" id="ROTE-Setup-Table">
+                              <div class="row cardlist rote" title="Operación independiente" id="ROTE-Setup-Table">
                                   <div class="col-2">
                                     Operación independiente
                                   </div>
