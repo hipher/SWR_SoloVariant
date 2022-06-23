@@ -557,6 +557,9 @@ function setVariants(variantName) {
             showHideElement("var-ActionCardExecution");
             showHideElement("Base-ActionCardExecution");
             break;
+        case "chkvar-RandomPlayMissions":
+            showHideElement("var-RandomPlayMissions");
+            showHideElement("Base-RandomPlayMissions");
         default:
             break;
     }
