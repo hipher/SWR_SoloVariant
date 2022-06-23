@@ -26,7 +26,7 @@
     font-family: 'Aurekbesh';
     font-style: normal;
     font-weight: 400;
-    src: url('../font/Aurek-Besh.otf')  format('truetype');
+    src: url('../font/Aurek-Besh.ttf')  format('truetype');
 }
 
 @font-face {
@@ -66,12 +66,14 @@ $swdestiny-font: "SWDestiny";
   font-family: $aurekbesh-font;
   font-weight: 400;
   font-size: medium;
+  float:right;
 }
 
 .swdestiny {
   font-family: $swdestiny-font;
   font-weight: 400;
   font-size: medium;
+  float:right;
 }
 
 html,
