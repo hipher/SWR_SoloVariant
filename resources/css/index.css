@@ -11483,7 +11483,7 @@ fieldset:disabled .btn {
     font-family: 'Aurekbesh';
     font-style: normal;
     font-weight: 400;
-    src: url('../font/Aurek-Besh.ttf')  format('truetype');
+    src: url('../font/Aurek-Besh.otf')  format('truetype');
 }
 
 @font-face {
