@@ -218,6 +218,9 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
+.expandall {
+  float:right;
+}
 pre,
 code,
 kbd,
