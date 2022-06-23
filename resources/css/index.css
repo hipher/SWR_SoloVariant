@@ -11478,6 +11478,13 @@ fieldset:disabled .btn {
     font-weight: 400;
     src: url('../font/SWRebellionIcons.ttf')  format('truetype');
 }
+
+@font-face {
+    font-family: 'Aurekbesh';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/Aurek-Besh.ttf')  format('truetype');
+
 /* Bootstrap modifiers */
 .sticky-top {
   top: 0.5em;
@@ -11497,6 +11504,12 @@ fieldset:disabled .btn {
     font-family: "RebellionIcons";
     font-weight: 400;
     font-size: medium;
+}
+
+.aurekbesh {
+  font-family: "Aurekbesh";
+  font-weight: 400;
+  font-size: medium;
 }
 
 html,
