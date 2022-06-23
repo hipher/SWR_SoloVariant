@@ -22,8 +22,16 @@
     src: url('../font/SWRebellionIcons.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'Aurekbesh';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/Aurek-Besh.ttf')  format('truetype');
+}
+
 $sw-font: "Goldman", serif;
 $symbol-font: "RebellionIcons";
+$aurekbesh-font: "Aurekbesh";
 
 /* Bootstrap modifiers */
 .sticky-top {
@@ -44,6 +52,12 @@ $symbol-font: "RebellionIcons";
     font-family: $symbol-font;
     font-weight: 400;
     font-size: medium
+}
+
+.aurekbesh {
+  font-family: $aurekbesh-font;
+  font-weight: 400;
+  font-size: medium;
 }
 
 html,
