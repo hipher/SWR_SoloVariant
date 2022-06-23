@@ -29,9 +29,17 @@
     src: url('../font/Aurek-Besh.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'SWDestiny';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/SWDestiny.ttf')  format('truetype');
+}
+
 $sw-font: "Goldman", serif;
 $symbol-font: "RebellionIcons";
 $aurekbesh-font: "Aurekbesh";
+$swdestiny-font: "SWDestiny";
 
 /* Bootstrap modifiers */
 .sticky-top {
@@ -56,6 +64,12 @@ $aurekbesh-font: "Aurekbesh";
 
 .aurekbesh {
   font-family: $aurekbesh-font;
+  font-weight: 400;
+  font-size: medium;
+}
+
+.swdestiny {
+  font-family: $swdestiny-font;
   font-weight: 400;
   font-size: medium;
 }
