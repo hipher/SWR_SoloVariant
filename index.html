@@ -62,21 +62,21 @@
                     <!--span class="material-icons" style="font-size: large">science</span-->
                 </h6>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkvar-RandomPlayMissions" onclick="chkClick(this);">
+                    <input class="form-check-input" type="checkbox" id="chkvar-RandomPlayMissions" onclick="chkClick(this);" checked>
                     <label for="chkvar-RandomPlayMissions" data-bs-toggle="tooltip" data-bs-placement="right"
-                        title ="El imperio elige al azar si juega una misión o se mueve durante la fase de mando" checked>
+                        title ="El imperio elige al azar si juega una misión o se mueve durante la fase de mando">
                         Variante Jugar misiones aleatoriamente
                     </label>
                     <span class="aurekbesh" style="font-size: large">a</span>
-                    
                 </div>
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);">
+                    <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);" checked>
                     <label for="chkvar-ActionCardExecution" data-bs-toggle="tooltip" data-bs-placement="right"
                         title="Si se activa esta variante, el jugador lanza 1D6 en la Fase de Asignación después de elegir las
-                        misiones. El Imperio solo activa las Cartas de Acción de Asignación con resultados 4-6" checked>
+                        misiones. El Imperio solo activa las Cartas de Acción de Asignación con resultados 4-6">
                         Variante Cartas de Acción de Asignación
                     </label>
+                    <span class="aurekbesh" style="font-size: large">b</span>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-Movement" onclick="chkClick(this);">
@@ -85,6 +85,7 @@
                         Las reglas de movimiento se actualizan para reflejar esta variante">
                         Variante de Movimiento hacia PBR
                     </label>
+                    <span class="aurekbesh" style="font-size: large">c</span>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-Deployment" onclick="chkClick(this);">
@@ -93,6 +94,7 @@
                         (mayor VP en caso de empate) > Valor de Producción Imperial">
                         Variante de Despliegue: Prioridad PBR
                     </label>
+                    <span class="aurekbesh" style="font-size: large">d</span>
                 </div>
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="chkvar-UnPlayableMissions" onclick="chkClick(this);">
@@ -101,6 +103,7 @@
                         El texto de la sección 'Jugar misiones' se modifica">
                         Variante Misiones no jugables
                     </label>
+                    <span class="aurekbesh" style="font-size: large">e</span>
                 </div>
             </div>
         </div>
@@ -667,7 +670,8 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <span class="material-icons">science</span>
+                                        <!--span class="material-icons">science</span-->
+                                        <span class="aurekbesh" style="font-size: large">b</span>
                                     </div>
                                     <p class"d-none" id="Base-ActionCardExecution">
                                         El Imperio juega todas las cartas de Acción
@@ -764,7 +768,8 @@
                                             En cada turno, el Imperio decide al azar (1D8) si juega una <em class="text-medium">Misión de Ronda</em>
                                             o si activar un sistemas para moverse en busca de la Base Rebelde.
                                           </p>
-                                          <span class="material-icons">science</span>
+                                          <!--span class="material-icons">science</span-->
+                                          <span class="aurekbesh" style="font-size: large">a</span>
                                         </div>
                                         <p>
                                             <strong>Llevar a cabo
@@ -799,7 +804,8 @@
                                                 y coloca la carta no jugada en la parte inferior
                                                 de su mazo
                                             </p>
-                                            <span class="material-icons">science</span>
+                                            <!--span class="material-icons">science</span-->
+                                            <span class="aurekbesh" style="font-size: large">e</span>
                                         </div>
                                         <p>
                                             Elige la localización para jugar las Misiones según la
@@ -878,7 +884,8 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <span class="material-icons">science</span>
+                                                <!--span class="material-icons">science</span-->
+                                                <span class="aurekbesh" style="font-size: large">c</span>
                                             </div>
                                             <p id="Base-movement">
                                                 Mueve unidades Imperiales por la
@@ -1188,7 +1195,8 @@
                                                     > Sistema imperial con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
                                                   </li>
-                                                  <span class="material-icons">science</span>
+                                                  <!--span class="material-icons">science</span-->
+                                                  <span class="aurekbesh" style="font-size: large">d</span>
                                             </div>
                                             <li>
                                                 Localiza el escenario (espacial o terrestre)
@@ -1211,7 +1219,7 @@
                                                 se desplegaron unidades si es necesario.
                                             </li>
                                             <div class="d-none variant" id="var-Empiredeploy">
-                                                <li class="d-none" id="var-Empiredeploy">
+                                                <li class="d-none">
                                                     Pasa al siguiente Sistema
                                                     Imperial más próximo a (según prioridad):
                                                     BR/PBR > Sistema Rebelde con
@@ -1223,6 +1231,7 @@
                                                     se desplegaron unidades si es necesario.
                                                 </li>
                                                 <span class="material-icons">science</span>
+                                                <span class="aurekbesh" style="font-size: large">d</span>
                                             </div>
                                         </ul>
                                     </div>
