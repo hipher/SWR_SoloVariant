@@ -803,6 +803,7 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
 document.querySelectorAll("#reroll").forEach((rerollbtn) => {
     rerollbtn.onclick = function () {
         document.getElementById("dicepanelclosebtn").click()
+        document.getElementById("botonD8").click()
     };
 });
 
