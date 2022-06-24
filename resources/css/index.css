@@ -218,9 +218,9 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
   text-decoration: none;
 }
 
-#expandbtn a:hover {
+/*#expandbtn a:hover {
     text-decoration: none;
-}
+}*/
 .expandall {
   float:right;
 }
@@ -7042,6 +7042,7 @@ fieldset:disabled .btn {
 
 .link-danger:hover, .link-danger:focus {
   color: #b02a37;
+  text-decoration:none;
 }
 
 .link-light {
