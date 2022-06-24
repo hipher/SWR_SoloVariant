@@ -1180,13 +1180,16 @@
                                             Sigue los pasos a continuación para desplegar
                                             unidades, aplicándose el máximo de 2 unidades
                                         </p>
-                                        <ul id="deployflowchart">
-                                            <li id="Base-Empiredeploy">
+                                        <ul class="deployflowchart" id="Base-Empiredeploy">
+                                            <li >
                                                 Localiza el Sistema con
                                                 <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
                                                     Valor de Producción</a>
                                             </li>
-                                            <div class="d-none variant" id="var-Empiredeploy">
+                                        </ul>
+                                        <div class="d-none variant" id="var-Empiredeploy">
+                                          <div>
+                                            <ul class="deployflowchart">
                                                   <li>
                                                     Localiza el sistema Imperial más próximo a (según prioridad):
                                                     BR/PBR > Sistema Rebelde con
@@ -1194,9 +1197,12 @@
                                                     > Sistema imperial con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
                                                   </li>
+                                              </ul>
+                                          </div>
                                                   <!--span class="material-icons">science</span-->
-                                                  <span class="aurekbesh" style="font-size: large">d</span>
-                                            </div>
+                                          <span class="aurekbesh" style="font-size: large">d</span>
+                                        </div>
+                                        <ul class="deployflowchart">
                                             <li>
                                                 Localiza el escenario (espacial o terrestre)
                                                 con menor número de unidades. Si hay el mismo
@@ -1209,7 +1215,9 @@
                                                 en este escenario, coloca la unidad de mayor fuerza
                                                 del otro escenario en este Sistema</em>
                                             </li>
-                                            <li id="Base-Empiredeploy">
+                                        </ul>
+                                        <ul class="deployflowchart" id="Base-Empiredeploy">
+                                            <li>
                                                 Pasa al siguiente Sistema con
                                                 <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
                                                     Valor de Producción</a>;
@@ -1217,7 +1225,10 @@
                                                 volviendo al primer Sistema donde
                                                 se desplegaron unidades si es necesario.
                                             </li>
-                                            <div class="d-none variant" id="var-Empiredeploy">
+                                        </ul>
+                                        <div class="d-none variant" id="var-Empiredeploy">
+                                          <div>
+                                              <ul class="deployflowchart">
                                                 <li>
                                                     Pasa al siguiente Sistema
                                                     Imperial más próximo a (según prioridad):
@@ -1229,10 +1240,11 @@
                                                     volviendo al primer Sistema donde
                                                     se desplegaron unidades si es necesario.
                                                 </li>
-                                                <!--span class="material-icons">science</span-->
-                                                <span class="aurekbesh" style="font-size: large">d</span>
+                                              </ul>
                                             </div>
-                                        </ul>
+                                            <!--span class="material-icons">science</span-->
+                                            <span class="aurekbesh" style="font-size: large">d</span>
+                                        </div>
                                     </div>
 
                                     <div class="callout-rebel">
