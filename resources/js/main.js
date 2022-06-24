@@ -761,10 +761,10 @@ document.querySelectorAll(".d8button").forEach((d8Button) => {
 
 document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     expandButton.onclick = function () {
-        if expanButton.innerHTML.includes("down") {
-          expandBUtton.innerHTML = "expand_circle_up";
+        if expandButton.innerHTML.includes("down") {
+          expandButton.innerHTML = "expand_circle_up";
         } else {
-          expandBUtton.innerHTML = "expand_circle_down";
+          expandButton.innerHTML = "expand_circle_down";
         }
     };
 });
