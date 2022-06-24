@@ -786,7 +786,16 @@ document.querySelectorAll(".d6button").forEach((d6Button) => {
     };
 });*/
 
-document.querySelectorAll("#expandbtn").forEach((expandButton) => {
+function expandClick(item) {
+    var expandBtnDiv = item.parentElement;
+    if (expandBtnDiv.classList.contains("updown")) {
+      expandBtnDiv.classList.remove("updown");
+    } else {
+      expandBtnDiv.classList.add("updown");
+    }
+}
+
+/*document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     expandButton.onclick = function () {
         document.querySelectorAll(".expandall").forEach((expandBtnDiv) => {
             if (expandBtnDiv.classList.contains("updown")) {
@@ -798,7 +807,7 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
             }
         });
     };
-});
+});*/
 
 document.querySelectorAll("#reroll").forEach((rerollbtn) => {
     rerollbtn.onclick = function () {
