@@ -12027,7 +12027,7 @@ input[id^=round]:disabled + label {
   padding-top: 5px;
 }
 
-#deployflowchart li {
+.deployflowchart li {
   font-size: small;
   margin: 8px;
 }
