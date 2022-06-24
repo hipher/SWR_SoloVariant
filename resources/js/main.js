@@ -788,11 +788,13 @@ document.querySelectorAll(".d6button").forEach((d6Button) => {
 
 document.querySelectorAll(".expandall").forEach((expandButton) => {
     expandButton.onclick = function () {
-        if (expandButton.classList.contains("updown")) {
-          expandButton.classList.remove("updown");
-        } else {
-          expandButton.classList.add("updown");
-        }
+        document.querySelectorAll(".expandall").forEach((expandBtnDiv) => {
+            if (expandBtnDiv.classList.contains("updown")) {
+              expandBtnDiv.classList.remove("updown");
+            } else {
+              expandBtnDiv.classList.add("updown");
+            }
+        };
     };
 });
 
