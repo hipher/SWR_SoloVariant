@@ -712,7 +712,7 @@ function getRoundNumber(roundID) {
     return parseInt(roundID.split("_")[1]);
 }
 
-var dice = {
+var diceD6 = {
     sides: 6,
     roll: function () {
         var randomNumber = Math.floor(Math.random() * this.sides) + 1;
@@ -729,35 +729,52 @@ var diceD8 = {
 };
 
 //Prints dice roll to the page
-function rollD6(number) {
+/*function rollD6(number) {
     var placeholder = document.getElementById("d6");
     // placeholder.innerHTML = number;
     placeholder.src = "./resources/images/D6_" + number + ".png";
     var d6Modal = new bootstrap.Modal(document.getElementById("d6modal"));
     d6Modal.toggle();
-}
-function rollD8(number) {
+}*/
+/*function rollD8(number) {
     var placeholder = document.getElementById("d8");
     // placeholder.innerHTML = number;
     placeholder.src = "./resources/images/D8_" + number + ".png";
     var d8Modal = new bootstrap.Modal(document.getElementById("d8modal"));
     d8Modal.toggle();
+}*/
+function rollD6D8(numberD6,numberD8) {
+    var placeholderD6 = document.getElementById("d6");
+    var placeholderD8 = document.getElementById("d8");
+    placeholderD6.src = "./resources/images/D6_" + numberD6 + ".png";
+    placeholderD8.src = "./resources/images/D8_" + numberD8 + ".png";
+    var d6Modal = new bootstrap.Modal(document.getElementById("d6modal"));
+    d6Modal.toggle();
 }
 
 // Captures all D6 button on website
 document.querySelectorAll(".d6button").forEach((d6Button) => {
     d6Button.onclick = function () {
-        var result = dice.roll();
-        rollD6(result);
+        var resultD6 = diceD6.roll();
+        var resultD8 = diceD8.roll();
+        rollD6D8(resultD6,resultD8);
     };
 });
+
+/*document.querySelectorAll(".d6button").forEach((d6Button) => {
+    d6Button.onclick = function () {
+        var resultD6 = diceD6.roll();
+        rollD6(resultD6);
+    };
+});*/
+
 // Captures all D8 button on website
-document.querySelectorAll(".d8button").forEach((d8Button) => {
+/*document.querySelectorAll(".d8button").forEach((d8Button) => {
     d8Button.onclick = function () {
-        var result = diceD8.roll();
-        rollD8(result);
+        var resultD8 = diceD8.roll();
+        rollD8(resultD8);
     };
-});
+});*/
 
 document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     expandButton.onclick = function () {
