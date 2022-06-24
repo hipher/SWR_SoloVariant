@@ -798,14 +798,6 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     };
 });
 
-document.querySelectorAll("#" + id).forEach((element) => {
-    if (element.classList.contains("d-none")) {
-        element.classList.remove("d-none");
-    } else {
-        element.classList.add("d-none");
-    }
-});
-
 
 document.querySelectorAll("#reroll").forEach((rerollbtn) => {
     rerollbtn.onclick = function () {
