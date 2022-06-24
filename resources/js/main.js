@@ -786,7 +786,7 @@ document.querySelectorAll(".d6button").forEach((d6Button) => {
     };
 });*/
 
-document.querySelectorAll("#expandbtn").forEach((expandButton) => {
+document.querySelectorAll(".expandall").forEach((expandButton) => {
     expandButton.onclick = function () {
         if (expandButton.classList.contains("updown")) {
           expandButton.classList.remove("updown");
