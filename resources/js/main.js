@@ -762,7 +762,7 @@ document.querySelectorAll(".d8button").forEach((d8Button) => {
 document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     expandButton.onclick = function () {
         if (expandButton.innerHTML=="expand_circle_down") {
-          expandButton.innerHTML = "expand_circle_up";
+          expandButton.innerHTML = "arrow_circle_up";
         } else {
           expandButton.innerHTML = "expand_circle_down";
         }
