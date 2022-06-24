@@ -668,6 +668,10 @@ input[id^=round]:disabled+label {
     @include font-size-pxem(29px);
 }
 
+.icon-big {
+    @include font-size-pxem(32px);
+}
+
 @include breakpoint(md) {
     .icon-medium {
         @include font-size-pxem(28px);
