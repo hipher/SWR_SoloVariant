@@ -36,10 +36,18 @@
     src: url('../font/SWDestiny.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'DiceFont';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/DPoly_Eight-Sider.otf')  format('truetype');
+}
+
 $sw-font: "Goldman", serif;
 $symbol-font: "RebellionIcons";
 $aurekbesh-font: "Aurekbesh";
 $swdestiny-font: "SWDestiny";
+$diceicon-font: "DiceFont";
 
 /* Bootstrap modifiers */
 .sticky-top {
@@ -74,6 +82,13 @@ $swdestiny-font: "SWDestiny";
   font-weight: 400;
   font-size: medium;
   float:right;
+}
+
+.dice-icon {
+  {
+    font-family: $diceicon-font;
+    font-weight: 400;
+    font-size: medium;
 }
 
 html,
