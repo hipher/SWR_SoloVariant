@@ -776,7 +776,7 @@ document.querySelectorAll(".d6button").forEach((d6Button) => {
     };
 });*/
 
-document.querySelectorAll("#expandbtn").forEach((expandButton) => {
+/*document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     expandButton.onclick = function () {
         if (expandButton.innerHTML=="expand_circle_down") {
           expandButton.innerHTML = "arrow_circle_up";
@@ -784,7 +784,26 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
           expandButton.innerHTML = "expand_circle_down";
         }
     };
+});*/
+
+document.querySelectorAll("#expandbtn").forEach((expandButton) => {
+    expandButton.onclick = function () {
+        if (expandButton.classList.contains("updown")) {
+          expandButton.classList.remove("updown");
+        } else {
+          expandButton.classList.add("updown");
+        }
+    };
 });
+
+document.querySelectorAll("#" + id).forEach((element) => {
+    if (element.classList.contains("d-none")) {
+        element.classList.remove("d-none");
+    } else {
+        element.classList.add("d-none");
+    }
+});
+
 
 document.querySelectorAll("#reroll").forEach((rerollbtn) => {
     rerollbtn.onclick = function () {
