@@ -224,6 +224,13 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 .expandall {
   float:right;
 }
+
+.updown{
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Safari */
+  transform: rotate(180deg);
+}
+
 pre,
 code,
 kbd,
