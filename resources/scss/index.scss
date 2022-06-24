@@ -157,6 +157,10 @@ a:hover {
     text-decoration: underline;
 }
 
+#expandbtn a:hover {
+    text-decoration: none;
+}
+
 .expandall {
   float:right;
 }
@@ -591,7 +595,7 @@ input[id^=round]:disabled+label {
     padding-top: 5px;
 }
 
-#deployflowchart li {
+.deployflowchart li {
     font-size: small;
     margin: 8px;
 }
