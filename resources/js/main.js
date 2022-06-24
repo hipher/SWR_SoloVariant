@@ -794,7 +794,7 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
             } else {
               expandBtnDiv.classList.add("updown");
             }
-        };
+        });
     };
 });
 
