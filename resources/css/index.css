@@ -11500,6 +11500,13 @@ fieldset:disabled .btn {
     src: url('../font/SWDestiny.ttf')  format('truetype');
 }
 
+@font-face {
+    font-family: 'DiceFont';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/DPoly_Eight-Sider.otf')  format('truetype');
+}
+
 /* Bootstrap modifiers */
 .sticky-top {
   top: 0.5em;
@@ -11533,6 +11540,13 @@ fieldset:disabled .btn {
   font-weight: 400;
   font-size: medium;
   float:right;
+}
+
+.dice-icon {
+  {
+    font-family: "DiceFont";
+    font-weight: 400;
+    font-size: medium;
 }
 
 html,
