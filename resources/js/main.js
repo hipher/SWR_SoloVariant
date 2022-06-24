@@ -791,13 +791,14 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
         document.querySelectorAll(".expandall").forEach((expandBtnDiv) => {
             if (expandBtnDiv.classList.contains("updown")) {
               expandBtnDiv.classList.remove("updown");
+              expandBtnDiv.title  = "Expandir todo";
             } else {
               expandBtnDiv.classList.add("updown");
+              expandBtnDiv.title  = "Contraer todo";
             }
         });
     };
 });
-
 
 document.querySelectorAll("#reroll").forEach((rerollbtn) => {
     rerollbtn.onclick = function () {
