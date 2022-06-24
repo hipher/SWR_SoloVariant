@@ -786,6 +786,12 @@ document.querySelectorAll("#expandbtn").forEach((expandButton) => {
     };
 });
 
+document.querySelectorAll("#reroll").forEach((rerollbtn) => {
+    rerollbtn.onclick = function () {
+        document.getElementById("dicepanelclosebtn").click()
+    };
+});
+
 var tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
 );
