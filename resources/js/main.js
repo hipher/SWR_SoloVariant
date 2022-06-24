@@ -662,9 +662,9 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
                 document.getElementById("messageBox")
             );
             document.getElementById("messageBoxTitle").innerHTML =
-                "Crossing The Finish Line";
+                "Cruzando la línea de meta";
             document.getElementById("messageBoxBody").innerHTML =
-                "Rebels are now within FIVE rounds of winning the game. The Empire's Movement & Deployment rules have changed";
+                "Los Rebeldes están a 5 rondas de ganar la perida. Las reglas de despliege y movimiento del Imperio han cambiado";
             messageBox.show();
             promptUserRebelsWithin5 = false;
         }
@@ -756,6 +756,16 @@ document.querySelectorAll(".d8button").forEach((d8Button) => {
     d8Button.onclick = function () {
         var result = diceD8.roll();
         rollD8(result);
+    };
+});
+
+document.querySelectorAll("#expandbtn").forEach((expandButton) => {
+    expandButton.onclick = function () {
+        if expanButton.innerHTML.includes("down") {
+          expandBUtton.innerHTML = "expand_circle_up";
+        } else {
+          expandBUtton.innerHTML = "expand_circle_down";
+        }
     };
 });
 
