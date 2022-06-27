@@ -1225,9 +1225,10 @@
                                             Sigue los pasos a continuación para desplegar
                                             unidades, aplicándose el máximo de 2 unidades
                                         </p>
+                                        <p><strong>Base Rebelde no revelada</strong></p>
                                         <ul class="deployflowchart" id="Base-Empiredeploy">
                                             <li >
-                                                Localiza el Sistema con
+                                                Localiza el Sistema Imperial con
                                                 <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
                                                     Valor de Producción</a>
                                             </li>
@@ -1239,7 +1240,7 @@
                                                     Localiza el sistema Imperial más próximo a (según prioridad):
                                                     BR/PBR > Sistema Rebelde con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
-                                                    > Sistema imperial con
+                                                    > Sistema Imperial con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
                                                   </li>
                                               </ul>
@@ -1279,7 +1280,7 @@
                                                     Imperial más próximo a (según prioridad):
                                                     BR/PBR > Sistema Rebelde con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
-                                                    > Sistema imperial con
+                                                    > Sistema Imperial con
                                                     <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>;
                                                     repite los pasos anteriores en el nuevo Sistema,
                                                     volviendo al primer Sistema donde
@@ -1290,6 +1291,24 @@
                                             <!--span class="material-icons">science</span-->
                                             <span class="aurekbesh" style="font-size: large">d</span>
                                         </div>
+                                        <p><strong>Base Rebelde revelada</storng></p>
+                                        <ul class="deployflowchart">
+                                            <li >
+                                                Localiza el sistema Imperial más próximos a la Base Rebelde, siempre que la
+                                                distancia entre el sistema Imperial y la Base Rebelde sea menor que la diferencia
+                                                entre los marcadores de Reputación y Tiempo (Base Rebelde alcanzable por la flota Imperial
+                                                en dicho sistema antes del final de la partida) > Sistema Imperial con
+                                                <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                            </li>
+                                            <li>
+                                                Despliega las 2 unidades con mayor VF (una de cada escenario si se puede) en el sistema seleccionado
+                                            </li>
+                                            <li>
+                                                Si una vez desplegadas las unidades en los sistemas que cumplan con el crietrio de proximidad a la PBR
+                                                y estén dentro del alcance MR-MT siguen quedando unidades por desplegar, continua el despliegue con las
+                                                reglas para la Base Rebelde no revelada.
+                                            </li>
+                                        </ul>
                                     </div>
 
                                     <div class="callout-rebel">
