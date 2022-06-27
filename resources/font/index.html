@@ -1,0 +1,2871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Star Wars: Rebellion - Variante en solitaria (IA Imperial)</title>
+        <link rel="apple-touch-icon" href="./resources/images/manifest/icon-192x192.png">
+        <link rel="manifest" href="manifest.webmanifest">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="resources/css/index.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="resources/icons/starwars-glyphicons/css/starwars-glyphicons.css" rel="stylesheet">
+        <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    </head>
+
+    <body>
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="options">
+            <div class="offcanvas-header">
+                <h3 class="offcanvas-title maincolour" id="offcanvasLabel">
+                    Configuración
+                </h3>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Cerrar">
+                </button>
+            </div>
+            <div class="offcanvas-body">
+                <p>
+                    Los ajustes disponibles permiten modificar que
+                    componentes y/o reglas quieres que use esta variante
+                    en solitario. Se harán cambios en el texto de algunas secciones para
+                    reflejar estos ajustes.
+                </p>
+                <!-- Selector de dynamic rules oculto porque estaba deshabilitado -->
+                <!--h6 class="paraseparator">General</h6>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkdynamicInstructions" onclick="chkClick(this);" disabled>
+                    <label for="chkdynamicInstructions" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Por defecto se muestran todas las reglas. Cuando se selecciona esta opción (ON), las reglas se muestran según ciertos criterios, p.e: cuando la Base Rebelde es descubierta, las reglas de movimiento  y despliegue SOLO se muestran en relación a la Base Rebelde">Reglas
+                        Dinámicas</label>
+                </div-->
+
+                <h6 class="sidebarsubheader">
+                    Expansión El Auge del Imperio (ROTE)
+                    <!--span class="material-icons" style="font-size: large">dark_mode</span-->
+                    <span class="swdestiny" style="font-size: large">L</span>
+                </h6>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkROTE-Units" onclick="chkClick(this);" checked>
+                    <label for="chkROTE-Units" data-bs-toggle="tooltip" data-bs-placement="right" title="Usar componentes y despliegue inicial según ROTE">
+                        Usar componentes y despliegue de la expansión
+                    </label>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkROTE-TacticCards" onclick="chkClick(this);" checked>
+                    <label for="chkROTE-TacticCards" data-bs-toggle="tooltip" data-bs-placement="right" title="Reglas de combate de la expansión.
+                    Solo se puede activar si se selecciona la opción de componentes y despliege de la expansión">
+                        Usar combate de la expansión (cartas de Táctica Avanzada)
+                    </label>
+                </div>
+                <h6 class="sidebarsubheader">
+                    Variantes
+                    <!--span class="material-icons" style="font-size: large">science</span-->
+                </h6>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-RandomPlayMissions" onclick="chkClick(this);" checked>
+                    <label for="chkvar-RandomPlayMissions" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title ="El imperio elige al azar si juega una misión o se mueve durante la Fase de Mando. Con esta variante aumentan las posibilidades de que el Imperio explore sistemas
+                        en busca de la Base Rebelde">
+                        Variante Jugar misiones aleatoriamente
+                    </label>
+                    <span class="aurekbesh" style="font-size: large">a</span>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-ActionCardExecution" onclick="chkClick(this);" checked>
+                    <label for="chkvar-ActionCardExecution" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="El Imperio decide al azar si activa las Cartas de Acción de Asignación que tenga disponibles. Esta variante evita que el juagdor tenga
+                        la ventaja de saber que el imperió usará sus Cartas de Acción en la fase de Asignación">
+                        Variante Cartas de Acción de Asignación
+                    </label>
+                    <span class="aurekbesh" style="font-size: large">b</span>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-Movement" onclick="chkClick(this);">
+                    <label for="chkvar-Movement" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="El Imperio decide al azar si se mueve hacia la PBR/BR o hacia las unidades Rebeldes más cercanas">
+                        Variante de Movimiento hacia PBR
+                    </label>
+                    <span class="aurekbesh" style="font-size: large">g</span>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-Deployment" onclick="chkClick(this);">
+                    <label for="chkvar-Deployment" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="El Imperio desplegará unidades priozizando la proximidad a la PBR > proximidad a un sistema Rebelde
+                        (mayor VP en caso de empate) > Valor de Producción Imperial">
+                        Variante de Despliegue: Prioridad PBR
+                    </label>
+                    <span class="aurekbesh" style="font-size: large">d</span>
+                </div>
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="chkvar-UnPlayableMissions" onclick="chkClick(this);">
+                    <label for="chkvar-UnPlayableMissions" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title ="Las misiones que no se puedan jugar se colocarán al final de Mazo de Ronda y se resuelven al final de la Fase de Mando">
+                        Variante Misiones no jugables
+                    </label>
+                    <span class="aurekbesh" style="font-size: large">s</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="offcanvasSilm offcanvas-end" id="roundtracker" tabindex="-1" aria-labelledby="offcanvasLabel" data-bs-backdrop="false" data-bs-scroll="true">
+            <div class="offcanvas-header">
+                <h6 class="offcanvas-title">Medidor de Tiempo</h6>
+            </div>
+            <div class="offcanvas-body small">
+                <div class="roundtracker text-center">
+                    <div class="justify-content-center">
+                        <button class="btnNoBackground" onclick="changeRound()" data-bs-toggle="tooltip" data-bs-placement="right" title="Nueva Ronda">
+                            <span class="material-icons align-middle icon-medium">add</span>
+                        </button>
+                    </div>
+                    <p></p>
+                    <div class="col">
+                        <input type="checkbox" id="round_16" onclick="setRebelRep(id)">
+                        <label for="round_16" id="round_label">16</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_15" onclick="setRebelRep(id)">
+                        <label for="round_15" id="round_label">15</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_14" onclick="setRebelRep(id)" checked>
+                        <label for="round_14" id="round_label">14</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_13" onclick="setRebelRep(id)">
+                        <label for="round_13" id="round_label">13</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_12" onclick="setRebelRep(id)">
+                        <label for="round_12" id="round_label">12</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_11" onclick="setRebelRep(id)">
+                        <label for="round_11" id="round_label">11</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_10" onclick="setRebelRep(id)">
+                        <label for="round_10" id="round_label">10</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_9" onclick="setRebelRep(id)">
+                        <label for="round_9" id="round_label">9</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_8" onclick="setRebelRep(id)">
+                        <label for="round_8" id="round_label">8</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_7" onclick="setRebelRep(id)">
+                        <label for="round_7" id="round_label">7</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_6" onclick="setRebelRep(id)">
+                        <label for="round_6" id="round_label">6</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_5" onclick="setRebelRep(id)">
+                        <label for="round_5" id="round_label">5</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_4" onclick="setRebelRep(id)">
+                        <label for="round_4" id="round_label">4</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_3" onclick="setRebelRep(id)">
+                        <label for="round_3" id="round_label">3</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_2" onclick="setRebelRep(id)">
+                        <label for="round_2" id="round_label">2</label>
+                    </div>
+                    <div class="col">
+                        <input type="checkbox" id="round_1" onclick="setRebelRep(id)" checked disabled>
+                        <label for="round_1" id="round_label">1</label>
+                    </div>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <main class="main">
+            <header class="fixed-top">
+                <div class="d-flex justify-content-between mainheader" id="mainheader">
+                    <button type="button" class="mainheader__navbutton me-3 btnNoBackground" data-bs-toggle="offcanvas" data-bs-target="#options">
+                        <span class="material-icons align-middle icon-medium" data-bs-target="#options">menu</span>
+                    </button>
+                    <div class="mainheader__headline flex-fill">
+                        <div class="d-flex flex-column flex-sm-row">
+                            <div class="font-bold me-3" id="fulltitle">
+                                Star Wars: Rebellion
+                            </div>
+                            <div class="font-regular">
+                                Variante en solitario (IA Imperial)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mainheader__buttons">
+                        <button type="button" class="btnNoBackground" data-bs-toggle="offcanvas" data-bs-target="#roundtracker">
+                            <span class="icon-medium" id="roundnumber" data-bs-toggle="tooltip" title="Ronda" data-bs-placement="bottom"
+                                data-bs-target="#roundtracker">
+                                1
+                            </span>
+                        </button>
+                        <button type="button" class="btnNoBackground d6button">
+                            <!--span class="material-icons align-middle icon-medium" data-bs-toggle="tooltip" title="D6" data-bs-placement="bottom"-->
+                            <span class="dice-icon align-middle icon-big" data-bs-toggle="tooltip" title="Tirar dados" data-bs-placement="bottom" id="botonD8">
+                                <!--casino-->
+                                H
+                            </span>
+                        </button>
+                        <!--button type="button" class="btnNoBackground d8button">
+                            <span class="material-icons align-middle icon-medium" data-bs-toggle="tooltip" title="D8" data-bs-placement="bottom">
+                                filter_8
+                            </span>
+                        </button-->
+                        <button id="reset" type="button" class="btnNoBackground" data-bs-toggle="modal" data-bs-target="#yesNo">
+                            <span class="material-icons align-middle icon-medium" data-bs-toggle="tooltip" title="Resetear" data-bs-placement="bottom">
+                                refresh
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="nav nav-tabs nav-fill roundselector">
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active" id="list-setup-list" data-toggle="list" data-bs-toggle="list" href="#list-setup-steps"
+                            role="tab" aria-controls="setup">
+                            <span class="material-icons align-middle icon-small">settings</span>
+                            <span class="d-none d-sm-inline p-1"> Preparación </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" id="list-assignment-list" data-toggle="list" data-bs-toggle="list"
+                            href="#list-assigment-steps" role="tab" aria-controls="assignment">
+                            <span class="material-icons align-middle icon-small">people_alt</span>
+                            <span class="d-none d-sm-inline p-1">
+                                Asignación
+                            </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" id="list-command-list" data-toggle="list" data-bs-toggle="list" href="#list-command-steps"
+                            role="tab" aria-controls="command">
+                            <span class="material-icons align-middle icon-small">shield</span>
+                            <span class="d-none d-sm-inline p-1"> Mando </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" id="list-refresh-list" data-toggle="list" data-bs-toggle="list" href="#list-refresh-steps"
+                            role="tab" aria-controls="refresh">
+                            <span class="material-icons align-middle icon-small">restart_alt</span>
+                            <span class="d-none d-sm-inline p-1"> Recuperación </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" id="list-build-list" data-toggle="list" data-bs-toggle="list" href="#list-build-steps"
+                            role="tab" aria-controls="build">
+                            <span class="material-icons align-middle icon-small">build</span>
+                            <span class="d-none d-sm-inline p-1">Cola de Construcción</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" id="list-remotesystems-list" data-toggle="list" data-bs-toggle="list"
+                            href="#list-remotesystems-steps" role="tab" aria-controls="remotesystems">
+                            <span class="material-icons align-middle icon-small">public</span>
+                            <span class="d-none d-sm-inline p-1">Sistemas Lejanos</span>
+
+                        </a>
+                    </li>
+                </ul>
+            </header>
+
+            <div class="container">
+                <div class="row">
+                    <!-- Steps Panel -->
+                    <section class="py-4">
+                        <div class="tab-content" id="nav-tabContent">
+                            <!-- Setup Sets -->
+                            <section class="tab-pane active" id="list-setup-steps" role="tabpanel" aria-labelledby="list-setup-list">
+                                <div class="callout">
+                                    <h5>Preparación</h5>
+                                    <p>
+                                        Usa la Preparación Avanzada de las reglas con los siguientes cambios:
+                                        <span data-bs-toggle="tooltip" data-bs-placement="right" class="expandall material-icons" title="Expandir/contraer todo">
+                                          <a class="link-danger" href="#0" data-bs-toggle="collapse" data-bs-target=".advancedsetup" id="expandbtn" onclick="expandClick(this)">expand_circle_down</a>
+                                        </span>
+                                    </p>
+                                    <div class="callout-both">
+                                        <h5>Colocar Líderes Iniciales</h5>
+                                        <p class="collapse advancedsetup">
+                                            Coge los cuatro Líderes que no tienen
+                                            un icono de reclutamiento y colócalos en
+                                            la "Reserva de Líderes" de la tarjeta de facción
+                                        </p>
+                                        <strong>
+                                            <p>
+                                                El Imperio empieza con cinco
+                                                Líderes. Recluta al quinto Líder robando
+                                                una carta de Acción (roba cartas
+                                                hasta que el Imperio consiga
+                                                reclutar al Líder adicional).
+                                            </p>
+                                        </strong>
+                                    </div>
+                                    <div class="callout collapse advancedsetup" >
+                                        <h5>Preparar el Medidor de Tiempo</h5>
+                                        <p>
+                                            Coloca el marcador de tiempo en la casilla
+                                            “1” del medidor, y el marcador de
+                                            reputación en la casilla “14” del medidor
+                                        </p>
+                                    </div>
+                                    <div class="callout-rebel">
+                                        <h5>Preparar Mazo de Objetivos</h5>
+                                        <p class="collapse advancedsetup">
+                                            Ordena las cartas de Objetivo en tres
+                                            mazos según el número que se muestra
+                                            en sus reversos (I, II, or III)
+                                        </p>
+                                        <strong>
+                                            <p>
+                                                Retira la carta de Objetivo
+                                                “El Corazón del Imperio” (Nivel II)
+                                            </p>
+                                        </strong>
+                                        <div class="collapse advancedsetup variant" id="ROTE-Setup">
+                                          <p>
+                                            Crea un mazo de nivel III con 1 carta de “Planos de la Estrella
+                                            de la Muerte” y 4 cartas aleatorias del montón III. Las cartas
+                                            sobrantes no se usan y se devuelven a la caja<br>
+                                            Crea un mazo de nivel II con 1 carta de “Planos de la Estrella
+                                            de la Muerte” y 4 cartas aleatorias del montón II. Las cartas
+                                            sobrantes no se usan y se devuelven a la caja<br>
+                                            Crea un mazo de nivel I con 5 cartas aleatorias del montón I.
+                                            Las cartas sobrantes no se usan y se devuelven a la caja
+                                          </p>
+                                          <span class="swdestiny" style="font-size: large">L</span>
+                                        </div>
+                                        <p class="collapse advancedsetup">
+                                            Baraja los mazos de Nivel I, II y III
+                                        </p>
+                                        <p class="collapse advancedsetup">
+                                            Crea el mazo de Objetivos apilando el mazo de Nivel I
+                                            sobre el de Nivel II, y éstos sobre el de Nivel III
+                                        </p>
+                                        <p class="collapse advancedsetup">
+                                            Roba una carta del mazo de Objetivos
+                                        </p>
+                                    </div>
+                                    <div class="callout-both collapse advancedsetup">
+                                        <h5>Preparar Mazos de Acciones</h5>
+                                        <p>
+                                            Reune las cartas de Acción con
+                                            icono de reclutamiento y mézclalas
+                                            para formar los 2 Mazos de Acciones.
+                                            Colócalos boca abajo junto a las tarjetas
+                                            de facción en el lado indicado como
+                                            “Mazo de Acciones”
+                                        </p>
+                                    </div>
+                                    <div class="callout-both">
+                                        <h5>Preparar Cartas de Misión</h5>
+                                        <div class="callout-both collapse advancedsetup" >
+                                            <p>
+                                                Misiones inciales: se indentifican
+                                                mediante la flecha curva que aparece
+                                                en la parte inferior. Coge las 4 cartas
+                                                de Misión inicial de cada facción y
+                                                déjalas aparte
+                                            </p>
+                                        </div>
+                                        <div class="callout-both collapse advancedsetup d-none" id="Base-Setup">
+                                            <p>
+                                                Misiones restantes: para cada
+                                                facción, coge las misiones restantes
+                                                y mézclalas para formar el <em>Mazo
+                                                de Misiones</em>. Colócalos boca abajo
+                                                junto a las tarjetas de facción en el
+                                                lado indicado como “Mazo de Misiones”
+                                            </p>
+                                        </div>
+                                        <div class="callout-both variant" id="ROTE-Setup">
+                                          <div>
+                                            <p class="collapse advancedsetup">
+                                              Reemplaza las cartas del juego base por las
+                                              cartas de la expansión El Auge del Imperio
+                                              siguiendo las instrucciones normales de la expansión
+                                            </p>
+                                            <strong>
+                                              <p>
+                                                Retira del juego las cartas de Misión Imperial y Rebelde "Subversión"
+                                                correspondientes a ambos conjuntos de Misiones (base y expansión)
+                                              </p>
+                                            </strong>
+                                            <p class="collapse advancedsetup">
+                                              Misiones con icono de Líder: para cada facción,
+                                              coge las cartas de Misión con icono de Líder y
+                                              déjalas aparte en mazos separados
+                                            </p>
+                                            <p class="collapse advancedsetup">
+                                              Misiones restantes: para cada facción,
+                                              elige uno de los dos conjuntos de misiones disponibles
+                                              (cartas sin icono para el juego base, o con icono de Darth Vader
+                                              para la expansión) y mézclalas con los mazos de <em>Misiones con icono de Líder</em>
+                                              del paso anterior. Baraja cada mazo por separado y colócalos boca abajo
+                                              junto a las tarjetas de facción en el lado indicado como “Mazo de Misiones”
+                                            </p>
+                                          </div>
+                                          <span class="swdestiny" style="font-size: large">L</span>
+                                        </div>
+
+                                        <div class="callout-empire">
+                                            <p>
+                                                Mezcla una carta de cada tipo
+                                                de las cinco <stong>Cartas de
+                                                Proyecto</strong> en el <em>Mazo
+                                                de Misiones Imperiales</em> y baraja el mazo
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="callout">
+                                        <h5>
+                                            Desplegar Unidades Iniciales y Fijar Lealtad
+                                        </h5>
+                                        <div class="callout collapse advancedsetup">
+                                            <h5>Lealtad</h5>
+                                            <p>
+                                                Baraja el mazo de Sondas y
+                                                roba cartas de la parte superior
+                                                hasta que se obtengan tres sistemas
+                                                Rebeldes y cinco sistemas Imperiales
+                                            </p>
+                                            <p>
+                                                Coloca un marcador de lealtad
+                                                Rebelde en cada uno de los tres
+                                                sistemas Rebeldes. Coloca un marcador
+                                                de subyugación en los dos primeros
+                                                sistemas Imperiales, y un marcador
+                                                de lealtad Imperial en los tres
+                                                sistemas Imperiales restantes
+                                            </p>
+                                            <p>
+                                                Devuelve las cartas de Sonda de
+                                                los cinco sistemas Imperiales
+                                                a la caja del juego. Mezcla el
+                                                resto de cartas robadas en el
+                                                Mazo de Sondas y barájalo
+                                            </p>
+                                        </div>
+
+                                        <div class="callout-empire">
+                                            <h5>Despliegue Imperial</h5>
+                                            <p>
+                                                Despliega las unidades Imperiales
+                                                de la siguente manera (usa
+                                                <a class="link-danger d6button" href="#" type="button">1D6</a>, según se necesite):
+                                            </p>
+                                            <ul class="d-none" id="Base-Setup">
+                                                <li>
+                                                    2 Cazas TIE y 2
+                                                    Soldados de asalto en cada uno de
+                                                    los 6 sistemas iniciales
+                                                    (incluyendo Coruscant)
+                                                </li>
+                                                <li>
+                                                    Despliega 3 Destructores
+                                                    Estelares en 3 sistemas al
+                                                    azar (1 por sistema);
+                                                    despliega 3 Portacaza de Asalto
+                                                    en los 3 sistemas restantes
+                                                </li>
+                                                <li>
+                                                    Despliega 1 At-AT en un sistema
+                                                    al azar; luego despliega 5 AT-STs
+                                                    en los 5 sistemas restantes
+                                                    (1 por sistema)
+                                                </li>
+                                                <li>
+                                                    Despliega la Estrella de la
+                                                    Muerte en 1 sistema inicial al azar
+                                                </li>
+                                            </ul>
+                                            <div class="variant" id="ROTE-Setup">
+                                                <div>
+                                                    <!--p -->
+                                                    <ul>
+                                                      <li>
+                                                        Coloca la Estrella de la Muerte
+                                                        en la casilla 3 de la cola de
+                                                        construcción imperial. Elige uno
+                                                        de los 6 sistemas neutrals con
+                                                        icono de contrucción triángulo
+                                                        (Felucia, Kessel,
+                                                        Malastare, Alderaan,
+                                                        Rodia o Ryloth) y despliega ahí
+                                                        la Estrella de la Muerte parcialmente
+                                                        construida, 4 cazas TIE, 1 soldado de
+                                                        asalto y un marcador de subyugación.
+                                                        Retira la carta de sonda coorespondiente
+                                                        del mazo de Sondas y devuélvela a la caja.
+                                                      </li>
+                                                      <!--/p-->
+                                                    <!--ul-->
+                                                      <li>
+                                                        2 soldados de asalto
+                                                        en cada uno de los 6
+                                                        sistemas iniciales
+                                                        (incluyendo Coruscant)
+                                                      </li>
+                                                      <li>
+                                                          Despliega 3 Destructores
+                                                          Estelares en 3 sistemas al
+                                                          azar (1 por sistema);
+                                                          despliega 3 Portacaza de Asalto
+                                                          en los 3 sistemas restantes
+                                                      </li>
+                                                      <li>
+                                                          Despliega 1 caza TIE en cada
+                                                          uno de los sistemas inciales
+                                                          excepto Coruscant, añade 3
+                                                          cazas TIE adicionales en 3 de
+                                                          esos sistemas al azar
+                                                          (1 por sistema), y 2 fustigadores TIE
+                                                          en los 2 sistemas restantes.
+                                                      </li>
+                                                      <li>
+                                                          Despliega 4 AT-STs en 4 de los sistemas
+                                                          iniciales al azar (1 por sistema), y 2
+                                                          tanques de asalto en los 2 sistemas restantes
+                                                      </li>
+                                                      <li>
+                                                          Despliega 1 AT-AT en uno de los
+                                                          sistemas inciales excepto Coruscant
+                                                      </li>
+                                                    </ul>
+                                                </div>
+                                                <span class="swdestiny" style="font-size: large">L</span>
+                                                <!--span class="material-icons">dark_mode</span-->
+                                            </div>
+                                        </div>
+                                        <div class="callout-rebel collapse advancedsetup">
+                                            <h5>Despliegue Rebelde</h5>
+                                            <p>El jugador Rebelde recive:</p>
+                                            <div id="Base-Setup" style="display: flex">
+                                                <ul>
+                                                    <li>
+                                                        1 Corbeta Corelliana
+                                                    </li>
+                                                    <li>1 Transporte Rebelde</li>
+                                                    <li>2 Ala-X</li>
+                                                </ul>
+                                                <ul>
+                                                    <li>2 Ala-Y</li>
+                                                    <li>6 Soldados Rebeldes</li>
+                                                    <li>2 Aerodeslizadores</li>
+                                                </ul>
+                                            </div>
+                                            <div class="d-none variant" id="ROTE-Setup">
+                                                <ul>
+                                                    <li>
+                                                        1 Corbeta Corelliana
+                                                    </li>
+                                                    <li>1 Transporte Rebelde</li>
+                                                    <li>1 Ala-X</li>
+                                                    <li>1 Ala-Y</li>
+                                                </ul>
+                                                <ul>
+                                                    <li>1 Ala-U</li>
+                                                    <li>5 Soldados Rebeldes</li>
+                                                    <li>2 Aerodeslizadores</li>
+                                                    <li>1 Vanguardia Rebelde</li>
+                                                </ul>
+                                                <span class="swdestiny" style="font-size: large">L</span>
+                                                <!--span class="material-icons">dark_mode</span-->
+                                            </div>
+                                            <p>
+                                                Estas unidades se pueden desplegar
+                                                en el espacio de la "Base Rebelde"
+                                                y/o en cualquier sistema que no contenga
+                                                unidades imperiales
+                                              </p>
+                                        </div>
+                                        <div class="callout-both collapse advancedsetup">
+                                            <h5>Cartas de Acción</h5>
+                                            <p>
+                                                Para ambas facciones, roba dos
+                                                cartas de Acción Inicial al azar
+                                                (cartas sin icono de reclutamiento).
+                                                Estas cartas otorgan abillidades especiales
+                                                de un solo uso.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="callout-rebel">
+                                        <h5>Base Rebelde</h5>
+                                        <p>
+                                            El jugador en solitario elige la
+                                            ubicación de la Base Rebelde entre
+                                            los 8 sistemas lejanos, después de
+                                            desplegar las unidades iniciales y
+                                            colocar los marcadores de Lealtad.
+                                            El Imperio sabe que la base está
+                                            en uno de esos sistemas (información
+                                            vital adquirida mediante su red de
+                                            inteligencia), y la buscará agresivamente
+                                        </p>
+                                    </div>
+                                    <div class="callout-rebel collapse advancedsetup">
+                                        <h5>Robar mano inicial</h5>
+                                        <p>
+                                            El jugador Rebelde coge las 4 misiones iniciales y roba 2 cartas
+                                            del mazo de misiones para formar su mano inicial
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Assignment Steps-->
+                            <section class="tab-pane" id="list-assigment-steps" role="tabpanel" aria-labelledby="list-assignment-list">
+                                <div class="callout-rebel">
+                                    <h5>Asignar Líderes a Misiones</h5>
+                                    <p>
+                                        El jugador Rebelde asigna Líderes a misiones
+                                        de su mano de la forma habitual
+                                    </p>
+                                </div>
+
+                                <div class="callout-empire">
+                                    <h5>Crear Mazos de Misión</h5>
+                                    <div id="createmissiondeck">
+                                        <p>
+                                            Roba el número indicado de cartas de Misión
+                                            (ver tabla de Misiones más abajo), y mézclalas
+                                            para formar el <em class="text-medium">Mazo
+                                            de Ronda</em>, que se coloca boja abajo en la
+                                            zona del jugador Imperial.
+                                        </p>
+
+                                        <div class="callout text-small">
+                                            <div id="missiontable">
+                                                <strong>Tabla de Misiones</strong>
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-3 fw-bold">
+                                                            Ronda 1:
+                                                        </div>
+                                                        <div class="col">
+                                                            2 Misiones (1
+                                                            Misión Inicial + 1
+                                                            Misión Principal)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3 fw-bold">
+                                                            Rondas 2-3:
+                                                        </div>
+                                                        <div class="col">
+                                                          3 Misiones (1
+                                                          Misión Inicial + 2
+                                                          Misiones Principales)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3 fw-bold">
+                                                            Ronda 4+:
+                                                        </div>
+                                                        <div class="col">
+                                                          4 Misiones (1
+                                                          Misión Inicial + 3
+                                                          Misiones Principales)
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-3 fw-bold">
+                                                            Base Rebelde Descubierta
+                                                        </div>
+                                                        <div class="col">
+                                                          3 Misiones (1
+                                                          Misión Inicial + 2
+                                                          Misiones Principales)
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="callout-empire">
+                                    <h5>Jugar Cartas de Acción</h5>
+                                    <div class="variant" id="var-ActionCardExecution" data-bs-toggle="tooltip"
+                                    data-bs-placement="right" title="Esta variante evita que el jugador asigne misiones sabiendo con certeza que el Imperio jugará
+                                    las cartas de Acción de asignación">
+                                        <div>
+                                            <p>
+                                                Tira  <a class="link-danger d8button" href="#" type="button">1D8</a>:
+                                            </p>
+                                            <div class="d-flex">
+                                                <p>1-4:</p>
+                                                <p>
+                                                    El Imperio no usa sus cartas de Acción de Asignación en esta ronda
+                                                </p>
+                                            </div>
+                                            <div class="d-flex">
+                                                <p>5+:</p>
+                                                <p>
+                                                    El Imperio usa sus cartas de Acción de Asignación
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a>
+                                                    , si las tiene
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <!--span class="material-icons">science</span-->
+                                        <span class="aurekbesh" style="font-size: large">b</span>
+                                    </div>
+                                    <p class="d-none" id="Base-ActionCardExecution">
+                                        El Imperio juega todas las cartas de Acción
+                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a>
+                                        durante las Fase de Asignación
+                                    </p>
+                                </div>
+                            </section>
+
+                            <!-- Command Steps-->
+                            <section class="tab-pane" id="list-command-steps" role="tabpanel" aria-labelledby="list-command-list">
+                                <div class="callout">
+                                    <h5>Jugar Misiones</h5>
+                                    <p>
+                                        Empezando por el jugador Rebelde, ambos bandos alternan sus turnos
+                                        <span data-bs-toggle="tooltip" data-bs-placement="right" class="expandall material-icons" title="Expandir/Contraer todo">
+                                        <a class="link-danger" href="#0" data-bs-toggle="collapse" data-bs-target=".command" id="expandbtn" onclick="expandClick(this)">expand_circle_down</a></span>
+                                    </p>
+
+                                    <div class="callout-rebel">
+                                        <h5>
+                                            Jugar Misiones / Activar Sistemas
+                                        </h5>
+                                        <p>
+                                            El jugador Rebelde puede revelar misiones o activar sistemas
+                                        </p>
+
+                                        <div class="callout-rebel">
+                                            <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#establishnewbase">
+                                                <h5>Establecer una nuava Base</h5>
+                                            </a>
+                                            <p class="collapse command" id="establishnewbase">
+                                                El jugador Rebelde puede establecer
+                                                una nuava Base Rebelde de forma similar
+                                                al juego normal. Primero, devuelve todas
+                                                las cartas de Sonda de sistems lejanos
+                                                no controlados por el Imperio (sin unidades
+                                                terrestres presentes) de la mano Imperial
+                                                al mazo de Sondas, y baraja el mazo.
+                                                El jugador Rebelde roba el número habitual
+                                                de cartas de Sonda, hasta un máximo igual a
+                                                la diferencia entre el marcador de tiempo el
+                                                de reputación. Puede establecer la nueva Base
+                                                Rebelde en cualqueir sistema lejano obtenido.
+                                                El Imperio retoma la búsqueda de la Base Rebelde
+                                                como antes de que se descubriera. La carta de misión
+                                                inicial <em>Recabar Información</em> se devuelve al
+                                                mazo de Misiones Iniciales.
+                                            </p>
+                                        </div>
+
+                                        <div class="callout-empire">
+                                            <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse"
+                                                data-bs-target="#opposingrebelmissions">
+                                                <h5>Oponerse a Misiones Rebeldes</h5>
+                                            </a>
+                                            <p class="collapse command" id="opposingrebelmissions">
+                                                Solo si hay más Líderes en la reserva que
+                                                misiones no reveladas en el <em>Mazo de Ronda</em>,
+                                                el Imperio puede ordernar (según una tirada
+                                                <a class="link-danger d6button" href="#" type="button">1D6</a> con
+                                                resultado 4+) que su Líder más capacitado
+                                                se oponga a una Misión Rebelde. Si ningún
+                                                Líder tiene los iconos de habilidad requeridos,
+                                                el Líder con el menor número total de iconos
+                                                de habilidad se opone a la Misión.
+                                            </p>
+
+                                            <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#joinabattle">
+                                                <h5>Unirse a una batalla</h5>
+                                            </a>
+                                            <p class="collapse command" id="joinabattle">
+                                                Solo si hay más Líderes en la reserva que
+                                                misiones no reveladas en el <em>Mazo de Ronda</em>,
+                                                el Imperio enviará a un Líder a una batalla
+                                                en la que no haya Líder con puntuaciones
+                                                de Táctica. Se priorizarán los Líderes con
+                                                una carta de Acción 'Inicio del combate' y el mayor
+                                                valor total de tácica, o el valor de táctica más alto
+                                                en el escenario más relevante del combate.
+                                              </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="callout-empire">
+                                        <h5>Jugar Misiones de Ronda</h5>
+                                        <p class="d-none" id=Base-RandomPlayMissions>
+                                            El Imperio <strong>siempre</strong>
+                                            completa las <em class="text-medium">Misiones de Ronda</em>
+                                            antes de activar sistemas para moverse.
+                                        </p>
+                                        <div class="variant" id=var-RandomPlayMissions data-bs-toggle="tooltip"
+                                        data-bs-placement="right" title="Esta opción evita que el Imperio se centre en las misiones y
+                                        amplia las posibilidades de que se mueba en busca de la Base Rebelde">
+                                          <p>
+                                            En cada turno, el Imperio decide al azar (1D8) si juega una <em class="text-medium">Misión de Ronda</em>
+                                            o si activar un sistemas para moverse en busca de la Base Rebelde.
+                                          </p>
+                                          <!--span class="material-icons">science</span-->
+                                          <span class="aurekbesh" style="font-size: large">a</span>
+                                        </div>
+                                        <p>
+                                            <strong>Llevar a cabo
+                                                <em class="text-medium">Misiones de Ronda</em>:</strong>
+                                            Revela la carta superior del Mazo de Ronda
+                                            y asigna el Líder más capcitado (Líder indicado
+                                            en la carta de Misión o el que tenga la mayor
+                                            cantidad de iconos correspondientes con la carta)
+                                        </p>
+                                        <p id="Base-Unplayablemissions">
+                                            Si una misión no se puede jugar por las circunstancias de la partida
+                                            (no hay dispomnible ningún Líder adecuado, no hay Líderes Rebeldes capturados, etc),
+                                            roba una misión del mazo correspondiente (Misiones Iniciales o Principales)
+                                            y coloca la carta no jugada en la parte inferior de su mazo
+                                        </p>
+                                        <div class="d-none variant" id="var-Unplayablemissions">
+                                            <p>
+                                                Si una misión no se puede llevar a cabo
+                                                por circunstancias que varían durante
+                                                el turno (por ejemplo, no hay ningún
+                                                Líder Rebelde capturado, la Estrella de la Muerte
+                                                no se ha movido, etc), pon la carta en la parte
+                                                inferior del <em class="text-medium">Mazo de Ronda</em>.
+                                                Reserva el Líder que la habría llevado a cabo.
+                                                Una vez que el resto de <em class="text-medium">Misiones de Ronda</em>
+                                                se hayan jugado, intenta resolver las misiones que no
+                                                se pudieron jugar con los Líderes reservados.
+                                                Su la misión aún no se puede jugar, roba otra misión del
+                                                mazo correspondiente (Misiones Iniciales o Principales)
+                                                y coloca la carta no jugada en la parte inferior
+                                                de su mazo
+                                            </p>
+                                            <!--span class="material-icons">science</span-->
+                                            <span class="aurekbesh" style="font-size: large">s</span>
+                                        </div>
+                                        <p>
+                                            Elige la localización para jugar las Misiones según la
+                                            <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#carddecisionlist">Lista de
+                                                Decisiones Imperiales</a>
+                                            o el Sistema con el
+                                            <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
+                                                Valor de Producción</a>.
+                                        </p>
+
+                                        <div class="callout">
+                                            <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#capturingleaders">
+                                                <h5>Capturar Líderes</h5>
+                                            </a>
+                                            <p class="collapse command" id="capturingleaders">
+                                                Un Líder Rebelde capturado se
+                                                considera como una unidad terrestre,
+                                                se mantiene cautivos por la unidad
+                                                espacial de mayor valor de fuerza
+                                                presente en el sistema en el que se
+                                                encuentra el Líder
+                                            </p>
+
+                                            <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse"
+                                                data-bs-target="#acquiringprojectcards">
+                                                <h5>Obtener Cartas de Proyecto</h5>
+                                            </a>
+                                            <p class="collapse command" id="acquiringprojectcards">
+                                                Cualquier carta de Proyecto que se
+                                                obtenga durante el juego se aparta
+                                                boca abajo junto al Mazo de Misiones
+                                                Principales, y se colocan en la parte
+                                                superior de éste al final de la fase de Mando.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="callout-empire">
+                                    <h5>Activar Sistemas</h5>
+                                    <p>
+                                        Una vez llevadas a cabo todas las misiones
+                                        del Mazo de Ronda, el Imperio puede usar sus
+                                        Líderes para activar Sistemas (mover unidades)
+                                        hacia la PRB más próxima o la Base Rebelde si se
+                                        ha descubierto.
+                                    </p>
+                                    <div class="callout">
+                                        <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#movementrules">
+                                            <h5>Reglas de Movimiento</h5>
+                                        </a>
+                                        <div class="collapse command" id="movementrules">
+                                            <div class="d-none variant" id="var-movement">
+                                                <div>
+                                                    <p>
+                                                        A la hora de activar un Sistema, el Imperio elige aleatoriamente ()
+                                                        <a class="link-danger d8button" href="#0" type="button">1D8</a>) el destino de su movimiento:
+                                                    </p>
+                                                    <div class="d-flex">
+                                                        <p>1-4:</p>
+                                                        <p>
+                                                            Mueve unidades Imperiales
+                                                            al sistema más próxiomo con
+                                                            unidades Rebeldes.
+                                                            Prioridad: Sistemas Leales al Imperio > Flota de mayor tamaño
+                                                        </p>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <p>5+:</p>
+                                                        <p>
+                                                            Mueve unidades Imperiales por la
+                                                            ruta mas corta hacia el sistema lejano
+                                                            no explorado (carta de Sonda no obtenida)
+                                                            más próximo [PRB]. El Imperio atacará
+                                                            a cualquier unidad Rebelde que encuentre
+                                                            en el camino.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <!--span class="material-icons">science</span-->
+                                                <span class="aurekbesh" style="font-size: large">g</span>
+                                            </div>
+                                            <p id="Base-movement">
+                                                Mueve unidades Imperiales por la
+                                                ruta mas corta hacia el sistema lejano
+                                                no explorado (carta de Sonda no obtenida)
+                                                más próximo [PRB]. El Imperio atacará
+                                                a cualquier unidad Rebelde que encuentre
+                                                en el camino.
+                                            </p>
+                                            <p>
+                                                Cuando se mueve a un Sistema, el Imperio
+                                                moverá todas las unidades de sistemas adyacentes
+                                                al Sistema Activado, trayendo tanas unidades
+                                                terrestres como sea posible transportar,
+                                                priorizando las unidades espaciales con
+                                                el mayor
+                                                <a class="link-danger text-medium" href="#" data-bs-target="#strengthguide" data-bs-toggle="modal">Valor de Fuerza</a>
+                                            </p>
+                                            <p class="important">
+                                                <strong>IMPORTANTE:</strong> El Imperio
+                                                <strong>debe</strong> dejar atrás a la
+                                                unidad terrestre más debil para poder moverse.
+                                                Si una flota se elige para moverse (por proximidad)
+                                                pero no puede dejar atrás a ninguna unidad terrestre,
+                                                coloca un Líder en el sistema de la flota junto con un
+                                                Soldado de Asalto de la reserva. La flota podrá moverse
+                                                en una ronda posterior.
+                                            </p>
+                                            <p>
+                                                Tras un movimiento con éxito - con
+                                                unidades terrestres - a un sistema lejano,
+                                                el Imperio obtiene inmediatamente la carta de
+                                                Sonda de dicho Sistema, y se baraja el mazo
+                                                de Sondas. Si el Imperio en algún momento
+                                                pierde su última unidad terrestre en un sistema
+                                                lejano (por ejemplo, por un combate), devuelve
+                                                la carta de Sonda al mazo y barájalo.
+                                            </p>
+                                            <p>
+                                                Cuando la diferencia entre los marcadores
+                                                de Reputación y Tiempo sea ≤5, las flotas
+                                                Imperiales pueden moverse una vez por Ronda
+                                                inlcuso si hay un Líder en el sistema de dicha
+                                                flota. El Imperio modifica su forma de moverse
+                                                una vez que la Base Rebelde es descubierta
+                                                (ver Revelar la Base más abajo)
+                                            </p>
+                                        </div>
+
+                                        <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#revealingtherebelbase">
+                                            <h5>Revelar la Base Rebelde</h5>
+                                        </a>
+                                        <div class="collapse command" id="revealingtherebelbase">
+                                            <p>
+                                                Revela la
+                                                <strong>Base Rebelde</strong> solo
+                                                después de que el Imperio haya obtenido
+                                                las carta de Sonda de los otros 7
+                                                Sistemas lejanos O cuando el Imperio tenga
+                                                <strong>Unidades Terrestres</strong> en
+                                                ese Sistema.
+                                            </p>
+                                            <p>
+                                                Una vez revelada, retira la carta de
+                                                Misión Inicial <em>Recabar Información</em>
+                                                del mazo (puede volver al juego si los Rebeldes
+                                                logran establecer una nueva Base)
+                                            </p>
+                                            <p>
+                                                Ten en cuenta que cuando la Base Rebelde
+                                                es <strong>revealed</strong> y/o
+                                                cuando la <strong>diferencia entre el
+                                                marcador de Reputación y Tiempo es ≤5</strong>
+                                                las flotas Imperiales pueden moverse una
+                                                vez por por Ronda inlcuso si hay un Líder
+                                                en el sistema de dicha flota (se puede llevar
+                                                le cuenta, por ejemplo, tumabdo el Líder
+                                                que activa el sistema para el movimiento)
+                                            </p>
+                                            <p>
+                                                Además, ahora el Imperio prioriza los
+                                                sistemas más próximos a la Base Rebelde
+                                                tanto para el movimiento como para el
+                                                despliege de unidades. Cuando el Imperio
+                                                elija activar un Sistema, calcula la
+                                                diferencia entre los marcadores de Reputación
+                                                y Tiempo. Si todas las flotas a esta
+                                                distancia de la Base Rebelde ya se han movido,
+                                                cambia la prioridad a las flotas más
+                                                próximas a otros Sistemas lejanos no
+                                                controlados por el Imperio (sin unidades
+                                                terrestres). Cuando el Imperio descubre
+                                                la Base Rebelde, roba 3 cartas
+                                                (1 de Misión Inicial y 2 de Misión
+                                                Principal) en la fase Asignación,
+                                                independientemente del número de Ronda.
+
+                                            </p>
+                                        </div>
+
+                                        <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#battles">
+                                            <h5>Combates</h5>
+                                        </a>
+                                        <div class="collapse command" id="battles">
+                                            <div class="d-none" id="Base-Battles">
+                                                <p>
+                                                  Aunque los combates se dearrollan
+                                                  de la forma habitual, el Imperio no
+                                                  usa Cartas de Táctica. Adicionalmente,
+                                                  sigue estas reglas especiales:
+                                                </p>
+                                                <ul>
+                                                  <li>
+                                                      Cualquier resultado Especial
+                                                      que se obtenga en las tiradas de
+                                                      dados del Imperio se considera como un
+                                                      Impacto del color correspondiente
+                                                      contra las unidades Rebeldes.
+                                                  </li>
+                                                  <li>
+                                                      En las tiradas Rebeldes,
+                                                      se <strong>deben</strong> volver a tirar
+                                                      los dados que obtengan impactos o impactos críticos,
+                                                      priorizando los impactos críticos, hasta
+                                                      un máximo de dados igual al valor de Táctica
+                                                      del Líder Imperial correspondiente al escenario.
+                                                      Si hay menos impactos que el valor de Táctica,
+                                                      la diferencia se guarda para la siguiente ronda
+                                                      de combate como dados adicionales que debe volver
+                                                      a tirar el jugador Rebelde.<br />
+                                                      <em>Ejemplo: el Líder Imperial tiene un valor de
+                                                      Táctica de 2. El jugador Rebelde DEBE ingnorar los
+                                                      primeros 2 impactos y volver a tirar esos dados.
+                                                      Si no se obtienen impactos, esos valor de 2
+                                                      se guarda para la siguente ronda de combate incrementando
+                                                      el número de dado a volver a tirar. </em>
+                                                  </li>
+                                                </ul>
+                                              </div>
+                                            <div class="variant" id="ROTE-Battles">
+                                                <p>
+                                                  Aunque los combates se dearrollan
+                                                  de la forma habitual, el Imperio roba
+                                                    una <strong>Carta de Táctica Avanzada</strong>
+                                                    al azar por ataque. Al final de la ronda de combate,
+                                                    la carta se devuelve al mazo correspondiente. Adicionalmente,
+                                                    sigue estas reglas especiales:
+                                                </p>
+                                                <ul>
+                                                <span class="swdestiny" style="font-size: large">L</span>
+                                                <!--span class="material-icons">dark_mode</span-->
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    El Imperio asigna los impactos
+                                                    a las unidades Rebeldes con
+                                                    la siguiente prioridad:
+                                                    Cañón de Iones > Unidad más débil
+                                                    (menor salud restante) > Unidad con mayor
+                                                    potencia de fuego (número de dados de ataque)
+                                                    [NOTA: En caso de duda, usar la regla de oro]
+                                                </li>
+                                                <li>
+                                                    ESTRELLA DE LA MUERTE: El Imperio solo
+                                                    la usará contra la Base Rebelde, una PRB o
+                                                    un Sistema con Lealtad Rebelde y/o unidades
+                                                    terrestres Rebeldes
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="callout-empire">
+                                    <h5>Líderes no usados</h5>
+                                    <p>
+                                        En el poco prbable caso de que queden Líderes
+                                        sin usar una vez se hayan llevado a cabo todas
+                                        las misiones del Mazo de Ronda y se hayan movido
+                                        todas las flotas, roba una cartas del Mazo de Misiones
+                                        Principales hasta obtener una que se pueda jugar con
+                                        los Líderes restantes, poniendo las demás en la parte
+                                        inferior del mazo.
+                                    </p>
+                                </div>
+                                <div class="callout-empire">
+                                    <h5>Mantenimiento</h5>
+                                    <p>
+                                        Al final de la Fase de Mando, baraja los Mazos
+                                        de Misión (Inicial y Principal) y coloca las
+                                        cartas de Proyecto obtenidas en esta Fase en la
+                                        parte superior del mazo de Misiones Principales.
+                                    </p>
+                                </div>
+                            </section>
+
+                            <!-- Refresh Steps-->
+                            <section class="tab-pane" id="list-refresh-steps" role="tabpanel" aria-labelledby="list-refresh-list">
+                                <div class="callout-both">
+                                    <h5>Recuperar Líderes</h5>
+                                    <p>
+                                        Todos los Líderes que estén sobre el tablero
+                                        regresan a sus respectivas reservas.
+                                        Si un Líder estaba aún asignado a una carta de Misión,
+                                        vuelve a la reserva y la carta se devuelve a la mano del
+                                        jugador.
+                                    </p>
+                                </div>
+                                <div class="callout-rebel">
+                                    <h5>Robar Misioness</h5>
+                                    <p>
+                                        El jugador Rebelde roba 2 cartas de Misión
+                                        y luego se descarta hasta quedarse con 10 cartas
+                                        en la mano.
+                                    </p>
+                                    <div class="callout-empire">
+                                        <p>
+                                            El Imperio no roba cartas de Misión durante
+                                            la Fase de Recuperación. Las misiones Imperiales
+                                            se roban durante la Fase de Asignación.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="callout-empire">
+                                    <h5>Lanzar Droides Sonda</h5>
+                                    <p>
+                                        Roba y revela 2 cartas de Sonda como
+                                        en el juego normal.
+                                    </p>
+                                </div>
+                                <div class="callout-rebel">
+                                    <h5>Robar Objetivos</h5>
+                                    <p>
+                                      El jugador Rebelde roba 1 carta de
+                                      Objetivo y la añade a su mano.
+                                    </p>
+                                </div>
+                                <div class="callout">
+                                    <h5>Avanzar el Marcador de Tiempo</h5>
+                                    <p>
+                                      El marcador de Tiempo avanza 1 casilla.
+                                      Luego se reclutan y construyen unidades en función
+                                      de los iconos que haya en la nueva casilla ocupada
+                                      por el marcador de Tiempo
+                                    </p>
+
+                                    <!-- Recruit -->
+                                    <div class="callout-rebel">
+                                        <h5>Reclutamiento Rebelde</h5>
+                                        <p>
+                                          El jugador Rebelde roba 2 cartas de
+                                          su mazo de Acciones, se queda con 1
+                                          de su elección y recluta 1 Líder que
+                                          aparezca en ella. La otra carta se
+                                          coloca en la parte inferior del mazo
+                                          de Acciones.
+                                        </p>
+                                    </div>
+
+                                    <div class="callout-empire">
+                                        <h5>Reclutamiento Imperial</h5>
+                                        <p>
+                                            El Imperio roba 1 carta de su
+                                            mazo de Acciones, y elige al azar
+                                            entre los posibles Líderes a reclutar.
+                                            Si no se puede reclutar, se roba otra carta
+                                            hasta que se reclute un Líder.
+                                            Las cartas no usadas se colocan en la parte
+                                            inferior del mazo de Acciones.
+                                        </p>
+                                    </div>
+
+                                    <!-- Build -->
+                                    <div class="callout-both">
+                                        <h5>Contrucción de unidades</h5>
+                                        <p>
+                                            <strong>El Imperio construye antes que los Rebeldes</strong>
+                                        </p>
+                                        <p>Se siguen las reglas normales de construcción de unidades</p>
+                                    </div>
+                                </div>
+
+                                <!-- Deploy -->
+                                <div class="callout">
+                                    <h5>Despliegue</h5>
+                                    <p></p>
+                                    <div class="callout-empire">
+                                        <h5>Despliegue Imperial</h5>
+                                        <p>
+                                            <strong>El Imperio despliega unidades antes que los Rebeldes</strong>
+                                        </p>
+                                        <p>
+                                            Sigue los pasos a continuación para desplegar
+                                            unidades, aplicándose el máximo de 2 unidades
+                                        </p>
+                                        <ul>
+                                            <li><strong>Base Rebelde no revelada</strong></li>
+                                            <ul class="deployflowchart" id="Base-Empiredeploy">
+                                                <li >
+                                                    Localiza el Sistema Imperial con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
+                                                        Valor de Producción</a>
+                                                </li>
+                                            </ul>
+                                            <div class="d-none variant" id="var-Empiredeploy">
+                                              <div>
+                                                <ul class="deployflowchart">
+                                                      <li>
+                                                        Localiza el sistema Imperial más próximo a (según prioridad):
+                                                        BR/PBR > Sistema Rebelde con
+                                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                        > Sistema Imperial con
+                                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                      </li>
+                                                  </ul>
+                                              </div>
+                                                      <!--span class="material-icons">science</span-->
+                                              <span class="aurekbesh" style="font-size: large">d</span>
+                                            </div>
+                                            <ul class="deployflowchart">
+                                                <li>
+                                                    Localiza el escenario (espacial o terrestre)
+                                                    con menor número de unidades. Si hay el mismo
+                                                    número de unidades en los 2 escenarios, elige al azar.
+                                                </li>
+                                                <li>
+                                                    Coloca la unidad disponible con mayor fuerza
+                                                    en este escenario<br>
+                                                    <em>Nota: si no hay unidades para desplegar
+                                                    en este escenario, coloca la unidad de mayor fuerza
+                                                    del otro escenario en este Sistema</em>
+                                                </li>
+                                            </ul>
+                                            <ul class="deployflowchart" id="Base-Empiredeploy">
+                                                <li>
+                                                    Pasa al siguiente Sistema con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">Mayor
+                                                        Valor de Producción</a>;
+                                                    repite los pasos anteriores en el nuevo Sistema,
+                                                    volviendo al primer Sistema donde
+                                                    se desplegaron unidades si es necesario.
+                                                </li>
+                                            </ul>
+                                            <div class="d-none variant" id="var-Empiredeploy">
+                                              <div>
+                                                  <ul class="deployflowchart">
+                                                    <li>
+                                                        Pasa al siguiente Sistema
+                                                        Imperial más próximo a (según prioridad):
+                                                        BR/PBR > Sistema Rebelde con
+                                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                        > Sistema Imperial con
+                                                        <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>;
+                                                        repite los pasos anteriores en el nuevo Sistema,
+                                                        volviendo al primer Sistema donde
+                                                        se desplegaron unidades si es necesario.
+                                                    </li>
+                                                  </ul>
+                                                </div>
+                                                <!--span class="material-icons">science</span-->
+                                                <span class="aurekbesh" style="font-size: large">d</span>
+                                            </div>
+                                            <li><strong>Base Rebelde revelada</strong></li>
+                                            <ul class="deployflowchart">
+                                                <li >
+                                                    Localiza el sistema Imperial más próximos a la Base Rebelde, siempre que la
+                                                    distancia entre el sistema Imperial y la Base Rebelde sea menor que la diferencia
+                                                    entre los marcadores de Reputación y Tiempo (Base Rebelde alcanzable por la flota Imperial
+                                                    en dicho sistema antes del final de la partida) > Sistema Imperial con
+                                                    <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide">mayor valor de producción</a>
+                                                </li>
+                                                <li>
+                                                    Despliega las 2 unidades con mayor VF (una de cada escenario si se puede) en el sistema seleccionado
+                                                </li>
+                                                <li>
+                                                    Si una vez desplegadas las unidades en los sistemas que cumplan con el crietrio de proximidad a la PBR
+                                                    y estén dentro del alcance MR-MT siguen quedando unidades por desplegar, continua el despliegue con las
+                                                    reglas para la Base Rebelde no revelada.
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+
+                                    <div class="callout-rebel">
+                                        <h5>Despliegue Rebelde</h5>
+                                        <p>
+                                            Los Rebeldes despliegan unidades
+                                            siguiendo las reglas normales
+                                        </p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Build Steps -->
+                            <section class="tab-pane" id="list-build-steps" role="tabpanel" aria-labelledby="list-build-list">
+                                <div class="callout">
+                                    <div class="container-flex" id="buildqueue">
+                                        <div class="row sticky-top align-items-center" id="buildheader">
+                                            <div class="col-3"></div>
+                                            <div class="col-1 swg swg-lightsabers swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Bloqueado/Saboteado"></div>
+                                            <div class="col-1 swg swg-stormtrooper swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Subyugado"></div>
+                                            <div class="col-1 swg swg-galemp swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Lealtad Imperial"></div>
+
+                                            <div class="col-1 swg swg-galsenate swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Neutral"></div>
+                                            <div class="col-1 swg swg-reball swg-lg d-flex justify-content-center" data-bs-toggle="tooltip"
+                                                data-bs-placement="bottom" title="Lealtad Rebelde"></div>
+
+                                        </div>
+                                        <div class="row my-3 mx-1" id="buildtemplate">
+                                            <div class="col-3">
+                                                <div class="planetname">
+                                                    BuildTemplate
+                                                </div>
+                                            </div>
+                                            <div class="col-1 d-flex justify-content-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="blockade">
+                                                </div>
+                                            </div>
+                                            <div class="col-1 d-flex justify-content-center">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="subjugate">
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check d-flex justify-content-center">
+                                                    <input class="form-check-input" type="radio" id="radioempire" name="RadioOptions" value="empire">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-1">
+                                                <div class="form-check d-flex justify-content-center">
+                                                    <input class="form-check-input" type="radio" id="radioneutral" name="RadioOptions" value="Neutral">
+                                                </div>
+                                            </div>
+                                            <div class="col-1">
+                                                <div class="form-check d-flex justify-content-center">
+                                                    <input class="form-check-input" type="radio" id="radiorebel" name="RadioOptions" value="Rebel">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="buildbutton">
+                                            <button class="btn btn-secondary" style="width: 50%" data-bs-toggle="modal" data-bs-target="#buildqueuelist"
+                                                onclick="createBuildQueue()">
+                                                Construir!
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <!-- Remote Systems -->
+                            <section class="tab-pane" id="list-remotesystems-steps" role="tabpanel" aria-labelledby="list-remotesystems-list">
+                                <div class="callout">
+                                    <h5>Lista de Sistemas Lejanos</h5>
+                                    <ul>
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-dagobah" title="Dagobah" />
+                                        <label for="planet-check-dagobah" id="dagobah" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-dantooine" title="Dantooine" />
+                                        <label for="planet-check-dantooine" id="dantooine" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-dathomir" title="Dathomir" />
+                                        <label for="planet-check-dathomir" id="dathomir" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-endor" title="Endor" />
+                                        <label for="planet-check-endor" id="endor" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-hoth" title="Hoth" />
+                                        <label for="planet-check-hoth" id="hoth" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-ilum" title="Ilum" />
+                                        <label for="planet-check-ilum" id="ilum" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-tatooine" title="Tatooine" />
+                                        <label for="planet-check-tatooine" id="tatooine" class="planetlabel"></label>
+
+                                        <input type="checkbox" class="planetbtn d-none" id="planet-check-yavin" title="Yavin" />
+                                        <label for="planet-check-yavin" id="yavin" class="planetlabel"></label>
+                                    </ul>
+                                    <p class="paraseparator fs-7 p-2">
+                                      Revela la Base Rebelde solo
+                                      después de que el Imperio haya obtenido
+                                      las carta de Sonda de los otros 7
+                                      Sistemas lejanos O cuando el Imperio tenga
+                                      Unidades Terrestres en ese Sistema
+                                    </p>
+                                    <p class="fs-7 px-2">
+                                      El movimiento y despliegue del Imperio
+                                      cambian de prioridades cuando la
+                                      Base Rebelde es descubierta.
+                                    </p>
+                                    <div class="modal-footer">
+                                        <div>Número de sistemas escaneados:</div>
+                                        <div id="numselectedsystems">0</div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <footer id="footer" class="fixed-bottom">
+                <div class="container-fluid h-100 py-2">
+                    <div class="row justify-content-between h-100">
+                        <ul class="col-6 list-unstyled">
+                            <li>
+                                <strong>Diseño de la web:</strong> <a href="https://boardgamegeek.com/user/OZ10" target="_blank">OZ10 (BGG)</a>
+                            </li>
+                            <li>
+                                <strong>Diseño adicional:</strong> <a href="https://boardgamegeek.com/user/Vortilion" target="_blank">Vortilion (BGG)</a>
+                            </li>
+                            <li>
+                                <strong>Traducción:</strong> <a href="https://boardgamegeek.com/user/hipher" target="_blank">Hipher (BGG)</a>
+                            </li>
+                        </ul>
+                        <ul class="col-6 list-unstyled">
+                            <li>
+                                <strong>Variante en solitario por by: </strong><a href="https://boardgamegeek.com/user/Elad" target="_blank">Dale Buonocore</a>
+                            </li>
+                            <li>
+                                <a href="https://boardgamegeek.com/thread/1697801/solitaire-variant-empire-attacks-revised-version-1/page/1" target="_blank">Hilo
+                                    de la variante en solitario</a>
+                            </li>
+                            <!--p></p-->
+                            <li>
+                                <strong>Iconos de Star Wars Icons por: </strong>
+                                <a href="http://starwarsglyphicons.com/" target="_blank">Star Wars Glyph Icons</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </main>
+
+        <!-- Modals -->
+        <div>
+            <!-- Empire's Decision List Modal -->
+            <div class="modal fade" id="carddecisionlist" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Lista de decisiones Imperiales
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-15">
+                                <!--input type="search" class="form-control" id="searchbar" placeholder="Buscar" /-->
+                                <input type="search" class="form-control" id="searchbar" placeholder="Buscar" />
+                            </div>
+                            <!-- <div class="row"> -->
+                            <div class="container" id="row1">
+                              <!-- JUEGO BASE -->
+                              <div class="row cardlist" title="Juego Base">
+                                  <div class="col" style="background-color:#B0C4DE">
+                                      Juego Base
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Capturar agente rebelde">
+                                  <div class="col-2">
+                                    Capturar agente rebelde
+                                  </div>
+                                  <div class="col-2">
+                                    Misión inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde con mayor puntuación de habilidad >
+                                    Lider Rebelde en el sistema con puntuación <span class="symbol">A</span> más favorable >
+                                    Lider Rebelde en el sistema con mayor VF imperial
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Investigación y desarrollo">
+                                  <div class="col-2">
+                                    Investigación y desarrollo
+                                  </div>
+                                  <div class="col-2">
+                                    Misión inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Si hay algún sistema saboteado (opción 2): Sistema saboteado con mayor VP >
+                                    Si no hay ningún sistema saboteado (opción 1): Sistema con mayor VP ><br>
+                                    <em>Nota: se roba 1 sola carta de proyecto en ambas opciones</em>
+
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Recabar información">
+                                  <div class="col-2">
+                                    Recabar información
+                                  </div>
+                                  <div class="col-2">
+                                    Misión inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Sistema Rebelde con puntuación <span class="symbol">C</span> más favorable >
+                                    Sistema Rebelde mas proximo a una flota Imperial
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Reinado del terror">
+                                  <div class="col-2">
+                                    Reinado del terror
+                                  </div>
+                                  <div class="col-2">
+                                    Misión inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Sistema subyugado con mayor VP >
+                                    Sistema subyugado con puntuacion de <span class="symbol">D</span> más favorable >
+                                    Sistema neutral con mayor VP >
+                                    Sistema neutral con puntuacion <span class="symbol">D</span> más favorable
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Arresto">
+                                  <div class="col-2">
+                                   Arresto
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde con mayor puntuación de habilidad >
+                                    Lider Rebelde en el sistema con puntuación <span class="symbol">A</span> más favorable >
+                                    Lider Rebelde en el sistema con mayor VF imperial
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Cazadlos">
+                                  <div class="col-2">
+                                    Cazadlos
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta: sistema de la Base Rebelde ><br>
+                                    <em>Nota: destrurir unidades de mayor VF, priorizando unidades terrestres</em><br><br>
+                                    Base Rebelde no descubierta: sistema Rebelde con mayor VP > sistema Rebelde con puntuación <span class="symbol">A</span>más favorable <br>
+                                    <em>Nota: destrurir unidades de mayor VF, priorizando el escenario con mayor VF</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Cobrar recompensa">
+                                  <div class="col-2">
+                                    Cobrar recompensa
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde con mayor puntuación de habilidad >
+                                    Lider Rebelde en el sistema con puntuación <span class="symbol">A</span> más favorable >
+                                    Lider Rebelde en el sistema con mayor VF imperial
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Conquista planetaria">
+                                  <div class="col-2">
+                                    Conquista planetaria
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta: sistema de la Base Rebelde<br>
+                                    <em>Nota: mover el mayor numero posible de unidades del sistema más lejano a la BR</em>
+                                    Base Rebelde no descubierta:  sistema Rebelde con mayor VP > sistema Rebelde con puntuación <span class="symbol">A</span> más favorable<br>
+                                    <em>Nota: mover el mayor numero posibel de unidades de un sistema en una región con el menor número de PBRs </em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Droide interrogador">
+                                  <div class="col-2">
+                                    Droide interrogador
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">C</span> más favorable >
+                                    Lider Rebelde capturado con mayor puntuación de habilidad <br>
+                                    <em>Nota: si se completa con éxito, el Imperio obtiene todas las cartas de PBRs del
+                                    mazo de sonda excepto 3, a elección del jugador Rebelde. Si quedan 3 o menos cartas de PBRs en el mazo, la misión no se juega (se roba otra) </em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="El miedo los mantendrá en orden">
+                                  <div class="col-2">
+                                    El miedo los mantendrá en orden
+                                  </div>
+                                  <div class="col-2">
+                                      Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema con EM, SDE o DE en la región con sistemas rebeldes de mayor VP. Ganar leadltad en sistemas rebeldes con mayor VP >
+                                    Sistema con EM, SDE o DE en la región con sistemas sybyugados de mayor VP. Ganar leadltad en sistemas rebeldes/subyugados con mayor VP>
+                                    Sistema con EM, SDE o DE en la región con sistemas de mayor VP. Ganar leadltad en sistemas rebeldes/subyugados/neutrales no subyugadors con mayor VP.
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Lanzamiento de droides sonda">
+                                  <div class="col-2">
+                                    Lanzamiento de droides sonda
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema con un lider imperial presente >
+                                    Sistema con menor VF
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Nos esforzaremos">
+                                  <div class="col-2">
+                                    Nos esforzaremos
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema imperial de mayor VP<br>
+                                    <em>Nota: se eligen unidades de mayor VF, con preferencia por casilla 3 de la cola</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Propaganda imperial">
+                                  <div class="col-2">
+                                    Propaganda imperial
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema en la región con mayor número de sistemas Rebeldes >
+                                    Sistema en la reguión con mayor VF Rebelde
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Recuperar los planos">
+                                  <div class="col-2">
+                                    Recuperar los planos
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">A</span> más favorable >
+                                    Lider Rebelde capturado con mayor puntuación de habilidad<br>
+                                    <em>Nota: si se completa con éxito, coge la carta de objetivos con mayor
+                                    puntuación de reputación de la mano del jugador rebelde y colócala en la parte inferior del mazo de objetivos.</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Seducido por el lado oscuro">
+                                  <div class="col-2">
+                                    Seducido por el lado oscuro
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Luke Skwalker >
+                                    Lider Rebelde capturado con mayor puntuación de habilidad >
+                                    Lider Rebelde capturado en el sistema con puntuación de habilidad más favorable (se cuentan todos los iconos)
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Sonda de largo alcance">
+                                  <div class="col-2">
+                                    Sonda de largo alcance
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    PBR más alejada de una sistema imperial.<br>
+                                    Nota: si el PBR no contiene a la BR, el imperio obtiene
+                                    la carta de sonda del sistema (y se baraja el mazo). Si el PBR
+                                    contiene a la BR, el imperio obitiene las cartas de sonda de las
+                                    restantes PBRF (y se baraja el mazo)</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Acabar con los retrasos">
+                                  <div class="col-2">
+                                    Acabar con los retrasos
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Sistema Imperial con mayor VP >
+                                    Sistema Imperial con producción más rápida
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Acuerdos comerciales">
+                                  <div class="col-2">
+                                    Acuerdos comerciales
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Sistema rebelde con mayor VP >
+                                    Sistema rebelde con puntuación <span class="symbol">D</span> más favorable >
+                                    Sistema con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Baliza señalizadora">
+                                  <div class="col-2">
+                                    Baliza señalizadora
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado con mayor puntuación de habilidad >
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">A</span> más favorable
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Congelado en carbonita">
+                                  <div class="col-2">
+                                    Congelado en carbonita
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado con mayor puntuación de habilidad >
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">A</span> más favorable
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Demostración de poder">
+                                  <div class="col-2">
+                                    Demostración de poder
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Sistema rebelde con mayor VP
+                                    Sistema rebelde con puntuación <span class="symbol">D</span> más favorable
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Interceptar transmisión">
+                                  <div class="col-2">
+                                    Interceptar transmisión
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Sistema Rebelde con puntuación <span class="symbol">C</span> más favorable >
+                                    Sistema Rebelde con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Interrogatorio">
+                                  <div class="col-2">
+                                    Interrogatorio
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">A</span> más favorable >
+                                    Lider Rebelde capturado con mayor puntuación de habilidad<br>
+                                    <em>Nota: si se completa con éxito, descarta una de objetivos al azar de la mano del jugador Rebelde</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Programa de armas secretas">
+                                  <div class="col-2">
+                                    Programa de armas secretas
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base)
+                                  </div>
+                                  <div class="col">
+                                    Sistema Imperial con un líder Imperial presente >
+                                    Sistema Imperial con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Construir estrella de la muerte">
+                                  <div class="col-2">
+                                    Construir estrella de la muerte
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    PBR aleatoria
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Contruir fábrica">
+                                  <div class="col-2">
+                                    Contruir fábrica
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Sistema imperial con mayor VP >
+                                    Sistema imperial saboteado
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Constuir super destructor estelar">
+                                  <div class="col-2">
+                                    Constuir super destructor estelar
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Sistema imperial con puntuación <span class="symbol">B</span> más favorable <br>
+                                    <em>Nota: Si se juega con la expansión El Auge del Imperio, asigna 2 líderes a esta misión si el número de líderes
+                                    en la reserva es superior al de misiones sin revelar en el mazo de ronda</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Superlaser operativo">
+                                  <div class="col-2">
+                                    Superlaser operativo
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta: Base Rebelde<br>
+                                    Base Rebelde no descubierta: PBR aleatoria > Sistema Rebelde<br>
+                                    <em>Nota: si la estrella de la muerte no está en ningúno de estos sistemas, la carta no se juega (roba otra)</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Supervisar proyecto">
+                                  <div class="col-2">
+                                    Supervisar proyecto
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta: Sistema más proximo a la base rebelde<br>
+                                    Base rebelde no descubierta: Sistema imperial con mayor VP.<br>
+                                    <em>Nota: despliega la unidad con mayor VF, preferencia a unidades en la casilla 2</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Administración brillante">
+                                  <div class="col-2">
+                                    Administración brillante
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Sistema Imperial con mayor VP
+                                    Sistema Imperial con producción más rápida
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="De acuerdo con mis designios">
+                                  <div class="col-2">
+                                    De acuerdo con mis designios
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    -
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Es tu destino">
+                                  <div class="col-2">
+                                    Es tu destino
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Se usa la carta en la primera oportunidad que surja (Líder Rebelde rescatado).
+                                    Si hay más de 1 Líder Rebelde asignado a la misión, se captura al Líder con mayor puntuación de habilidad.
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Seguir su rastro">
+                                  <div class="col-2">
+                                    Seguir su rastro
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Líder Imperial con mayor puntuación de habilidad >
+                                    Líder Imperial con mayor número de iconos de habilidad distintos >
+                                    Líder Imperial con mayor puntuación de táctica
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="¿Boba Fett?¿Dónde?">
+                                  <div class="col-2">
+                                    ¿Boba Fett?¿Dónde?
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Sistema Imperial con mayor VP >
+                                    Sistema Imperial con producción más rápida
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Apoyo público">
+                                  <div class="col-2">
+                                    Apoyo público
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    BR revelada: sistema Imperial más próximo a la BR >
+                                    Sistema Imperial con mayor flota<br>
+                                    BR no revelada: sistema imperial con mayor VP > Sistema Imperial con producción más rápida
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Apuntar al generador">
+                                  <div class="col-2">
+                                    Apuntar al generador
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Solo se usa si en el combate hay estructuras. Prioridad:  cañón de iones > estructura al azar
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Cogerlos por sorpresa">
+                                  <div class="col-2">
+                                    Cogerlos por sorpresa
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    BR >
+                                    PBR >
+                                    Sistema con flotas de mayor VF combinada adyacentes
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="En perfecto y completo funcionamiento">
+                                  <div class="col-2">
+                                    En perfecto y completo funcionamiento
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Nave Rebelde con mayor VF >
+                                    Nave Rebelde al azar
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Impedir que escapen">
+                                  <div class="col-2">
+                                    Impedir que escapen
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Se usa en la primera ocasión que surja (combate)
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Información fiable">
+                                  <div class="col-2">
+                                    Información fiable
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col d-none" id="Base-Battles-Table">
+                                    Durante este combate el jugador Rebelde solo 1 carta por escenario de batalla,
+                                    ignorando las puntuaciones de táctica de Líder Rebelde.
+                                  </div>
+                                  <div class="col variant" id="ROTE-Battles-Table">
+                                    Durante este combate, al inicio de cada ronda,
+                                    el Imperio retira de los mazos de Táctica las cartas de unidades que no participen en el combate y
+                                    roba de entre las restantes.
+                                    <span class="swdestiny" style="font-size: large">L</span>
+                                    <!--span class="material-icons">dark_mode</span-->
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Maniobra inesperada">
+                                  <div class="col-2">
+                                    Maniobra inesperada
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Si está disponible, se asigna de forma prioritaria uno de los líderes de esta carta a la siguiente
+                                    misión que revele el Imperio y pueda jugarse.
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Misión de reconocimiento">
+                                  <div class="col-2">
+                                    Misión de reconocimiento
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    BR revelada: sistema de la BR<br>
+                                    BR no revelada: sistema Rebelde con mayor VP > Sistema Rebelde con producción más rápida
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Ofrecer recompensa">
+                                  <div class="col-2">
+                                    Ofrecer recompensa
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Cuando esta carta está en la mano Imperial, Jabba el Hutt se escoge como líder prioritario para
+                                    llevar a cabo las misiones Imperiales. Se usa la carta en la primera ocasión que surja. Se coloca el
+                                    modificador de estado al Líder Rebelde con mayor puntación de habilidad > mayor puntación de táctica
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Preparado para la acción">
+                                  <div class="col-2">
+                                    Preparado para la acción
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Se juega en la primera ocasión que sea posible (combate con uno de los líderes de la
+                                    carta disponible en la reserva). Si están ambos Líderes, se escoge el que mayor puntuación de
+                                    táctica en el escenario con mayor VF de las unidades Rebeldes.
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Rumores locales">
+                                  <div class="col-2">
+                                    Rumores locales
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Se escoge al azar una región con una PRB. El imperio obtiene la carta de Sonda del sistema
+                                    lejano que esté en esa región.
+                                    <em>Nota: Si la BR está revelada, la carta no se juega hasta que le Rebelión establezca una nueva base</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="Según lo planeado">
+                                  <div class="col-2">
+                                    Según lo planeado
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Roba cartas de proyecto hasta que se obtenga una que se pueda llevar a cabo inmediatamente
+                                  </div>
+                              </div>
+                              <div class="row cardlist" title="El corazón del Imperio">
+                                  <div class="col-2">
+                                    El corazón del Imperio
+                                  </div>
+                                  <div class="col-2">
+                                    Objetivo
+                                  </div>
+                                  <div class="col">
+                                    Esta carta se retira del juego durante la preparación de la partida
+                                  </div>
+                              </div>
+                              <!-- ROTE -->
+                              <!--div class="row cardlist d-none" title="ROTE" id="ROTE-Setup-Table"-->
+                              <div class="row cardlist rote" title="ROTE" id="ROTE-Setup-Table">
+                                  <div class="col" style="background-color:#B0C4DE">
+                                      El Auge del Imperio
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Asegurar los planos" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Asegurar los planos
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta:sistema de la Base ReBelde<br>
+                                    Base Rebelde no descubierta: PBR aleatoria
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Castigo ejemplar" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Castigo ejemplar
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde con mayor puntuación de habilidad >
+                                    Lider Rebelde en el sistema con puntuación de habilidad más favorable contando todos los iconos de habilidad.
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Desacreditar a la rebelión" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Desacreditar a la rebelión
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema saboteado con un lider Imperial presente >
+                                    Sistema saboteado con menor VF
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Hacerlos salir" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Hacerlos salir
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (Líder)
+                                  </div>
+                                  <div class="col">
+                                    Sistema con unidades imperiales con puntuación <span class="symbol">A</span> más favorable >
+                                    Sistema con mayor VF imperial
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Subversion" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Subversion
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto base y ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Esta carta se retira del juego durante la preparación de la partida
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Aprovechar una debilidad" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Aprovechar una debilidad
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en el sistema con puntuación <ops> más favorable >
+                                    Lider Rebelde capturado con mayor puntuación de habilidad<br>
+                                    <em>Nota: si se completa con éxito, roba una de objetivos al azar de la mano del jugador Rebelde y colócala en la parte superior del mazo de objetivos</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Ascenso" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Ascenso
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Sistema Imperial con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Contratar mercenarios" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Contratar mercenarios
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    PBR aleatoria
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Datos robados" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Datos robados
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Sistema Rebelde con puntuación <span class="symbol">C</span> más favorable >
+                                    Sistema Rebelde con mayor VP<br>
+                                    <em>Nota: descarta una carta de misión (no inicial)  al azar de la
+                                    mano del jugador Rebelde. Si sale una carta de misión inicial, roba otra,
+                                    hasta obtener una que se pueda descartar</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Despliegue" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Despliegue
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    PBR más alejado de un sistema imperial >
+                                    Sistema con puntuación <span class="symbol">D</span> más favorable >
+                                    Sistema con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Doblegar su voluntad" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Doblegar su voluntad
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en el sistema con puntuación de habilidad más favorable (todos los iconos).
+                                    Si se completa con éxito, elige una región con sistemas lejanos no explorados.
+                                    Si fracasa, la carta se colocará en la parte superior del mazo de misiones principales
+                                    tras barajarlo en la fase de recuperación, después de colocar las cartas de proyecto obtenidas en la ronda.
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="El poder el imperio" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    El poder el imperio
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Sistema con Estrella de la muerte y menor VF >
+                                    Sistema con Estrella de la muerte parcialmente construida >
+                                    Sistema con bunker y menor VF<br>
+                                    <em>Nota: solo se asigna un Líder a esta misión</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Mensaje del alto mando" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Mensaje del alto mando
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Sistema rebelde con mayor VP >
+                                    Sistema rebelde con puntuación <span class="symbol">D</span> más favorable >
+                                    Sistema con mayor VP
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Nosotros somos el cebo" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Nosotros somos el cebo
+                                  </div>
+                                  <div class="col-2">
+                                    Misión Imperial (conjunto ROTE)
+                                  </div>
+                                  <div class="col">
+                                    Lider Rebelde capturado en sistema con mayor VF imperial >
+                                    Lider Rebelde capturado en el sistema con puntuación <span class="symbol">C</span> más favorable<br>
+                                    <em>Nota: elige las unidades de la base rebelde con mayor VF del escenario con más unidades</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Desarrollo de interdictor" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Desarrollo de interdictor
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Sistema imperial con puntuación <span class="symbol">B</span> más favorable<br>
+                                    <em>Nota: Aisgna 2 líderes a esta misión si el número de líderes en la reserva es superior al de misiones sin revelar en el mazo de ronda</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Un unico encendido del reactor" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Un unico encendido del reactor
+                                  </div>
+                                  <div class="col-2">
+                                    Proyecto
+                                  </div>
+                                  <div class="col">
+                                    Base Rebelde descubierta: Base Rebelde<br>
+                                    Base Rebelde no descubierta: PBR aleatoria > Sistema Rebelde<br>
+                                    <em>Nota: si la estrella de la muerte no está en ningúno de estos sistemas, la carta no se juega (roba otra del mazo de misiones principales)</em>
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Ascenso inmediato" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Ascenso inmediato
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <div class="col">
+                                    Si el Almirante Motti no ha sido reclutado, se recluta y se coloca junto con el
+                                    Gran Moff Tarkin en el sistema Imperial con mayor VP > Sistema Imperial con producción más rápida<br>
+                                    Si el Almirante Motti ya estaba reclutado, roba una carta de Acción Inicial Imperial.
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Más peligroso de lo que creemos" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Más peligroso de lo que creemos
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Imperial
+                                  </div>
+                                  <!--div class="col">
+                                    Si se juga con las Cartas de Táctica del juego base (el Imperio no las usa),
+                                    se añaden 3 puntos a una de las puntuaciones de táctica del Líder Imperial en el combate
+                                    (se elige al azar entre Táctica Espacial o Terrestre) <br>
+                                    Si se juega con Cartas de Táctica Avanzada, se elige al azar un escenario de la batalla
+                                    y se roban 3 cartas de Táctica Avanzada Imperiales en lugar de 1. Las 3 se puede usar en la misma ronda de combate.
+                                  </div-->
+                                  <div class="col d-none" id="Base-Battles-Table">
+                                    Se añaden 3 puntos a una de las puntuaciones de táctica del Líder Imperial en el combate
+                                    (se elige al azar entre Táctica Espacial o Terrestre)
+                                  </div>
+                                  <div class="col variant" id="ROTE-Battles-Table">
+                                    Se elige al azar un escenario de la batalla y se roban 3 cartas de Táctica Avanzada Imperiales en lugar de 1.
+                                    Las 3 se puede usar en la misma ronda de combate.
+                                    <span class="swdestiny" style="font-size: large">L</span>
+                                    <!--span class="material-icons">dark_mode</span-->
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Ambiciones de poder" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Ambiciones de poder
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    -
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Instalaciones secretas" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Instalaciones secretas
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Si el imperio tiene una Estrella de la Muerte o Estrella de la Muerte en Construcción,
+                                    juega esta carta en ese sistema. Si no, roba al azar 3 cartas de Sonda de la mano imperial.
+                                    La carta se juega en el sistema obtenido: Sistema imperial con mayor VP >	Sistema Rebelde con menor VF terrestre<br>
+                                    Obtienes un búnquer de control de escudo y una unidad triángulo al azar en el sistema escogido
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Peinar la zona" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Peinar la zona
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Al final de la fase de mando, el Imperio roba cartas al azar de su mano de Sondas
+                                    hasta que obtenga la de un sistema con un Líder Rebelde. El Líder Rebelde en el sistema
+                                    con mayor puntuación de habilidad > mayor puntuación de táctica es capturado y la carta de acción se descarta.
+                                    Si no se captura ningún Líder, la carta se mantiene para la siguiente ronda.
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Por orden de Lord Vader" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Por orden de Lord Vader
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Imperial
+                                  </div>
+                                  <div class="col">
+                                    Las 3 primeras cartas del mazo de Objetivos se ordenan con las de mayor reputación debajo.
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Órdenes falsas" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Órdenes falsas
+                                  </div>
+                                  <div class="col-2">
+                                    Acción inicial Rebelde
+                                  </div>
+                                  <div class="col">
+                                    La primera carta de Mazo de Ronda se devuelve a su mazo correspondiente (misiones Iniciales, Principales o Proyectos)
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="¡Es una trampa!" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    ¡Es una trampa!
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Rebelde
+                                  </div>
+                                  <div class="col d-none" id="Base-Battles-Table">
+                                    Se ignoran las puntuaciones de táctica del Líder Imperial durante la primera ronda de combate
+                                    (el Imperio no fuerza al jugador Rebelde a volver a tirar los éxitos)
+                                  </div>
+                                  <div class="col variant" id="ROTE-Battles-Table">
+                                    El Imperio no roba cartas de Táctica Avanzada durante la primera ronda de combate.
+                                    <span class="swdestiny" style="font-size: large">L</span>
+                                    <!--span class="material-icons">dark_mode</span-->
+                                  </div>
+                              </div>
+                              <div class="row cardlist rote" title="Operación independiente" id="ROTE-Setup-Table">
+                                  <div class="col-2">
+                                    Operación independiente
+                                  </div>
+                                  <div class="col-2">
+                                    Acción Rebelde
+                                  </div>
+                                  <div class="col">
+                                    Si la Base Rebelde está revelada, las unidades del sistema subyugado se mueven al sistema imperial más próximo a la BR <br>
+                                    Si la Base Rebelde no está revelada, se mueven al sistema Imperial con mayor VP > sistema Imperial con producción más rápida.
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D6 & D8-->
+            <div class="modal fade" id="d6modal" tabindex="-1" aria-labelledby="D6" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                Tirada de dados
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="dicepanelclosebtn"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <img src="./resources/images/D6_1.png" alt="" id="d6" />
+                        </div>
+                        <div class="modal-body d-flex">
+                            <img src="./resources/images/D8_1.png" alt="" id="d8" />
+                        </div>
+                        <div class="modal-footer">
+                          <a class="link-danger d6button" href="#" type="button" id="reroll" data-bs-toggle="tooltip" data-bs-placement="right"
+                          title="Si al pulsar no aparece la ventana con la nueva tirada, refresca el navegaor con F5">
+                            Volver a tirar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- D6 -
+            <div class="modal fade" id="d6modal" tabindex="-1" aria-labelledby="D6" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                Tirada D6!
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <img src="./resources/images/D6_1.png" alt="" id="d6" />
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- D8
+            <div class="modal fade" id="d8modal" tabindex="-1" aria-labelledby="D8" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                Tirada D8!
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <img src="./resources/images/D8_1.png" alt="" id="d8" />
+                        </div>
+                        <div class="modal-footer"></div>
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- Build Queue -->
+            <div class="modal fade" id="buildqueuelist" tabindex="-1" aria-labelledby="BuildQueue" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                Cola de Construcción
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body container-fluid">
+                            <h6 class="buildrowheader">Imperio</h6>
+                            <div class="row buildrowempire">
+                                <div class="col-1 fw-bold">3:</div>
+                                <div class="build triangle d-none" id="build-emp-ground-tri-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-ground-cir-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-ground-squ-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-emp-space-tri-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-space-cir-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-space-squ-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <div class="row buildrowempire">
+                                <div class="col-1 fw-bold">2:</div>
+                                <div class="build triangle d-none" id="build-emp-ground-tri-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-ground-cir-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-ground-squ-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-emp-space-tri-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-space-cir-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-space-squ-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <div class="row buildrowempire">
+                                <div class="col-1 fw-bold">1:</div>
+                                <div class="build triangle d-none" id="build-emp-ground-tri-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-ground-cir-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-ground-squ-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-emp-space-tri-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-emp-space-cir-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-emp-space-squ-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <p></p>
+                            <h6 class="buildrowheader">Rebelión</h6>
+                            <div class="row buildrowrebel">
+                                <div class="col-1 fw-bold">3:</div>
+                                <div class="build triangle d-none" id="build-rebel-ground-tri-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-ground-cir-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-ground-squ-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-rebel-space-tri-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-space-cir-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-space-squ-3">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <div class="row buildrowrebel">
+                                <div class="col-1 fw-bold">2:</div>
+                                <div class="build triangle d-none" id="build-rebel-ground-tri-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-ground-cir-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-ground-squ-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-rebel-space-tri-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-space-cir-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-space-squ-2">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <div class="row buildrowrebel">
+                                <div class="col-1 fw-bold">1:</div>
+                                <div class="build triangle d-none" id="build-rebel-ground-tri-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-ground-cir-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-ground-squ-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build triangle d-none" id="build-rebel-space-tri-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build circle d-none" id="build-rebel-space-cir-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                                <div class="build square d-none" id="build-rebel-space-squ-1">
+                                    <div class="build__number">0</div>
+                                </div>
+                            </div>
+                            <div class="modal-footer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Production Value Guide --> <!-- scope increased to definitions -->
+            <div class="modal fade" id="productionvalueguide" tabindex="-1" aria-labelledby="productionvalueguideLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="productionvalueguideLabel">
+                                Definiciones
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p class="text-small">
+                              <strong class="maincolour">Cartas jugables:</strong>
+                              Cartas de misión o acción que el Imperio puede poner en juego. Cuando las condiciones de la partida,
+                              los Líderes disponibles o cualquier otro factor impide que se juege una carta (por ejemplo, se requiere
+                              un Líder Rebelde capturado y no hay ninguno), esa carta se considera <strong>no jugable</strong>.
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">Líder más capacitado:</strong>
+                              Cuando el imperio emprende o se opone a una misión, asignará el líder más adecuado
+                              para llevarla a cabo, siguiendo los siguientes criterios en orden de preferencia:
+                            <ul>
+                              <li>Líder representado en la carta de Misión (2 éxitos adicionales)</li>
+                              <li>Líder con mayor número de iconos de habilidad del tipo requerido por la misión</li>
+                              <li>En caso de haber varios Líderes con la misma cantidad de iconos, se escoge entre
+                                  ellos el que tenga menor número de habilidades distintas</li>
+                              <li>Si el empate persiste, se escoge al Líder que cumpla los criterios anteriores con
+                            menor puntuación total de Táctica (suma de los valores de táctica espacial y terrestre)</li>
+                              <li>Si es necesario, se escoge un líder al azar<br>
+                              <em>Nota: Las habilidades menores de los Líderes de la expansión se cuentan como medio icono.
+                              En las misiones que se resuelven, el Imperio asignará el Líder que tenga el menor número de
+                              iconos de habilidad del tipo requerido (siempre que sea igual o superior al requisito de la
+                              carta de Misión). En caso de empate, asignará el Líder con menor Puntuación de habilidad de
+                              entre los que sean aptos. Si el empate persiste, se elige aleatoriamente.</em>
+                            </li>
+                          </ul>
+
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">MR y MF:</strong>
+                              posiciones en el Medidor de Tiempo de los marcadores de Reputación y Tiempo respectivamente.
+                              Cuando la diferencia MR-MT sea ≤ 5, el Imperio modifica su estrategia para acelerar la búsqueda de la Base Rebelde.
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">Posible Base Rebelde (PBR):</strong>
+                              Cualquier sistema lejano cuya carta de sonda no está en la mano
+                              del jugador Imperial. Si la carta de sonda de un sistema lejano
+                              vuelve al mazo de sondas, el sistema vuelve a ser una PRB.
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">Puntuación de habilidad:</strong>
+                              Para un Líder, la suma de todos sus iconos de habilidad, independientemente del tipo.
+                              Las habilidades menores de los Líderes de la expansión se cuentan como medio icono.
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">Puntuación de habilidad X más favorable:</strong>
+                              Para un Sistema, diferencia entre las puntuaciones de habilidad del tipo X de los Líderes Imperiales
+                              y Rebeldes presentes en un sistema en un determinado momento. Representa el sistema donde una tirada de
+                              oposición de una determinada habilidad X tendrá más dados favorables al jugador imperial.
+                              Se tienen en cuenta los líderes que ya estén presentes en el sistema antes de enviar un líder para llevar a cabo una misión.
+                          </p>
+                          <p class="text-small">
+                              <strong class="maincolour">Puntuación de táctica:</strong>
+                              Para un Líder, la suma de sus valores de Táctica Espacial y Táctica Terrestre.
+                          </p>
+
+                            <p class="text-small">
+                                <strong class="maincolour">Valor de producción (VP):</strong>
+                                El valor de producción es igual
+                                <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#strengthguide">valor de fuerza (VF)</a>
+                                de todas las unidades que puede producir un Sistema.
+                                Cuenta todos los iconos de producción, incluyendo
+                                los Sistemas subyugados
+                                (por ejemplo, Mon Calamari tiene un VP de 4).
+                                Los sistemas saboteados tienen un valor de producción de 0
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Strength List -->
+            <div class="modal fade" id="strengthguide" tabindex="-1" aria-labelledby="strengthguideLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="strengthguideLabel">
+                                Valores de fuerza (VF)
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-small">
+                            <ul style="list-style-type: none">
+                                El valor de fuerza de las unidades afecta a las decisiones del Imperio:
+                                <p></p>
+                                <li>
+                                    <strong class="maincolour">Unidades</strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-triangle-fill"
+                                        viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z" />
+                                    </svg>
+                                    <strong class="maincolour">: FUERZA 1</strong>
+                                    (Ala-X, Ala-Y, Transporte Rebelde, Ala-U, Caza TIE, Castigador TIE, Tanque de asalto, soldados de Asalto y Rebeldes y vanguardia Rebelde)
+                                </li>
+                                <li>
+                                    <strong class="maincolour">Unidades</strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-circle-fill"
+                                        viewBox="0 0 16 16">
+                                        <circle cx="8" cy="8" r="8" />
+                                    </svg>
+                                    <strong class="maincolour">: FUERZA 2</strong>
+                                    (Aerodeslizador, Corbeta Corelliana, Fragata Nebulon-B, Portacazas de asalto, torreta, bunker de escudo, y AT-ST)
+                                </li>
+                                <li>
+                                    <strong class="maincolour">Unidades</strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-square-fill"
+                                        viewBox="0 0 16 16">
+                                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2z" />
+                                    </svg>
+                                    <strong class="maincolour">: FUERZA 3</strong>
+                                    (Crucero Mon Calamari, Destructor Estelar, AT-AT, generador de escudos, cañon de iones)
+                                </li>
+                                <li>
+                                    <strong class="maincolour">Unidades</strong>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-patch-minus-fill"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zM6 7.5h4a.5.5 0 0 1 0" />
+                                    </svg>
+                                    <strong class="maincolour">: FUERZA 4</strong>
+                                    (Super Destructor Estelar, Interdictor, Estrella de la Muerte)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yes/No Box -->
+            <div class="modal fade" id="yesNo" tabindex="-1" aria-labelledby="YesNo" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="remotesystems">
+                                ¿Estás seguro?
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <p>¿Reiniciar Partida?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="resetGame()" data-bs-dismiss="modal">
+                                SI
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                NO
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Box -->
+            <div class="modal fade" id="messageBox" tabindex="-1" aria-labelledby="MessageBox" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="messageBoxTitle"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex">
+                            <p id="messageBoxBody"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-none" id="ROTE-check" title="ROTE-enabled"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+        <script src="./resources/js/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#dismissbutton, .overlay").on("click", function () {
+                    $("#sidebar").removeClass("show");
+                    $(".overlay").removeClass("show");
+                });
+
+                $("#sidebarToggle").on("click", function () {
+                    $("#sidebar").addClass("show");
+                    $(".overlay").addClass("show");
+                });
+
+            });
+
+        </script>
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(function (registration) {
+                        console.log('Service worker registration succeeded: ', registration);
+                    })
+                    .catch(function (error) {
+                        console.error('Service worker registration failed: ', error);
+                    });
+            } else {
+                console.log('Service workers are not supported');
+            }
+
+        </script>
+    </body>
+
+</html>
