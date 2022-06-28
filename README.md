@@ -16,8 +16,8 @@ Instrucciones de la variante (BGG):
 Enlace público: https://hipher.github.io/SWR_SoloVariant/
 
 --------
-Esta web se basa en el trabajo original de OZ10 y Vortillion
-Versión original - https://vortilion.github.io/SWR_SoloVariant/
+Esta web se basa en el trabajo original de OZ10 y Vortillion - 
+Versión original:  https://vortilion.github.io/SWR_SoloVariant/
 
 Hilo de la variante original en la BGG: https://boardgamegeek.com/thread/1697801/solitaire-variant-empire-attacks-revised-version-1
 
