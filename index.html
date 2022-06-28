@@ -631,7 +631,7 @@
                                 </div>
 
                                 <div class="callout-empire">
-                                    <h5>Crear Mazos de Misión</h5>
+                                    <h5>Crear Mazo de Ronda</h5>
                                     <div id="createmissiondeck">
                                         <p>
                                             Roba el número indicado de cartas de Misión
@@ -719,7 +719,7 @@
                                         <span class="aurekbesh" style="font-size: large">b</span>
                                     </div>
                                     <p class="d-none" id="Base-ActionCardExecution">
-                                        El Imperio juega todas las cartas de Acción
+                                        El Imperio juega todas las cartas de Acción de Asignación
                                         <a class="link-danger text-medium" href="#" data-bs-toggle="modal" data-bs-target="#productionvalueguide"><strong class="text-medium">jugables</strong></a>
                                         durante las Fase de Asignación
                                     </p>
@@ -752,14 +752,14 @@
                                                 El jugador Rebelde puede establecer
                                                 una nuava Base Rebelde de forma similar
                                                 al juego normal. Primero, devuelve todas
-                                                las cartas de Sonda de sistems lejanos
+                                                las cartas de Sonda de sistemas lejanos
                                                 no controlados por el Imperio (sin unidades
                                                 terrestres presentes) de la mano Imperial
                                                 al mazo de Sondas, y baraja el mazo.
                                                 El jugador Rebelde roba el número habitual
                                                 de cartas de Sonda, hasta un máximo igual a
-                                                la diferencia entre el marcador de tiempo el
-                                                de reputación. Puede establecer la nueva Base
+                                                la diferencia entre el marcador de reputación y
+                                                el de tiempo. Puede establecer la nueva Base
                                                 Rebelde en cualqueir sistema lejano obtenido.
                                                 El Imperio retoma la búsqueda de la Base Rebelde
                                                 como antes de que se descubriera. La carta de misión
@@ -777,8 +777,8 @@
                                                 Solo si hay más Líderes en la reserva que
                                                 misiones no reveladas en el <em>Mazo de Ronda</em>,
                                                 el Imperio puede ordernar (según una tirada
-                                                <a class="link-danger d6button" href="#" type="button">1D6</a> con
-                                                resultado 4+) que su Líder más capacitado
+                                                <a class="link-danger d6button" href="#" type="button">1D8</a> con
+                                                resultado 5+) que su Líder más capacitado
                                                 se oponga a una Misión Rebelde. Si ningún
                                                 Líder tiene los iconos de habilidad requeridos,
                                                 el Líder con el menor número total de iconos
@@ -803,17 +803,18 @@
 
                                     <div class="callout-empire">
                                         <h5>Jugar Misiones de Ronda</h5>
-                                        <p class="d-none" id=Base-RandomPlayMissions>
+                                        <p class="d-none" id="Base-RandomPlayMissions">
                                             El Imperio <strong>siempre</strong>
                                             completa las <em class="text-medium">Misiones de Ronda</em>
                                             antes de activar sistemas para moverse.
                                         </p>
-                                        <div class="variant" id=var-RandomPlayMissions data-bs-toggle="tooltip"
+                                        <div class="variant" id="var-RandomPlayMissions" data-bs-toggle="tooltip"
                                         data-bs-placement="right" title="Esta opción evita que el Imperio se centre en las misiones y
                                         amplia las posibilidades de que se mueba en busca de la Base Rebelde">
                                           <p>
-                                            En cada turno, el Imperio decide al azar (1D8) si juega una <em class="text-medium">Misión de Ronda</em>
-                                            o si activar un sistemas para moverse en busca de la Base Rebelde.
+                                            En cada turno, el Imperio decide al azar <a class="link-danger d6button" href="#" type="button">(1D8)</a> 
+                                              si juega una <em class="text-medium">Misión de Ronda</em> (resultado 1-4)
+                                            o si activar un sistemas para moverse en busca de la Base Rebelde (resultado 5+).
                                           </p>
                                           <!--span class="material-icons">science</span-->
                                           <span class="aurekbesh" style="font-size: large">a</span>
@@ -844,10 +845,9 @@
                                                 Una vez que el resto de <em class="text-medium">Misiones de Ronda</em>
                                                 se hayan jugado, intenta resolver las misiones que no
                                                 se pudieron jugar con los Líderes reservados.
-                                                Su la misión aún no se puede jugar, roba otra misión del
+                                                Si la misión sigue sin poderse jugar, roba otra carta de misión del
                                                 mazo correspondiente (Misiones Iniciales o Principales)
-                                                y coloca la carta no jugada en la parte inferior
-                                                de su mazo
+                                                y coloca la carta no jugada en la parte inferior de su mazo
                                             </p>
                                             <!--span class="material-icons">science</span-->
                                             <span class="aurekbesh" style="font-size: large">s</span>
@@ -890,13 +890,20 @@
                                 </div>
                                 <div class="callout-empire">
                                     <h5>Activar Sistemas</h5>
-                                    <p>
+                                    <p class="d-none" id="Base-RandomPlayMissions">
                                         Una vez llevadas a cabo todas las misiones
                                         del Mazo de Ronda, el Imperio puede usar sus
                                         Líderes para activar Sistemas (mover unidades)
                                         hacia la PRB más próxima o la Base Rebelde si se
                                         ha descubierto.
                                     </p>
+                                    <div class="variant" id="var-RandomPlayMissions">
+                                        <p>
+                                            Con resultados 5+ de una tirada D8, el Imperio usar sus Líderes para activar Sistemas (mover unidades)
+                                            hacia la PRB más próxima o la Base Rebelde si se ha descubierto.
+                                        </p>                                           
+                                        <span class="aurekbesh" style="font-size: large">a</span>
+                                    </div>
                                     <div class="callout">
                                         <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#movementrules">
                                             <h5>Reglas de Movimiento</h5>
