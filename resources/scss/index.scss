@@ -62,6 +62,7 @@ $diceicon-font: "DiceFont";
 .font-regular {
     font-family: $sw-font;
     font-weight: 400;
+    display:none;
 }
 
 .symbol {
@@ -131,24 +132,27 @@ body {
 }
 
 .mainheader {
-    @include font-size-pxem(16px);
+    @include font-size-pxem(20px);
 }
 
 @include breakpoint(sm) {
     .mainheader {
-        @include font-size-pxem(20px);
+        @include font-size-pxem(24px);
     }
 }
 
 @include breakpoint(md) {
     .mainheader {
-        @include font-size-pxem(24px);
+        @include font-size-pxem(30px);
     }
 }
 
 @include breakpoint(lg) {
     .mainheader {
         @include font-size-pxem(30px);
+    }
+    .font-regular {
+     display:block;
     }
 }
 
