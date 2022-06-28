@@ -11595,21 +11595,21 @@ body {
 }
 
 .mainheader {
-  font-size: 16px;
-  font-size: 1rem;
+  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 @media only screen and (min-width: 576px) {
   .mainheader {
-    font-size: 20px;
-    font-size: 1.25rem;
+    font-size: 24px;
+    font-size: 1.5rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .mainheader {
-    font-size: 24px;
-    font-size: 1.5rem;
+    font-size: 30px;
+    font-size: 1.875rem;
   }
 }
 
