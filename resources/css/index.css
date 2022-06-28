@@ -11527,6 +11527,7 @@ fieldset:disabled .btn {
 .font-regular {
   font-family: "Goldman", serif;
   font-weight: 400;
+  display:none;
 }
 
 .symbol {
@@ -11617,7 +11618,12 @@ body {
     font-size: 30px;
     font-size: 1.875rem;
   }
+  .font-regular {
+     display:block;
+  }
 }
+
+
 
 #footer {
   background-color: #e9ecef;
