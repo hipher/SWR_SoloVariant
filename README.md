@@ -1,5 +1,5 @@
 # SWR_SoloVariant
-Instrucciones inteactivas para la variante en solitario "Ataque Imperial" para Star Wars: Rebellion (variante IA Imperial), basada en la variante en solitaria "Imperial Attack" de por Dave Buonocuore. 
+Instrucciones interactivas para la variante en solitario "Ataque Imperial" para Star Wars: Rebellion, basada en la variante en solitaria "Imperial Attack" de por Dave Buonocuore. 
 
 En esta versión añade la posibilidad de jugar con la expansión El Auge del Imperio, incluido las cartas de la expansión a la lista de decisiones imperiales. 
 Además, incluye algunas variaciones opcionales sobre la variante en solitario original:
