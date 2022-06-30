@@ -673,6 +673,9 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
             setVariants("ReputationTime5");
         }
     } else {
+        if (!promptUserRebelsWithin5) {
+          setVariants("ReputationTime5");
+        }
         promptUserRebelsWithin5 = true;
     }
 }
