@@ -516,9 +516,9 @@ function chkClick(cb) {
 function setVariants(variantName) {
     switch (variantName) {
         case "chkROTE-Units":
-            showHideElement("ROTE-Setup");
-            showHideElement("Base-Setup");
-            showHideElement("ROTE-Setup-Table");
+            showHideElement("ROTE-Setup","#");
+            showHideElement("Base-Setup","#");
+            showHideElement("ROTE-Setup-Table","#");
 
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
@@ -529,47 +529,47 @@ function setVariants(variantName) {
             }
 
             if (document.getElementById("chkROTE-TacticCards").checked) {
-              showHideElement("ROTE-Battles");
-              showHideElement("ROTE-Battles-Table")
-              showHideElement("Base-Battles")
-              showHideElement("Base-Battles-Table");
+              showHideElement("ROTE-Battles","#");
+              showHideElement("ROTE-Battles-Table","#")
+              showHideElement("Base-Battles","#")
+              showHideElement("Base-Battles-Table","#");
             }
             break;
         case "chkROTE-TacticCards":
-            showHideElement("ROTE-Battles");
-            showHideElement("ROTE-Battles-Table")
-            showHideElement("Base-Battles")
-            showHideElement("Base-Battles-Table");
+            showHideElement("ROTE-Battles","#");
+            showHideElement("ROTE-Battles-Table","#")
+            showHideElement("Base-Battles","#")
+            showHideElement("Base-Battles-Table","#");
             break;
         case "chkvar-Movement":
-            showHideElement("var-movement");
-            showHideElement("Base-movement");
+            showHideElement("var-movement","#");
+            showHideElement("Base-movement","#");
             break;
         case "chkvar-Deployment":
-            showHideElement("var-Empiredeploy");
-            showHideElement("Base-Empiredeploy");
+            showHideElement("var-Empiredeploy","#");
+            showHideElement("Base-Empiredeploy","#");
             break;
         case "chkvar-UnPlayableMissions":
-            showHideElement("var-Unplayablemissions");
-            showHideElement("Base-Unplayablemissions");
+            showHideElement("var-Unplayablemissions","#");
+            showHideElement("Base-Unplayablemissions","#");
             break;
         case "chkvar-ActionCardExecution":
-            showHideElement("var-ActionCardExecution");
-            showHideElement("Base-ActionCardExecution");
+            showHideElement("var-ActionCardExecution","#");
+            showHideElement("Base-ActionCardExecution","#");
             break;
         case "chkvar-RandomPlayMissions":
-            showHideElement("var-RandomPlayMissions");
-            showHideElement("Base-RandomPlayMissions");
+            showHideElement("var-RandomPlayMissions","#");
+            showHideElement("Base-RandomPlayMissions","#");
           case "ReputationTime5":
-              showHideElement("HiddenBase-movement");
-              showHideElement("RevealedBase-movement");
+              showHideElement("HiddenBase-movement",".");
+              showHideElement("RevealedBase-movement",".");
         default:
             break;
     }
 }
 
-function showHideElement(id) {
-    document.querySelectorAll("#" + id).forEach((element) => {
+function showHideElement(id,type) {
+    document.querySelectorAll(type + id).forEach((element) => {
         if (element.classList.contains("d-none")) {
             element.classList.remove("d-none");
         } else {
