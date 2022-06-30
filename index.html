@@ -883,14 +883,14 @@
                                         Una vez llevadas a cabo todas las misiones
                                         del Mazo de Ronda, el Imperio puede usar sus
                                         Líderes para activar Sistemas (mover unidades)
-                                        hacia la PRB más próxima o la Base Rebelde si se
+                                        hacia la PBR más próxima o la Base Rebelde si se
                                         ha descubierto.
                                     </p>
                                     <div class="variant" id="var-RandomPlayMissions">
                                         <p>
                                             Con resultados 5+ de una tirada <a class="link-danger d6button" href="#" type="button">1D8</a>
                                             el Imperio usa sus Líderes para activar Sistemas (mover unidades)
-                                            hacia la PRB más próxima o la Base Rebelde si se ha descubierto.
+                                            hacia la PBR más próxima o la Base Rebelde si se ha descubierto.
                                         </p>
                                         <span class="aurekbesh" style="font-size: large">a</span>
                                     </div>
@@ -928,11 +928,8 @@
                                             </div>
                                             <p id="Base-movement">
                                                 Mueve unidades Imperiales por la
-                                                ruta mas corta hacia el sistema lejano
-                                                no explorado (carta de Sonda no obtenida)
-                                                más próximo [PRB]. El Imperio atacará
-                                                a cualquier unidad Rebelde que encuentre
-                                                en el camino.
+                                                ruta mas corta hacia la PBR más proxima (menor número de movimientos necesarios).
+                                                El Imperio atacará a cualquier unidad Rebelde que encuentre en el camino.
                                             </p>
                                             <p>
                                                 Cuando se mueve a un Sistema, el Imperio
@@ -955,23 +952,25 @@
                                             </p>
                                             <p>
                                                 Tras un movimiento con éxito - con
-                                                unidades terrestres - a un sistema lejano,
-                                                el Imperio obtiene inmediatamente la carta de
-                                                Sonda de dicho Sistema, y se baraja el mazo
+                                                unidades terrestres - a un sistema lejano, el sistema se considera explorado por el Imeperio
+                                                y obtiene inmediatamente la carta de Sonda de dicho Sistema, y se baraja el mazo
                                                 de Sondas. Si el Imperio en algún momento
                                                 pierde su última unidad terrestre en un sistema
-                                                lejano (por ejemplo, por un combate), devuelve
-                                                la carta de Sonda al mazo y barájalo.
+                                                lejano que ha explirado (por ejemplo, por un combate), devuelve
+                                                la carta de Sonda al mazo y barájalo. Esto no sucede con las cartas de sonda de sistemas lejanos
+                                                obtenidas de forma distinta (Misiones Imperiales o en el paso de lanzar sondas de la Fase de Recuperación).
                                             </p>
-                                            <p>
-                                                Cuando la diferencia entre los marcadores
-                                                de Reputación y Tiempo sea ≤5, las flotas
-                                                Imperiales pueden moverse una vez por Ronda
-                                                inlcuso si hay un Líder en el sistema de dicha
-                                                flota. El Imperio modifica su forma de moverse
-                                                una vez que la Base Rebelde es descubierta
-                                                (ver Revelar la Base más abajo)
+                                            <p class="HiddenBase-movement">
+                                                Los líderes Imperiales bloquean el movimiento de flotas siguendo las reglas normales.
                                             </p>
+                                            <div class="RevealedBase-movement d-none variant">
+                                                <p>
+                                                    Con la Base Rebelde revelda, o cuando la diferencia entre los marcadores
+                                                    de Reputación y Tiempo sea ≤5, las flotas Imperiales pueden moverse una vez por Ronda
+                                                    inlcuso aunque hay un Líder en el sistema inicial de dicha flota.
+                                                </p>
+                                                <span class="aurekbesh" style="font-size: large">m</span>
+                                            </div>
                                         </div>
 
                                         <a class="text-decoration-none" href="#0" role="button" data-bs-toggle="collapse" data-bs-target="#revealingtherebelbase">
@@ -1088,7 +1087,7 @@
                                                 </li>
                                                 <li>
                                                     ESTRELLA DE LA MUERTE: El Imperio solo
-                                                    la usará contra la Base Rebelde, una PRB o
+                                                    la usará contra la Base Rebelde, una PBR o
                                                     un Sistema con Lealtad Rebelde y/o unidades
                                                     terrestres Rebeldes
                                                 </li>
@@ -2063,7 +2062,7 @@
                                     Acción Imperial
                                   </div>
                                   <div class="col">
-                                    Se escoge al azar una región con una PRB. El imperio obtiene la carta de Sonda del sistema
+                                    Se escoge al azar una región con una PBR. El imperio obtiene la carta de Sonda del sistema
                                     lejano que esté en esa región.
                                     <em>Nota: Si la BR está revelada, la carta no se juega hasta que le Rebelión establezca una nueva base</em>
                                   </div>
@@ -2685,7 +2684,7 @@
                               <strong class="maincolour">Posible Base Rebelde (PBR):</strong>
                               Cualquier sistema lejano cuya carta de sonda no está en la mano
                               del jugador Imperial. Si la carta de sonda de un sistema lejano
-                              vuelve al mazo de sondas, el sistema vuelve a ser una PRB.
+                              vuelve al mazo de sondas, el sistema vuelve a ser una PBR.
                           </p>
                           <p class="text-small">
                               <strong class="maincolour">Puntuación de habilidad:</strong>
