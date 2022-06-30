@@ -29,12 +29,6 @@
     src: url('../font/Aurek-Besh.ttf')  format('truetype');
 }
 
-@font-face {
-    font-family: 'SWDestiny';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../font/SWDestiny.ttf')  format('truetype');
-}
 
 @font-face {
     font-family: 'DiceFont';
@@ -46,7 +40,6 @@
 $sw-font: "Goldman", serif;
 $symbol-font: "RebellionIcons";
 $aurekbesh-font: "Aurekbesh";
-$swdestiny-font: "SWDestiny";
 $diceicon-font: "DiceFont";
 
 /* Bootstrap modifiers */
@@ -78,12 +71,6 @@ $diceicon-font: "DiceFont";
   float:right;
 }
 
-.swdestiny {
-  font-family: $swdestiny-font;
-  font-weight: 400;
-  font-size: medium;
-  float:right;
-}
 
 .dice-icon {
     font-family: $diceicon-font;
