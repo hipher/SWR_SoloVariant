@@ -560,6 +560,9 @@ function setVariants(variantName) {
         case "chkvar-RandomPlayMissions":
             showHideElement("var-RandomPlayMissions");
             showHideElement("Base-RandomPlayMissions");
+          case "ReputationTime5":
+              showHideElement("HiddenBase-movement");
+              showHideElement("RevealedBase-movement");
         default:
             break;
     }
@@ -667,6 +670,7 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
                 "Los Rebeldes están a 5 rondas de ganar la perida. Las reglas de despliege y movimiento del Imperio han cambiado";
             messageBox.show();
             promptUserRebelsWithin5 = false;
+            setVariants("ReputationTime5");
         }
     } else {
         promptUserRebelsWithin5 = true;
