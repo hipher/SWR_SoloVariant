@@ -11500,12 +11500,6 @@ fieldset:disabled .btn {
     src: url('../font/Aurek-Besh.otf')  format('truetype');
 }
 
-@font-face {
-    font-family: 'SWDestiny';
-    font-style: normal;
-    font-weight: 400;
-    src: url('../font/SWDestiny.ttf')  format('truetype');
-}
 
 @font-face {
     font-family: 'DiceFont';
@@ -11543,12 +11537,6 @@ fieldset:disabled .btn {
   float:right;
 }
 
-.swdestiny {
-  font-family: "SWdestiny";
-  font-weight: 400;
-  font-size: medium;
-  float:right;
-}
 
 .dice-icon {
     font-family: "DiceFont";
