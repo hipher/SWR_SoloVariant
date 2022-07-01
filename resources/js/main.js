@@ -644,7 +644,7 @@ function changeRound() {
                 document.getElementById("messageBoxTitle").innerHTML =
                     "¡Victoria Rebelde!";
                 document.getElementById("messageBoxBody").innerHTML =
-                    "¡Los Rebeldes gabab la partida!";
+                    "¡Los Rebeldes ganan la partida!";
                 messageBox.show();
                 return;
             }
