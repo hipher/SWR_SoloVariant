@@ -592,9 +592,13 @@ let numSelectedSystems = 0;
 
 document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
     planetbutton.addEventListener("click", (event) => {
-        if (numSelectedSystems<7 && planetbutton.checked == true) {
-            numSelectedSystems++;
-            localStorage.setItem(planetbutton.id, "Planet");
+        if (planetbutton.checked == true) {
+            if (numSelectedSystems < 7) {
+                numSelectedSystems++;
+                localStorage.setItem(planetbutton.id, "Planet");
+            } else{
+              planetbutton.checked = false
+            }
         } else {
             numSelectedSystems--;
             localStorage.removeItem(planetbutton.id);
