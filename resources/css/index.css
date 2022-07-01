@@ -11743,6 +11743,11 @@ a:hover {
   margin-bottom:10px
 }
 
+.RevealedBase {
+  margin-left:10px;
+  margin-bottom:10px
+}
+
 #row1 div[class^=col] {
   border-style: solid;
   border-color: #ced4da;
