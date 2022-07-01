@@ -560,9 +560,9 @@ function setVariants(variantName) {
         case "chkvar-RandomPlayMissions":
             showHideElement("var-RandomPlayMissions","#");
             showHideElement("Base-RandomPlayMissions","#");
-          case "ReputationTime5":
-              showHideElement("HiddenBase-movement",".");
-              showHideElement("RevealedBase-movement",".");
+        case "ReputationTime5":
+            showHideElement("HiddenBase-movement",".");
+            showHideElement("RevealedBase-movement",".");
         default:
             break;
     }
@@ -637,7 +637,15 @@ function changeRound() {
             );
 
             if (newRound.checked) {
-                alert("Rebels win!");
+                //alert("¡Los Rebeldes ganan la partida!");
+                const messageBox = new bootstrap.Modal(
+                    document.getElementById("messageBox")
+                );
+                document.getElementById("messageBoxTitle").innerHTML =
+                    "¡Victoria Rebelde!";
+                document.getElementById("messageBoxBody").innerHTML =
+                    "¡Los Rebeldes gabab la partida!";
+                messageBox.show();
                 return;
             }
 
