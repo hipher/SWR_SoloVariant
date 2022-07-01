@@ -11,7 +11,7 @@ Además, incluye algunas variaciones opcionales sobre la variante en solitario o
 - Jugar misiones aleatoriamente: Si se activa, el imperio decide aleatoriamente en cada turno si juaga una misión o se mueve, en lugar de jugar siempre las misiones del mazo de ronda antes de intentar moverse (activa por defecto)
 - Cartas de acción de asignación: Si se activa, el Imperio decide al azar si juega las Cartas de Acción que tenga dispoibles en la fase de asignación en lugar de jugar esas cartas siempre (activa por defecto)
 
-Instrucciones de la variante (BGG):
+Instrucciones de la variante (BGG): https://boardgamegeek.com/filepage/242629/ataque-imperial-variante-en-solitario
 
 Enlace público: https://hipher.github.io/SWR_SoloVariant/
 
