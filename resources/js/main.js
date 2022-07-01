@@ -452,7 +452,6 @@ function resetBuildQueue() {
     }
 }
 
-//Funcion de busqueda en la lista de cartas. Falta implementar que no vuelva aponer las de ROTE visibles cuando no deberían estarlo
 
 function searchCardList() {
     const searchText = document.getElementById("searchbar");
@@ -520,6 +519,7 @@ function setVariants(variantName) {
             showHideElement("Base-Setup","#");
             showHideElement("ROTE-Setup-Table","#");
 
+            //disable ROTE combat when ROTE elements are not selected
             if (document.getElementById("chkROTE-TacticCards").disabled) {
                 document.getElementById("chkROTE-TacticCards").disabled = false;
                 document.getElementById("ROTE-check").title = "ROTE-enabled";
@@ -560,9 +560,11 @@ function setVariants(variantName) {
         case "chkvar-RandomPlayMissions":
             showHideElement("var-RandomPlayMissions","#");
             showHideElement("Base-RandomPlayMissions","#");
+            break;
         case "ReputationTime5":
             showHideElement("HiddenBase-movement",".");
             showHideElement("RevealedBase-movement",".");
+            break;
         default:
             break;
     }
