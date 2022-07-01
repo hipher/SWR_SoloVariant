@@ -565,6 +565,10 @@ function setVariants(variantName) {
             showHideElement("HiddenBase-movement",".");
             showHideElement("RevealedBase-movement",".");
             break;
+        case "BaseRevealed":
+            showHideElement("HiddenBase",".");
+            showHideElement("RevealedBase",".");
+            break;
         default:
             break;
     }
@@ -588,7 +592,7 @@ let numSelectedSystems = 0;
 
 document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
     planetbutton.addEventListener("click", (event) => {
-        if (planetbutton.checked == true) {
+        if (numSelectedSystems<7 && planetbutton.checked == true) {
             numSelectedSystems++;
             localStorage.setItem(planetbutton.id, "Planet");
         } else {
@@ -599,8 +603,18 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
         updateNumberOfSelectedSystems();
 
         if (numSelectedSystems == 7) {
-            alert("The rebel base is on " + GetRebelBaseName() + "!");
-            // alert(GetRebelBaseName());
+            //alert("¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!");
+            const messageBox = new bootstrap.Modal(
+                document.getElementById("messageBox")
+            );
+            document.getElementById("messageBoxTitle").innerHTML =
+                "¡Base Rebelde descubierta!";
+            document.getElementById("messageBoxBody").innerHTML =
+                "¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!";
+            messageBox.show();
+            setVariants("ReputationTime5");
+            setVariants("BaseRevealed");
+
         }
     });
 });
@@ -680,11 +694,15 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
                 "Los Rebeldes están a 5 rondas de ganar la perida. Las reglas de despliege y movimiento del Imperio han cambiado";
             messageBox.show();
             promptUserRebelsWithin5 = false;
-            setVariants("ReputationTime5");
+            if (numSelectedSystems<7) {
+              setVariants("ReputationTime5");
+            }
         }
     } else {
         if (!promptUserRebelsWithin5) {
-          setVariants("ReputationTime5");
+          if (numSelectedSystems<7) {
+            setVariants("ReputationTime5");
+          }
         }
         promptUserRebelsWithin5 = true;
     }
