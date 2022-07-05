@@ -609,7 +609,7 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
 
         if (numSelectedSystems == 7) {
             //alert("¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!");
-          if (promptUserBaseRevelaed)  {
+          if (promptUserBaseRevealed)  {
               const messageBox = new bootstrap.Modal(
                   document.getElementById("messageBox")
               );
@@ -620,14 +620,16 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
               messageBox.show();
               setVariants("ReputationTime5");
               setVariants("BaseRevealed");
-              promptUserBaseRevelaed = false;
+              promptUserBaseRevealed = false;
           } //end if
 
         } else if (numSelectedSystems < 7) {
-          setVariants("ReputationTime5");
-          setVariants("BaseRevealed");
-          promptUserBaseRevelaed = true;
-        } //end iff
+          if (!promptUserBaseRevealed) {
+              setVariants("ReputationTime5");
+              setVariants("BaseRevealed");
+              promptUserBaseRevealed = true;
+          } //end if
+        } //end elseif
     }); //end addEventListener
 });
 
