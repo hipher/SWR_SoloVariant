@@ -621,13 +621,13 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
               setVariants("ReputationTime5");
               setVariants("BaseRevealed");
               promptUserBaseRevelaed = false;
-          } else if (numSelectedSystems < 7) {
-            setVariants("ReputationTime5");
-            setVariants("BaseRevealed");
-            promptUserBaseRevelaed = true;
-          } //end iff
+          } //end if
 
-        }//end if
+        } else if (numSelectedSystems < 7) {
+          setVariants("ReputationTime5");
+          setVariants("BaseRevealed");
+          promptUserBaseRevelaed = true;
+        } //end iff
     }); //end addEventListener
 });
 
