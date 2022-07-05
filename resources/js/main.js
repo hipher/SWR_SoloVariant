@@ -846,7 +846,7 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
             messageBox.show();
             promptUserRebelsWithin5 = false;
             if (numSelectedSystems<7) {
-              showVariant("TimeRep5-movement-movement","",".");
+              showVariant("TimeRep5-movement","",".");
               hideVariant("HiddenBase-movement","",".");
 
             }
@@ -855,7 +855,7 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
         if (!promptUserRebelsWithin5) {
           if (numSelectedSystems<7) {
             //TODO: check if RB is revealed so base movement rule must remain hidden
-            hideVariant("TimeRep5-movement-movement","",".");
+            hideVariant("TimeRep5-movement","",".");
             ShowVariant("HiddenBase-movement","",".");
           }
         }
