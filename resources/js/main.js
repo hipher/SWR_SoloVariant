@@ -508,12 +508,12 @@ function loadVariantSettings() {
     });
 }
 
-function chkClick(cb) {
+/*function chkClick(cb) {
     setVariants(cb.id);
     SaveSetting(cb.id, cb.checked);
-}
+}*/
 
-function setVariants(variantName) {
+/*function setVariants(variantName) {
     switch (variantName) {
         case "chkROTE-Units":
             showHideElement("ROTE-Setup","#");
@@ -573,7 +573,7 @@ function setVariants(variantName) {
         default:
             break;
     }
-}
+}*/
 
 function toggleClick(cb) {
     variantVisibility(cb.id);
@@ -584,8 +584,8 @@ function variantVisibility(variantName) {
     switch (variantName) {
         case "chkROTE-Units":
             if (document.getElementById("chkROTE-Units").checked) { //chkROTE-units cheked
-              showVariant("Setup","ROTE","#");
-              showVariant("Setup-Table","ROTE","#");
+              showVariant("Setup","ROTE-","#");
+              showVariant("Setup-Table","ROTE-","#");
 
               //enable ROTE combats toggle
               document.getElementById("chkROTE-TacticCards").disabled = false;
@@ -593,64 +593,100 @@ function variantVisibility(variantName) {
 
               //show ROTE combats if the option was checked previously
               if (document.getElementById("chkROTE-TacticCards").checked) {
-                  showVariant("Battles","ROTE","#");
-                  showVariant("Battles-Table","ROTE","#");
+                  showVariant("Battles","ROTE-","#");
+                  showVariant("Battles-Table","ROTE-","#");
               }
             } else { //chkROTE-units uncheked
-                hideVariant("Setup","ROTE","#")
-                hideVariant("Setup-Table","ROTE","#")
+                hideVariant("Setup","ROTE-","#")
+                hideVariant("Setup-Table","ROTE-","#")
 
                 //disable ROTE combats
                 document.getElementById("chkROTE-TacticCards").disabled = true;
                 document.getElementById("ROTE-check").title = "ROTE-disabled";
 
                 //hide ROTE combats (not allowed without ROTE units)
-                hideVariant("Battles","ROTE","#");
-                hideVariant("Battles-Table","ROTE","#");
+                hideVariant("Battles","ROTE-","#");
+                hideVariant("Battles-Table","ROTE-","#");
 
             }
             break;
+
         case "chkROTE-TacticCards":
-            showHideElement("ROTE-Battles","#");
-            showHideElement("ROTE-Battles-Table","#")
-            showHideElement("Base-Battles","#")
-            showHideElement("Base-Battles-Table","#");
+            if (document.getElementById("chkROTE-TacticCards").checked) { //chkROTE-TacticCards cheked
+              showVariant("Battles","ROTE-","#");
+              showVariant("Battles-Table","ROTE-","#");
+            } else { //chkROTE-TacticCards uncheked
+              hideVariant("Battles","ROTE-","#");
+              hideVariant("Battles-Table","ROTE-","#");
+            }
             break;
+
         case "chkvar-Movement":
-            showHideElement("var-movement","#");
-            showHideElement("Base-movement","#");
+            if (document.getElementById("chkvar-Movement").checked) { //chkvar-Movement cheked
+              showVariant("movement","var-","#");
+
+            } else { //chkvar-Movement uncheked
+              hideVariant("movement","var-","#");
+
+            }
             break;
+
         case "chkvar-Deployment":
-            showHideElement("var-Empiredeploy","#");
-            showHideElement("Base-Empiredeploy","#");
+            if (document.getElementById("chkvar-Deployment").checked) { //chkvar-Deployment cheked
+              showVariant("Empiredeploy","var-","#");
+
+            } else { //chkvar-Deployment uncheked
+              hideVariant("Empiredeploy","var-","#");
+
+            }
             break;
+
         case "chkvar-UnPlayableMissions":
-            showHideElement("var-Unplayablemissions","#");
-            showHideElement("Base-Unplayablemissions","#");
+            if (document.getElementById("chkvar-UnPlayableMissions").checked) { //cchkvar-UnPlayableMissions cheked
+              showVariant("Unplayablemissions","var-","#");
+
+            } else { //chkvar-UnPlayableMissions uncheked
+              hideVariant("Unplayablemissions","var-","#");
+
+            }
             break;
+
         case "chkvar-ActionCardExecution":
-            showHideElement("var-ActionCardExecution","#");
-            showHideElement("Base-ActionCardExecution","#");
+            if (document.getElementById("chkvar-ActionCardExecution").checked) { //cchkvar-ActionCardExecution cheked
+              showVariant("ActionCardExecution","var-","#");
+
+            } else { //chkvar-ActionCardExecution uncheked
+              hideVariant("ActionCardExecution","var-","#");
+
+            }
             break;
+
         case "chkvar-RandomPlayMissions":
-            showHideElement("var-RandomPlayMissions","#");
-            showHideElement("Base-RandomPlayMissions","#");
+            if (document.getElementById("chkvar-RandomPlayMissions").checked) { //cchkvar-RandomPlayMissions cheked
+              showVariant("RandomPlayMissions","var-","#");
+
+            } else { //chkvar-RandomPlayMissions uncheked
+              hideVariant("RandomPlayMissions","var-","#");
+
+            }
             break;
-        case "ReputationTime5":
+
+        /*case "ReputationTime5":
             showHideElement("HiddenBase-movement",".");
             showHideElement("RevealedBase-movement",".");
             break;
+
         case "BaseRevealed":
             showHideElement("HiddenBase",".");
             showHideElement("RevealedBase",".");
-            break;
+            break;*/
         default:
             break;
     }
 }
 
-function showVariant (id,prefix,type) { //id: variant name, without var- or base- prefix; type: # or .
-    document.querySelectorAll(type + prefix + "-" + id).forEach((element) => {
+function showVariant (id,prefix,type) { //id: variant name, without prefix (var-, Base-, ROTE-, etc); type: # or .
+    document.querySelectorAll(type + prefix + id).forEach((element) => {
         element.classList.remove("d-none");
     });
     document.querySelectorAll(type + "Base-" + id).forEach((element) => {
@@ -659,7 +695,7 @@ function showVariant (id,prefix,type) { //id: variant name, without var- or base
 }
 
 function hideVariant (id,prefix,type) { //id: variant name, without var- or base- prefix; type: # or .
-    document.querySelectorAll(type + prefix + "-" + id).forEach((element) => {
+    document.querySelectorAll(type + prefix + id).forEach((element) => {
         element.classList.add("d-none");
     });
     document.querySelectorAll(type + "Base-" + id).forEach((element) => {
@@ -667,7 +703,7 @@ function hideVariant (id,prefix,type) { //id: variant name, without var- or base
     });
 }
 
-function showHideElement(id,type) {
+/*function showHideElement(id,type) {
     document.querySelectorAll(type + id).forEach((element) => {
         if (element.classList.contains("d-none")) {
             element.classList.remove("d-none");
@@ -675,7 +711,7 @@ function showHideElement(id,type) {
             element.classList.add("d-none");
         }
     });
-}
+}*/
 
 document.getElementById("searchbar").addEventListener("input", (e) => {
     searchCardList();
@@ -702,6 +738,7 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
         if (numSelectedSystems == 7) {
             //alert("¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!");
           if (promptUserBaseRevealed)  {
+              //display message to user
               const messageBox = new bootstrap.Modal(
                   document.getElementById("messageBox")
               );
@@ -710,15 +747,23 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
               document.getElementById("messageBoxBody").innerHTML =
                   "¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!";
               messageBox.show();
-              setVariants("ReputationTime5");
-              setVariants("BaseRevealed");
+
+              //show Revealed Base specific rules
+              showVariant("RevealedBase-movement","",".");
+              showVariant("RevealedBase","",".");
+              hideVariant("HiddenBase-movement","",".");
+
               promptUserBaseRevealed = false;
           } //end if
 
         } else if (numSelectedSystems < 7) {
           if (!promptUserBaseRevealed) {
-              setVariants("ReputationTime5");
-              setVariants("BaseRevealed");
+              //hide Revealed Base specific rules
+              //TODO: check Reputation-Time to decide if hidden base movement must remain
+              hideVariant("RevealedBase-movement","",".");
+              hideVariant("RevealedBase","",".");
+              showVariant("HiddenBase-movement","",".");
+
               promptUserBaseRevealed = true;
           } //end if
         } //end elseif
@@ -801,13 +846,17 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
             messageBox.show();
             promptUserRebelsWithin5 = false;
             if (numSelectedSystems<7) {
-              setVariants("ReputationTime5");
+              showVariant("RevealedBase-movement","",".");
+              hideVariant("HiddenBase-movement","",".");
+
             }
         }
     } else {
         if (!promptUserRebelsWithin5) {
           if (numSelectedSystems<7) {
-            setVariants("ReputationTime5");
+            //TODO: check if RB is revealed so movement rule must remain
+            hideVariant("RevealedBase-movement","",".");
+            ShowVariant("HiddenBase-movement","",".");
           }
         }
         promptUserRebelsWithin5 = true;
