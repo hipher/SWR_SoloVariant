@@ -1,5 +1,6 @@
 let promptUserRebelsWithin5 = true;
 let promptUserBaseRevealed = true;
+let repMinusTimeFive = false;
 
 document.addEventListener("DOMContentLoaded", () => {
     // TODO Refactor this
@@ -759,10 +760,11 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
         } else if (numSelectedSystems < 7) {
           if (!promptUserBaseRevealed) {
               //hide Revealed Base specific rules
-              //TODO: check Reputation-Time to decide if hidden base movement must remain
               hideVariant("RevealedBase-movement","",".");
               hideVariant("RevealedBase","",".");
-              showVariant("HiddenBase-movement","",".");
+              if (!repMinusTimeFive) {
+                  showVariant("HiddenBase-movement","",".");
+              }
 
               promptUserBaseRevealed = true;
           } //end if
@@ -834,6 +836,7 @@ function updateRoundNumber(roundnumber) {
 
 function checkIfRebelRepLessThan5(currentRoundNumber) {
     if (getRebelRep() - currentRoundNumber <= 5) {
+        repMinusTimeFive = true;
         if (promptUserRebelsWithin5) {
             // alert('Rebels are now within FIVE rounds of winning the game. Movement rules have changed.');
             const messageBox = new bootstrap.Modal(
@@ -842,20 +845,17 @@ function checkIfRebelRepLessThan5(currentRoundNumber) {
             document.getElementById("messageBoxTitle").innerHTML =
                 "Cruzando la línea de meta";
             document.getElementById("messageBoxBody").innerHTML =
-                "Los Rebeldes están a 5 rondas de ganar la perida. Las reglas de despliege y movimiento del Imperio han cambiado";
+                "Los Rebeldes están a 5 rondas de ganar la partida. Las reglas de despliege y movimiento del Imperio han cambiado";
             messageBox.show();
             promptUserRebelsWithin5 = false;
-            if (numSelectedSystems<7) {
-              showVariant("TimeRep5-movement","",".");
-              hideVariant("HiddenBase-movement","",".");
-
-            }
+            showVariant("TimeRep5-movement","",".");
+            hideVariant("HiddenBase-movement","",".");
         }
     } else {
+        repMinusTimeFive = false;
         if (!promptUserRebelsWithin5) {
+          hideVariant("TimeRep5-movement","",".");
           if (numSelectedSystems<7) {
-            //TODO: check if RB is revealed so base movement rule must remain hidden
-            hideVariant("TimeRep5-movement","",".");
             showVariant("HiddenBase-movement","",".");
           }
         }
