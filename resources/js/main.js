@@ -658,7 +658,7 @@ function showVariant (id,prefix,type) { //id: variant name, without var- or base
     });
 }
 
-function hideVariant (id,type) { //id: variant name, without var- or base- prefix; type: # or .
+function hideVariant (id,prefix,type) { //id: variant name, without var- or base- prefix; type: # or .
     document.querySelectorAll(type + prefix + "-" + id).forEach((element) => {
         element.classList.add("d-none");
     });
