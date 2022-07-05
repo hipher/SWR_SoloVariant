@@ -575,6 +575,98 @@ function setVariants(variantName) {
     }
 }
 
+function toggleClick(cb) {
+    variantVisibility(cb.id);
+    SaveSetting(cb.id, cb.checked);
+}
+
+function variantVisibility(variantName) {
+    switch (variantName) {
+        case "chkROTE-Units":
+            if (document.getElementById("chkROTE-Units").checked) { //chkROTE-units cheked
+              showVariant("Setup","ROTE","#");
+              showVariant("Setup-Table","ROTE","#");
+
+              //enable ROTE combats toggle
+              document.getElementById("chkROTE-TacticCards").disabled = false;
+              document.getElementById("ROTE-check").title = "ROTE-enabled";
+
+              //show ROTE combats if the option was checked previously
+              if (document.getElementById("chkROTE-TacticCards").checked) {
+                  showVariant("Battles","ROTE","#");
+                  showVariant("Battles-Table","ROTE","#");
+              }
+            } else { //chkROTE-units uncheked
+                hideVariant("Setup","ROTE","#")
+                hideVariant("Setup-Table","ROTE","#")
+
+                //disable ROTE combats
+                document.getElementById("chkROTE-TacticCards").disabled = true;
+                document.getElementById("ROTE-check").title = "ROTE-disabled";
+
+                //hide ROTE combats (not allowed without ROTE units)
+                hideVariant("Battles","ROTE","#");
+                hideVariant("Battles-Table","ROTE","#");
+
+            }
+            break;
+        case "chkROTE-TacticCards":
+            showHideElement("ROTE-Battles","#");
+            showHideElement("ROTE-Battles-Table","#")
+            showHideElement("Base-Battles","#")
+            showHideElement("Base-Battles-Table","#");
+            break;
+        case "chkvar-Movement":
+            showHideElement("var-movement","#");
+            showHideElement("Base-movement","#");
+            break;
+        case "chkvar-Deployment":
+            showHideElement("var-Empiredeploy","#");
+            showHideElement("Base-Empiredeploy","#");
+            break;
+        case "chkvar-UnPlayableMissions":
+            showHideElement("var-Unplayablemissions","#");
+            showHideElement("Base-Unplayablemissions","#");
+            break;
+        case "chkvar-ActionCardExecution":
+            showHideElement("var-ActionCardExecution","#");
+            showHideElement("Base-ActionCardExecution","#");
+            break;
+        case "chkvar-RandomPlayMissions":
+            showHideElement("var-RandomPlayMissions","#");
+            showHideElement("Base-RandomPlayMissions","#");
+            break;
+        case "ReputationTime5":
+            showHideElement("HiddenBase-movement",".");
+            showHideElement("RevealedBase-movement",".");
+            break;
+        case "BaseRevealed":
+            showHideElement("HiddenBase",".");
+            showHideElement("RevealedBase",".");
+            break;
+        default:
+            break;
+    }
+}
+
+function showVariant (id,prefix,type) { //id: variant name, without var- or base- prefix; type: # or .
+    document.querySelectorAll(type + prefix + "-" + id).forEach((element) => {
+        element.classList.remove("d-none");
+    });
+    document.querySelectorAll(type + "Base-" + id).forEach((element) => {
+        element.classList.add("d-none");
+    });
+}
+
+function hideVariant (id,type) { //id: variant name, without var- or base- prefix; type: # or .
+    document.querySelectorAll(type + prefix + "-" + id).forEach((element) => {
+        element.classList.add("d-none");
+    });
+    document.querySelectorAll(type + "Base-" + id).forEach((element) => {
+        element.classList.remove("d-none");
+    });
+}
+
 function showHideElement(id,type) {
     document.querySelectorAll(type + id).forEach((element) => {
         if (element.classList.contains("d-none")) {
