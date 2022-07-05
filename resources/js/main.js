@@ -1,4 +1,5 @@
 let promptUserRebelsWithin5 = true;
+let promptUserBaseRevealed = true;
 
 document.addEventListener("DOMContentLoaded", () => {
     // TODO Refactor this
@@ -608,19 +609,26 @@ document.querySelectorAll(".planetbtn").forEach((planetbutton) => {
 
         if (numSelectedSystems == 7) {
             //alert("¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!");
-            const messageBox = new bootstrap.Modal(
-                document.getElementById("messageBox")
-            );
-            document.getElementById("messageBoxTitle").innerHTML =
-                "¡Base Rebelde descubierta!";
-            document.getElementById("messageBoxBody").innerHTML =
-                "¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!";
-            messageBox.show();
+          if (promptUserBaseRevelaed)  {
+              const messageBox = new bootstrap.Modal(
+                  document.getElementById("messageBox")
+              );
+              document.getElementById("messageBoxTitle").innerHTML =
+                  "¡Base Rebelde descubierta!";
+              document.getElementById("messageBoxBody").innerHTML =
+                  "¡La base Rebelde se encuentra en " + GetRebelBaseName() + "!";
+              messageBox.show();
+              setVariants("ReputationTime5");
+              setVariants("BaseRevealed");
+              promptUserBaseRevelaed = false;
+          } else if (numSelectedSystems < 7) {
             setVariants("ReputationTime5");
             setVariants("BaseRevealed");
+            promptUserBaseRevelaed = true;
+          } //end iff
 
-        }
-    });
+        }//end if
+    }); //end addEventListener
 });
 
 function updateNumberOfSelectedSystems() {
