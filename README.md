@@ -1,8 +1,8 @@
 # SWR_SoloVariant
 Instrucciones interactivas para la variante en solitario "Ataque Imperial" para Star Wars: Rebellion, basada en la variante en solitario "Imperial Attack" de por Dave Buonocuore. 
 
-En esta versión añade la posibilidad de jugar con la expansión El Auge del Imperio, incluido las cartas de la expansión a la lista de decisiones imperiales. 
-Además, incluye algunas variaciones opcionales sobre la variante en solitario original:
+En esta versión añade la posibilidad de jugar con la expansión El Auge del Imperio, incluidas las cartas de la expansión, que se han añadido a la lista de decisiones imperiales. 
+Además, introduce algunas variaciones opcionales sobre la variante en solitario original:
 - Unidades y despliegue de El Auge del Imperio (se juega con las unidades y cartas de El Auge del Imperio, y con el despliegue inicial seiguiendo las reglas de la expansión en lugar del juego base) (activa por defecto)
 - Usar cartas de táctica avanzada (combate con cartas de Táctica Avanzada, como en la versión en One Stop Coop-shop, en lugar del combate con cartas de táctica normales, en el que el Imperio no usa cartas) (activa por defecto)
 - Movimiento hacia PBR: Si se activa, el imperio decide el objetivo de su movimiento (PBR o unidades Rebeldes) al azar en lugar de hacerlo siempre hacia la posible base rebelde más próxima.
